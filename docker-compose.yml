@@ -3,7 +3,7 @@ version: "3.1"
 services:
   workspace:
     image: kbase/kb_workspace:${TRAVIS_BRANCH:-latest}
-    command: [ "https://raw.githubusercontent.com/kbase/workspace_deluxe/docker/deployment/conf/workspace-minikb.yml"]
+    command: [ "https://raw.githubusercontent.com/kbase/mini_kb/master/deployment/conf/workspace-minikb.yml"]
     ports:
       - "7058:7058"
     depends_on: ["auth2", "handle_service", "handle_manager", "ci-mongo"]
@@ -18,28 +18,28 @@ services:
   
   handle_service:
     image: kbase/handle_service:latest
-    command: [ "https://raw.githubusercontent.com/kbase/workspace_deluxe/docker/deployment/conf/handle_service-minikb.yml"]
+    command: [ "https://raw.githubusercontent.com/kbase/mini_kb/master/deployment/conf/handle_service-minikb.yml"]
     ports:
       - "7109:7109"
-    depends_on: ["handle_manager", "ci-mysql", "mysqlinit", "shock", "auth2"]
+    depends_on: ["handle_manager", "ci-mysql", "shock", "auth2"]
 
   shock:
     image: kbase/kb_shock:develop
-    command: [ "https://raw.githubusercontent.com/kbase/workspace_deluxe/docker/deployment/conf/shock-minikb.yml"]
+    command: [ "https://raw.githubusercontent.com/kbase/mini_kb/master/deployment/conf/shock-minikb.yml"]
     ports:
       - "7044:7044"
     depends_on: ["ci-mongo"]
 
   handle_manager:
     image: kbase/handle_mngr:latest
-    command: [ "https://raw.githubusercontent.com/kbase/workspace_deluxe/docker/deployment/conf/handle_mngr-minikb.yml"]
+    command: [ "https://raw.githubusercontent.com/kbase/mini_kb/master/deployment/conf/handle_mngr-minikb.yml"]
     ports:
       - "9001:9001"
     depends_on: ["auth2"]
 
   auth2:
     image: kbase/kb_auth2:latest
-    command: [ "https://raw.githubusercontent.com/kbase/workspace_deluxe/docker/deployment/conf/auth2-minikb.yml"]
+    command: [ "https://raw.githubusercontent.com/kbase/mini_kb/master/deployment/conf/auth2-minikb.yml"]
     ports:
       - "8080:8080"
     depends_on: ["ci-mongo"]
@@ -48,7 +48,7 @@ services:
     image: mongo:2
     volumes:
       - ./ws.mongodump:/mnt/ws.mongodump
-    entrypoint: [ "mongorestore", "--host", "ci-mongo", "/mnt/ws.mongodump"]
+    entrypoint: [ "mongorestore", "--host", "ci-mongo", "/mnt/ws.mongodump" ]
     depends_on: [ "ci-mongo" ]
   
   ci-mongo:
@@ -61,7 +61,7 @@ services:
     image: mysql:5.5
     volumes:
       - ./mysqldump:/mnt/mysqldump
-    entrypoint: [ "mysql", "-h", "ci-mysql", "-v", "-e", "source /mnt/mysqldump"]
+    entrypoint: [ "mysql", "-h", "ci-mysql", "-v", "-e", "source /mnt/mysqldump" ]
     depends_on: [ "ci-mysql" ]
 
   ci-mysql:
