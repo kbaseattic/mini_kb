@@ -54,7 +54,18 @@ services:
 
   auth2:
     image: kbase/kb_auth2:develop
-    command: [ "https://raw.githubusercontent.com/kbase/mini_kb/master/deployment/conf/auth2-minikb.yml"]
+    command:
+      - "-wait"
+      - "tcp://ci-mongo:27017"
+      - "-wait"
+      - "tcp://db-init:8080"
+      - "-timeout"
+      - "120s"
+      - "-template"
+      - "/kb/deployment/conf/.templates/deployment.cfg.templ:/kb/deployment/conf/deployment.cfg"
+      - "-env"
+      - "https://raw.githubusercontent.com/kbase/mini_kb/master/deployment/conf/auth2-minikb.yml"
+      - "/kb/deployment/bin/start_auth2.sh"
     ports:
       - "8080:8080"
     depends_on: ["ci-mongo","db-init"]
