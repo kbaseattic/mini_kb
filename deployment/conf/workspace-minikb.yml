@@ -1,7 +1,7 @@
 mongodb_database : workspace
 ws_admin : wsadmin
 backend_token : 62IYPZGS7O773DBLZZCSE542BP4C2E7G
-mongodb_host : ci-mongo.minikb_default
+mongodb_host : ci-mongo.
 mongodb_user : ""
 mongodb_pwd : ""
 # ignore_handle_service : true
