@@ -2,10 +2,28 @@ version: "3.1"
 #
 services:
   workspace:
-    image: kbase/kb_workspace:${TRAVIS_BRANCH:-latest}
-    command: [ "https://raw.githubusercontent.com/kbase/mini_kb/master/deployment/conf/workspace-minikb.yml"]
+    image: kbase/kb_workspace:develop
+    command:
+      - "-template"
+      - "/kb/deployment/conf/.templates/deployment.cfg.templ:/kb/deployment/conf/deployment.cfg"
+      - "-env"
+      - "https://raw.githubusercontent.com/kbase/mini_kb/master/deployment/conf/workspace-minikb.yml"
+      - "-stdout"
+      - "/kb/deployment/services/workspace/glassfish_domain/Workspace/logs/server.log"
+      - "-wait"
+      - "tcp://ci-mongo:27017"
+      - "-wait"
+      - "tcp://db-init:8080"
+      - "-wait"
+      - "tcp://auth2:8080"
+      - "-timeout"
+      - "150s"
+      - "/kb/deployment/bin/start_workspace.sh"
     ports:
       - "7058:7058"
+    links:
+      - "ci-mongo:mongo.minikb.priv"
+      - auth2
     depends_on: ["auth2", "handle_service", "handle_manager", "ci-mongo","db-init"]
   
   shell:
@@ -47,7 +65,19 @@ services:
 
   handle_manager:
     image: kbase/handle_mngr:latest
-    command: [ "https://raw.githubusercontent.com/kbase/mini_kb/master/deployment/conf/handle_mngr-minikb.yml"]
+    command:
+      - "-template"
+      - "/kb/deployment/conf/.templates/deployment.cfg.templ:/kb/deployment/conf/deployment.cfg"
+      - "-env"
+      - "https://raw.githubusercontent.com/kbase/mini_kb/master/deployment/conf/handle_mngr-minikb.yml"
+      - "-wait"
+      - "tcp://auth2:8080"
+      - "-timeout"
+      - "150s"
+      - "starman"
+      - "--listen"
+      - ":9001"
+      - "/kb/deployment/lib/Bio/KBase/HandleMngr/HandleMngr.psgi"
     ports:
       - "9001:9001"
     depends_on: ["auth2","db-init"]
@@ -85,29 +115,12 @@ services:
       - /mnt/bin/initialize_all.sh
     depends_on: ['ci-mysql','ci-mongo']
 
-  mongoinit:
-    image: mongo:2
-    volumes:
-      - ./ws.mongodump:/mnt/ws.mongodump
-      - ./bin:/mnt/bin
-    entrypoint: [ "mongorestore", "--host", "ci-mongo", "/mnt/ws.mongodump" ]
-    depends_on: [ "ci-mongo" ]
-  
   ci-mongo:
     image: mongo:2
     ports:
       - "27017:27017"
     command: --smallfiles
   
-  mysqlinit:
-    image: mysql:5.5
-    volumes:
-      - ./mysqldump:/mnt/mysqldump
-      - ./bin:/mnt/bin
-    # entrypoint: [ "mysql", "-h", "ci-mysql", "-v", "-e", "source /mnt/mysqldump" ]
-    entrypoint: [ "/mnt/bin/initialize_mysql.sh" ]
-    depends_on: [ "ci-mysql" ]
-
   ci-mysql:
     image: mysql:5.5
     environment:
