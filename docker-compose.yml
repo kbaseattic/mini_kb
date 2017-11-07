@@ -18,12 +18,11 @@ services:
       - "tcp://auth2:8080"
       - "-timeout"
       - "150s"
+      - "sleep"
+      - "3600"
       - "/kb/deployment/bin/start_workspace.sh"
     ports:
       - "7058:7058"
-    links:
-      - "ci-mongo:mongo.minikb.priv"
-      - auth2
     depends_on: ["auth2", "handle_service", "handle_manager", "ci-mongo","db-init"]
   
   shell:
