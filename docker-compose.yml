@@ -8,8 +8,6 @@ services:
       - "/kb/deployment/conf/.templates/deployment.cfg.templ:/kb/deployment/conf/deployment.cfg"
       - "-env"
       - "https://raw.githubusercontent.com/kbase/mini_kb/master/deployment/conf/workspace-minikb.yml"
-      - "-stdout"
-      - "/kb/deployment/services/workspace/glassfish_domain/Workspace/logs/server.log"
       - "-wait"
       - "tcp://ci-mongo:27017"
       - "-wait"
@@ -18,8 +16,6 @@ services:
       - "tcp://auth2:8080"
       - "-timeout"
       - "150s"
-      - "sleep"
-      - "3600"
       - "/kb/deployment/bin/start_workspace.sh"
     ports:
       - "7058:7058"
@@ -111,6 +107,8 @@ services:
       - tcp://ci-mysql:3306/
       - -wait
       - tcp://ci-mongo:27017
+      - -timeout
+      - 120s
       - /mnt/bin/initialize_all.sh
     depends_on: ['ci-mysql','ci-mongo']
 
