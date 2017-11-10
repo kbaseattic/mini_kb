@@ -7,7 +7,7 @@ services:
       - "-template"
       - "/kb/deployment/conf/.templates/nginx.conf.templ:/etc/nginx/nginx.conf"
       - "-env"
-      - "https://raw.githubusercontent.com/kbase/mini_kb/master/kb/deployment/conf/nginx-minikb.ini"
+      - "https://raw.githubusercontent.com/kbase/mini_kb/master/deployment/conf/nginx-minikb.ini"
       - "nginx" 
     ports:
       - "80:8000"
