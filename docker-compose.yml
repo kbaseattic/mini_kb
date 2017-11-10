@@ -11,6 +11,8 @@ services:
       - "nginx" 
     ports:
       - "80:8000"
+    depends_on: ["auth2", "handle_service", "handle_manager", "workspace", "shock"]
+
   workspace:
     image: kbase/kb_workspace:develop
     command:
