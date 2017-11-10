@@ -1,6 +1,16 @@
 version: "3.1"
 #
 services:
+  nginx:
+    image: kbase/nginx:latest
+    command:
+      - "-template"
+      - "/kb/deployment/conf/.templates/nginx.conf.templ:/etc/nginx/nginx.conf"
+      - "-env"
+      - "https://raw.githubusercontent.com/kbase/mini_kb/master/kb/deployment/conf/nginx-minikb.ini"
+      - "nginx" 
+    ports:
+      - "80:8000"
   workspace:
     image: kbase/kb_workspace:develop
     command:
@@ -17,8 +27,8 @@ services:
       - "-timeout"
       - "150s"
       - "/kb/deployment/bin/start_workspace.sh"
-    ports:
-      - "7058:7058"
+    #ports:
+    #  - "7058:7058"
     depends_on: ["auth2", "handle_service", "handle_manager", "ci-mongo","db-init"]
   
   shell:
@@ -32,8 +42,8 @@ services:
   handle_service:
     image: kbase/handle_service:latest
     command: [ "https://raw.githubusercontent.com/kbase/mini_kb/master/deployment/conf/handle_service-minikb.yml"]
-    ports:
-      - "7109:7109"
+    #ports:
+    #  - "7109:7109"
     depends_on: ["handle_manager", "ci-mysql", "shock", "auth2","db-init"]
 
   shock:
@@ -54,8 +64,8 @@ services:
       - "/kb/deployment/bin/shock-server"
       - "--conf"
       - "/kb/deployment/conf/shock-server.cfg"
-    ports:
-      - "7044:7044"
+    #ports:
+    #  - "7044:7044"
     depends_on: ["ci-mongo", "db-init", "auth2"]
 
   handle_manager:
@@ -73,8 +83,8 @@ services:
       - "--listen"
       - ":9001"
       - "/kb/deployment/lib/Bio/KBase/HandleMngr/HandleMngr.psgi"
-    ports:
-      - "9001:9001"
+    #ports:
+    #  - "9001:9001"
     depends_on: ["auth2","db-init"]
 
   auth2:
@@ -91,8 +101,8 @@ services:
       - "-env"
       - "https://raw.githubusercontent.com/kbase/mini_kb/master/deployment/conf/auth2-minikb.yml"
       - "/kb/deployment/bin/start_auth2.sh"
-    ports:
-      - "8080:8080"
+    #ports:
+    #  - "8080:8080"
     depends_on: ["ci-mongo","db-init"]
 
   db-init:
@@ -114,13 +124,13 @@ services:
 
   ci-mongo:
     image: mongo:2
-    ports:
-      - "27017:27017"
+    #ports:
+    #  - "27017:27017"
     command: --smallfiles
   
   ci-mysql:
     image: mysql:5.5
     environment:
       MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
-    ports:
-      - "3306:3306"
+    #ports:
+    #  - "3306:3306"
