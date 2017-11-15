@@ -10,7 +10,7 @@ services:
       - "https://raw.githubusercontent.com/kbase/mini_kb/master/deployment/conf/nginx-minikb.ini"
       - "nginx" 
     ports:
-      - "80:8000"
+      - "8000:80"
     depends_on: ["auth2", "handle_service", "handle_manager", "workspace", "shock"]
 
   workspace:
@@ -28,6 +28,8 @@ services:
       - "tcp://auth2:8080"
       - "-timeout"
       - "150s"
+      - "-stdout"
+      - "/kb/deployment/services/workspace/glassfish_domain/Workspace/logs/server.log"
       - "/kb/deployment/bin/start_workspace.sh"
     #ports:
     #  - "7058:7058"
