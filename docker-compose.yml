@@ -14,7 +14,7 @@ services:
     depends_on: ["auth2", "handle_service", "handle_manager", "workspace", "shock"]
 
   workspace:
-    image: kbase/kb_workspace:develop
+    image: kbase/kb_workspace:${TRAVIS_BRANCH:-develop}
     command:
       - "-template"
       - "/kb/deployment/conf/.templates/deployment.cfg.templ:/kb/deployment/conf/deployment.cfg"
@@ -34,7 +34,7 @@ services:
     #ports:
     #  - "7058:7058"
     depends_on: ["auth2", "handle_service", "handle_manager", "ci-mongo","db-init"]
-  
+
   shell:
     image: kbase/db_initialize
     entrypoint: [ "/bin/bash"]
@@ -44,7 +44,7 @@ services:
       - .:/home/workspace_deluxe
   
   handle_service:
-    image: kbase/handle_service:latest
+    image: kbase/handle_service:develop
     command: [ "https://raw.githubusercontent.com/kbase/mini_kb/master/deployment/conf/handle_service-minikb.yml"]
     #ports:
     #  - "7109:7109"
@@ -73,7 +73,7 @@ services:
     depends_on: ["ci-mongo", "db-init", "auth2"]
 
   handle_manager:
-    image: kbase/handle_mngr:latest
+    image: kbase/handle_mngr:develop
     command:
       - "-template"
       - "/kb/deployment/conf/.templates/deployment.cfg.templ:/kb/deployment/conf/deployment.cfg"
@@ -82,7 +82,7 @@ services:
       - "-wait"
       - "tcp://auth2:8080"
       - "-timeout"
-      - "150s"
+      - "120s"
       - "starman"
       - "--listen"
       - ":9001"
@@ -131,6 +131,7 @@ services:
     #ports:
     #  - "27017:27017"
     command: --smallfiles
+
   
   ci-mysql:
     image: mysql:5.5
