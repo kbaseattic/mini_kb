@@ -45,7 +45,27 @@ services:
   
   handle_service:
     image: kbase/handle_service:develop
-    command: [ "https://raw.githubusercontent.com/kbase/mini_kb/master/deployment/conf/handle_service-minikb.yml"]
+    command:
+      - "-template"
+      - "/kb/deployment/conf/.templates/deployment.cfg.templ:/kb/deployment/conf/deployment.cfg"
+      - "-env"
+      - "https://raw.githubusercontent.com/kbase/mini_kb/master/deployment/conf/handle_service-minikb.yml"
+      - "-wait"
+      - "tcp://db-init:8080"
+      - "-wait"
+      - "tcp://auth2:8080"
+      - "-wait"
+      - "tcp://shock:7044"
+      - "-wait"
+      - "tcp://ci-mysql:3306"
+      - "-timeout"
+      - "150s"
+      - "starman"
+      - "--listen"
+      - ":7109"
+      - "/kb/deployment/lib/Bio/KBase/AbstractHandle/AbstractHandle.psgi"
+    environment:
+      - KB_SERVICE_NAME=handle_service
     #ports:
     #  - "7109:7109"
     depends_on: ["handle_manager", "ci-mysql", "shock", "auth2","db-init"]
