@@ -1,6 +1,6 @@
 Admin_users : wsadmin
 Address_api_ip : 0.0.0.0
-Address_api_port : 7044
+Address_api_port : 8080
 
 Anonymous_read: true
 Anonymous_write: false
@@ -9,7 +9,7 @@ Anonymous_create_user: false
 Auth_globus_token_url: http://auth2:8080/api/legacy/globus/goauth/token?grant_type=client_credentials
 Auth_globus_profile_url: http://auth2:8080/api/legacy/globus/users
 
-External_api_url: http://shock:7044/
+External_api_url: http://shock:8080/
 
 Mongodb_hosts: ci-mongo
 Mongodb_database: shock

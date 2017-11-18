@@ -5,6 +5,7 @@ mongodb_host : ci-mongo
 mongodb_user : ""
 mongodb_pwd : ""
 # ignore_handle_service : true
+service_port : 8080
 handle_service : http://handle_service:7109/
 handle_manager : http://handle_manager:9001/
 auth_service : http://auth2:8080/api/legacy/KBase
