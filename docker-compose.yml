@@ -11,7 +11,7 @@ services:
       - "nginx" 
     ports:
       - "8000:80"
-    depends_on: ["auth2", "handle_service", "handle_manager", "workspace", "shock"]
+    depends_on: ["auth", "handle_service", "handle_manager", "ws", "shock"]
 
   ws:
     image: kbase/kb_workspace:${TRAVIS_BRANCH:-develop}
@@ -27,7 +27,7 @@ services:
       - "-wait"
       - "tcp://db-init:8080"
       - "-wait"
-      - "tcp://auth2:8080"
+      - "tcp://auth:8080"
       - "-timeout"
       - "150s"
       - "-stdout"
@@ -35,7 +35,7 @@ services:
       - "/kb/deployment/bin/start_workspace.sh"
     #ports:
     #  - "7058:7058"
-    depends_on: ["auth2", "handle_service", "handle_manager", "ci-mongo","db-init"]
+    depends_on: ["auth", "handle_service", "handle_manager", "ci-mongo","db-init"]
     # Mount this stuff in when running initialize.py is needed to reset workspace config
 
   shell:
@@ -56,7 +56,7 @@ services:
       - "-wait"
       - "tcp://db-init:8080"
       - "-wait"
-      - "tcp://auth2:8080"
+      - "tcp://auth:8080"
       - "-wait"
       - "tcp://shock:8080"
       - "-wait"
@@ -71,7 +71,7 @@ services:
       - KB_SERVICE_NAME=handle_service
     #ports:
     #  - "7109:7109"
-    depends_on: ["handle_manager", "ci-mysql", "shock", "auth2","db-init"]
+    depends_on: ["handle_manager", "ci-mysql", "shock", "auth","db-init"]
 
   shock:
     image: kbase/kb_shock:develop
@@ -85,7 +85,7 @@ services:
       - "-wait"
       - "tcp://db-init:8080"
       - "-wait"
-      - "tcp://auth2:8080"
+      - "tcp://auth:8080"
       - "-timeout"
       - "150s"
       - "/kb/deployment/bin/shock-server"
@@ -93,7 +93,7 @@ services:
       - "/kb/deployment/conf/shock-server.cfg"
     #ports:
     #  - "7044:7044"
-    depends_on: ["ci-mongo", "db-init", "auth2"]
+    depends_on: ["ci-mongo", "db-init", "auth"]
 
   handle_manager:
     image: kbase/handle_mngr:develop
@@ -103,7 +103,7 @@ services:
       - "-env"
       - "https://raw.githubusercontent.com/kbase/mini_kb/master/deployment/conf/handle_mngr-minikb.yml"
       - "-wait"
-      - "tcp://auth2:8080"
+      - "tcp://auth:8080"
       - "-timeout"
       - "120s"
       - "starman"
@@ -112,7 +112,7 @@ services:
       - "/kb/deployment/lib/Bio/KBase/HandleMngr/HandleMngr.psgi"
     #ports:
     #  - "9001:9001"
-    depends_on: ["auth2","db-init"]
+    depends_on: ["auth","db-init"]
 
   auth:
     image: kbase/kb_auth2:develop
