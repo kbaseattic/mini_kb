@@ -18,6 +18,8 @@ services:
     command:
       - "-template"
       - "/kb/deployment/conf/.templates/deployment.cfg.templ:/kb/deployment/conf/deployment.cfg"
+      - "-template"
+      - "/kb/deployment/conf/.templates/start_workspace.sh.templ:/kb/deployment/bin/start_workspace.sh"
       - "-env"
       - "https://raw.githubusercontent.com/kbase/mini_kb/master/deployment/conf/workspace-minikb.yml"
       - "-wait"
@@ -34,6 +36,7 @@ services:
     #ports:
     #  - "7058:7058"
     depends_on: ["auth2", "handle_service", "handle_manager", "ci-mongo","db-init"]
+    # Mount this stuff in when running initialize.py is needed to reset workspace config
 
   shell:
     image: kbase/db_initialize
@@ -55,14 +58,14 @@ services:
       - "-wait"
       - "tcp://auth2:8080"
       - "-wait"
-      - "tcp://shock:7044"
+      - "tcp://shock:8080"
       - "-wait"
       - "tcp://ci-mysql:3306"
       - "-timeout"
       - "150s"
       - "starman"
       - "--listen"
-      - ":7109"
+      - ":8080"
       - "/kb/deployment/lib/Bio/KBase/AbstractHandle/AbstractHandle.psgi"
     environment:
       - KB_SERVICE_NAME=handle_service
@@ -105,7 +108,7 @@ services:
       - "120s"
       - "starman"
       - "--listen"
-      - ":9001"
+      - ":8080"
       - "/kb/deployment/lib/Bio/KBase/HandleMngr/HandleMngr.psgi"
     #ports:
     #  - "9001:9001"
