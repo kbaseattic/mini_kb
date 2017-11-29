@@ -14,12 +14,18 @@ services:
     depends_on: ["auth", "handle_service", "handle_manager", "ws", "shock"]
 
   ws:
-    image: kbase/kb_workspace:${TRAVIS_BRANCH:-develop}
+    image: kbase/kb_workspace:latest
     command:
       - "-template"
       - "/kb/deployment/conf/.templates/deployment.cfg.templ:/kb/deployment/conf/deployment.cfg"
       - "-template"
-      - "/kb/deployment/conf/.templates/start_workspace.sh.templ:/kb/deployment/bin/start_workspace.sh"
+      - "/kb/deployment/conf/.templates/server.xml.templ:/kb/deployment/services/workspace/tomcat/conf/server.xml"
+      - "-template"
+      - "/kb/deployment/conf/.templates/tomcat-users.xml.templ:/kb/deployment/services/workspace/tomcat/conf/tomcat-users.xml"
+      - "-template"
+      - "/kb/deployment/conf/.templates/logging.properties.templ:/kb/deployment/services/workspace/tomcat/conf/logging.properties"
+      - "-template"
+      - "/kb/deployment/conf/.templates/setenv.sh.templ:/kb/deployment/services/workspace/tomcat/bin/setenv.sh"
       - "-env"
       - "https://raw.githubusercontent.com/kbase/mini_kb/master/deployment/conf/workspace-minikb.yml"
       - "-wait"
@@ -31,9 +37,11 @@ services:
       - "-timeout"
       - "150s"
       - "-stdout"
-      - "/kb/deployment/services/workspace/glassfish_domain/Workspace/logs/server.log"
-      - "/bin/bash"
-      - "/kb/deployment/bin/start_workspace.sh"
+      - "/kb/deployment/services/workspace/tomcat/logs/catalina.out"
+      - "-stdout"
+      - "/kb/deployment/services/workspace/tomcat/logs/access.log"
+      - "/usr/share/tomcat8/bin/catalina.sh"
+      - "run" 
     #ports:
     #  - "7058:7058"
     depends_on: ["auth", "handle_service", "handle_manager", "ci-mongo","db-init"]
