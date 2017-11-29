@@ -34,6 +34,10 @@ services:
       - "tcp://db-init:8080"
       - "-wait"
       - "tcp://auth:8080"
+      - "-wait"
+      - "tcp://handle_service:8080"
+      - "-wait"
+      - "tcp://shock:8080"
       - "-timeout"
       - "150s"
       - "-stdout"
@@ -44,7 +48,7 @@ services:
       - "run" 
     #ports:
     #  - "7058:7058"
-    depends_on: ["auth", "handle_service", "handle_manager", "ci-mongo","db-init"]
+    depends_on: ["auth", "handle_service", "handle_manager", "ci-mongo","db-init", "shock"]
     # Mount this stuff in when running initialize.py is needed to reset workspace config
 
   shell:
