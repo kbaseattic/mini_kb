@@ -11,7 +11,59 @@ services:
       - "nginx" 
     ports:
       - "8000:80"
-    depends_on: ["auth", "handle_service", "handle_manager", "ws", "shock"]
+    depends_on: ["auth", "handle_service", "handle_manager", "ws", "shock", "ujs"]
+
+  ujs:
+    image: kbase/kb_ujs:latest
+    command:
+      - "-env"
+      - "https://raw.githubusercontent.com/kbase/mini_kb/master/deployment/conf/ujs-minikb.yml"
+      - "-template"
+      - "/kb/deployment/conf/.templates/deployment.cfg.templ:/kb/deployment/conf/deployment.cfg"
+      - "-template"
+      - "/kb/deployment/conf/.templates/server.xml.templ:/kb/deployment/services/ujs/tomcat/conf/server.xml"
+      - "-template"
+      - "/kb/deployment/conf/.templates/tomcat-users.xml.templ:/kb/deployment/services/ujs/tomcat/conf/tomcat-users.xml"
+      - "-template"
+      - "/kb/deployment/conf/.templates/logging.properties.templ:/kb/deployment/services/ujs/tomcat/conf/logging.properties"
+      - "-template"
+      - "/kb/deployment/conf/.templates/setenv.sh.templ:/kb/deployment/services/ujs/tomcat/bin/setenv.sh"
+      - "-wait"
+      - "tcp://ci-mongo:27017"
+      - "-wait"
+      - "tcp://db-init:8080"
+      - "-wait"
+      - "tcp://auth:8080"
+      - "-wait"
+      - "tcp://awe:8080"
+      - "-wait"
+      - "tcp://ws:8080"
+      - "-stdout"
+      - "/kb/deployment/services/ujs/tomcat/logs/catalina.out"
+      - "-stdout"
+      - "/kb/deployment/services/ujs/tomcat/logs/access.log"
+      - "/usr/share/tomcat8/bin/catalina.sh"
+      - "run"
+    depends_on: ["auth", "awe", "ws", "ci-mongo","db-init"]
+
+  awe:
+    image: kbase/kb_auth2:develop
+    command:
+      - "-wait"
+      - "tcp://ci-mongo:27017"
+      - "-wait"
+      - "tcp://db-init:8080"
+      - "-timeout"
+      - "120s"
+      - "-template"
+      - "/kb/deployment/conf/.templates/awe-server.cfg.templ:/kb/deployment/conf/awe-server.cfg"
+      - "-env"
+      - "https://raw.githubusercontent.com/kbase/mini_kb/master/deployment/conf/awe-minikb.yml"
+      - "/kb/deployment/bin/start_auth2.sh"
+    #ports:
+    #  - "8080:8080"
+    depends_on: ["ci-mongo","db-init"]
+
 
   ws:
     image: kbase/kb_workspace:latest
