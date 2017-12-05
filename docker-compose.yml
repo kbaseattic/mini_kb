@@ -47,7 +47,7 @@ services:
     depends_on: ["auth", "awe", "ws", "ci-mongo","db-init"]
 
   awe:
-    image: kbase/kb_auth2:develop
+    image: kbase/kb_awe:latest
     command:
       - "-wait"
       - "tcp://ci-mongo:27017"
@@ -59,7 +59,9 @@ services:
       - "/kb/deployment/conf/.templates/awe-server.cfg.templ:/kb/deployment/conf/awe-server.cfg"
       - "-env"
       - "https://raw.githubusercontent.com/kbase/mini_kb/master/deployment/conf/awe-minikb.yml"
-      - "/kb/deployment/bin/start_auth2.sh"
+      - "/kb/deployment/bin/awe-server"
+      - "--conf"
+      - "/kb/deployment/conf/awe-server.cfg" 
     #ports:
     #  - "8080:8080"
     depends_on: ["ci-mongo","db-init"]
