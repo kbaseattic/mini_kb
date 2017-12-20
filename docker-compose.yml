@@ -15,6 +15,8 @@ services:
 
   ujs:
     image: kbase/kb_ujs:latest
+    entrypoint:
+      - "/kb/deployment/bin/dockerize"
     command:
       - "-env"
       - "https://raw.githubusercontent.com/kbase/mini_kb/master/deployment/conf/ujs-minikb.yml"
@@ -42,8 +44,10 @@ services:
       - "/kb/deployment/services/ujs/tomcat/logs/catalina.out"
       - "-stdout"
       - "/kb/deployment/services/ujs/tomcat/logs/access.log"
-      - "/usr/share/tomcat8/bin/catalina.sh"
-      - "run"
+      - "-stdout"
+      - "/var/log/syslog"
+      - "/kb/deployment/bin/startup.sh"
+      # 
     depends_on: ["auth", "awe", "ws", "ci-mongo","db-init"]
 
   awe:
