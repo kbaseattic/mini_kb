@@ -5,7 +5,7 @@ shock_url: "http://nginx/services/shock/"
 handle_url: "http://nginx/services/handle_service/"
 srv_wiz_url: ""
 njsw_url: ""
-auth_service_url: "http://nginx/services/auth/"
+auth_service_url: "http://nginx/services/auth/api/legacy/KBase/Sessions/Login"
 auth_service_url_allow_insecure: "true"
 indexer_token: "62IYPZGS7O773DBLZZCSE542BP4C2E7G"
 elastic_host: elastic
