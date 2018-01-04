@@ -52,6 +52,19 @@ services:
       - "coordinator"
     depends_on: ["auth", "handle_service", "ws", "shock", "ujs", "nginx", "ci-mongo"]
 
+  worker:
+    image: kbase/kb_search:develop
+    command:
+      - "-env"
+      - "https://raw.githubusercontent.com/kbase/mini_kb/master/deployment/conf/search-minikb.yml"
+      - "-template"
+      - "/kb/deployment/conf/.templates/deployment.cfg.templ:/kb/deployment/conf/deployment.cfg"
+      - "-template"
+      - "/kb/deployment/conf/.templates/search_tools.cfg.templ:/kb/deployment/conf/search_tools.cfg"
+      - "/kb/deployment/bin/entrypoint.sh"
+      - "worker"
+    depends_on: ["auth", "handle_service", "ws", "shock", "ujs", "nginx", "ci-mongo"]
+
   elastic:
     image: docker.elastic.co/elasticsearch/elasticsearch:5.6.5
     ports:
