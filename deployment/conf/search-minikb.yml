@@ -22,3 +22,5 @@ workspace_blacklist: ""
 workspace_types: ""
 min_memory: 1000
 max_memory: 3000
+workspace_mongo_host: ci-mongo
+workspace_mongo_db: 
