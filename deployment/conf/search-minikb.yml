@@ -24,3 +24,4 @@ min_memory: 1000
 max_memory: 3000
 workspace_mongo_host: fake
 workspace_mongo_db: fake
+service_port: 8080
