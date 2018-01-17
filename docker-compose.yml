@@ -65,13 +65,26 @@ services:
       - "worker"
     depends_on: ["auth", "handle_service", "ws", "shock", "ujs", "nginx", "ci-mongo"]
 
+  logstash:
+    image: kbase/kb_logstash:latest
+    ports:
+      - "9000:9000"
+    environment:
+      - "debug_output=1"
+      - "elastic_server=elastic:9200"
+
   elastic:
     image: docker.elastic.co/elasticsearch/elasticsearch:5.6.5
     ports:
       - "9200:9200"
       - "9300:9300"
     environment:
-      - "discovery.type=single-node"
+      - xpack.security.enabled=false
+      - xpack.monitoring.enabled=false
+      - xpack.ml.enabled=false
+      - xpack.graph.enabled=false
+      - xpack.watcher.enabled=false
+      - discovery.type=single-node
       - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
   ujs:
     image: kbase/kb_ujs:latest
@@ -132,7 +145,7 @@ services:
 
 
   ws:
-    image: kbase/kb_workspace:latest
+    image: kbase/kb_workspace:develop
     command:
       - "-template"
       - "/kb/deployment/conf/.templates/deployment.cfg.templ:/kb/deployment/conf/deployment.cfg"
