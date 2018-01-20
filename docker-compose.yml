@@ -16,6 +16,8 @@ services:
   search:
     image: kbase/kb_search:develop
     command:
+      - "-stdout"
+      - "/kb/deployment/jettybase/logs/request.log"
       - "-env"
       - "https://raw.githubusercontent.com/kbase/mini_kb/master/deployment/conf/search-minikb.yml"
       - "-template"
@@ -28,8 +30,6 @@ services:
       - "/kb/deployment/conf/.templates/server.ini.templ:/kb/deployment/jettybase/start.d/server.ini"
       - "-template"
       - "/kb/deployment/conf/.templates/start_server.sh.templ:/kb/deployment/bin/start_server.sh"
-      - "-stdout"
-      - "/kb/deployment/jettybase/logs/request.log"
       - "/kb/deployment/bin/entrypoint.sh"
     depends_on: ["auth", "handle_service", "ws", "shock", "ujs", "nginx"]
 
