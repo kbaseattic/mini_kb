@@ -23,19 +23,13 @@ services:
       - "-template"
       - "/kb/deployment/conf/.templates/search_tools.cfg.templ:/kb/deployment/conf/search_tools.cfg"
       - "-template"
-      - "/kb/deployment/conf/.templates/server.xml.templ:/kb/deployment/services/search/tomcat/conf/server.xml"
+      - "/kb/deployment/conf/.templates/http.ini.templ:/kb/deployment/jettybase/start.d/http.ini"
       - "-template"
-      - "/kb/deployment/conf/.templates/tomcat-users.xml.templ:/kb/deployment/services/search/tomcat/conf/tomcat-users.xml"
+      - "/kb/deployment/conf/.templates/server.ini.templ:/kb/deployment/jettybase/start.d/server.ini"
       - "-template"
-      - "/kb/deployment/conf/.templates/logging.properties.templ:/kb/deployment/services/search/tomcat/conf/logging.properties"
-      - "-template"
-      - "/kb/deployment/conf/.templates/setenv.sh.templ:/kb/deployment/services/search/tomcat/bin/setenv.sh"
+      - "/kb/deployment/conf/.templates/start_server.sh.templ:/kb/deployment/bin/start_server.sh"
       - "-stdout"
-      - "/kb/deployment/services/search/tomcat/logs/access.log"
-      - "-stdout"
-      - "/kb/deployment/services/search/tomcat/logs/localhost.log"
-      - "-stdout"
-      - "/kb/deployment/services/search/tomcat/logs/catalina.log"
+      - "/kb/deployment/jettybase/logs/request.log"
       - "/kb/deployment/bin/entrypoint.sh"
     depends_on: ["auth", "handle_service", "ws", "shock", "ujs", "nginx"]
 
@@ -295,8 +289,8 @@ services:
 
   ci-mongo:
     image: mongo:2
-    #ports:
-    #  - "27017:27017"
+    ports:
+      - "27017:27017"
     command: --smallfiles
 
   
