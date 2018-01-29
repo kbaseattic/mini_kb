@@ -14,7 +14,7 @@ services:
     depends_on: ["auth", "handle_service", "handle_manager", "ws", "shock", "ujs"]
 
   search:
-    image: kbase/kb_search:develop
+    image: kbase/kb_search:latest
     command:
       - "-stdout"
       - "/kb/deployment/jettybase/logs/request.log"
@@ -34,7 +34,7 @@ services:
     depends_on: ["auth", "handle_service", "ws", "shock", "ujs", "nginx"]
 
   coordinator:
-    image: kbase/kb_search:develop
+    image: kbase/kb_search:latest
     command:
       - "-env"
       - "https://raw.githubusercontent.com/kbase/mini_kb/master/deployment/conf/search-minikb.yml"
@@ -47,7 +47,7 @@ services:
     depends_on: ["auth", "handle_service", "ws", "shock", "ujs", "nginx", "ci-mongo"]
 
   worker:
-    image: kbase/kb_search:develop
+    image: kbase/kb_search:latest
     command:
       - "-env"
       - "https://raw.githubusercontent.com/kbase/mini_kb/master/deployment/conf/search-minikb.yml"
@@ -66,6 +66,7 @@ services:
     environment:
       - "debug_output=1"
       - "elastic_server=elastic:9200"
+    depends_on: ["elastic"]
 
   elastic:
     image: docker.elastic.co/elasticsearch/elasticsearch:5.6.5
