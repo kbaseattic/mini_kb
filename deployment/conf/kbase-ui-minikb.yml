@@ -1,5 +1,7 @@
 # KBase UI Mini-KB Config
 
+nginx_listen: 8080
+
 deploy_environment: minikb
 deploy_hostname: localhost
 deploy_icon: thumbs-up
