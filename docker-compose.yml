@@ -6,9 +6,11 @@ services:
     command:
       - "-template"
       - "/kb/deployment/conf/.templates/nginx.conf.templ:/etc/nginx/nginx.conf"
-      - "-env"
-      - "https://raw.githubusercontent.com/kbase/mini_kb/master/deployment/conf/nginx-minikb.ini"
-      - "nginx" 
+    #  - "-env"
+    #  - "https://raw.githubusercontent.com/kbase/mini_kb/master/deployment/conf/nginx-minikb.ini"
+      - "nginx"
+    env_file:
+      - deployment/conf/nginx-minikb.ini
     ports:
       - "8000:80"
     depends_on: ["auth", "handle_service", "handle_manager", "ws", "shock", "ujs"]
@@ -20,22 +22,29 @@ services:
       - "/var/log/nginx/access.log"
       - "-stderr"
       - "/var/log/nginx/err.log"
-      - "-env"
-      - "https://raw.githubusercontent.com/kbase/mini_kb/master/deployment/conf/kbase-ui-minikb.yml"
+    #  - "-env"
+    #  - "https://raw.githubusercontent.com/kbase/mini_kb/master/deployment/conf/kbase-ui-minikb.ini"
       - "-template"
       - "/kb/deployment/conf/nginx.conf.tmpl:/etc/nginx/nginx.conf"
       - "-template"
       - "/kb/deployment/conf/config.json.tmpl:/kb/deployment/services/kbase-ui/modules/deploy/config.json"
       - "nginx"
-
-
+    # Alternatively you can comment out the -env params to the container and use your local
+    # environment definitions with something like the following:
+    # environment:
+    #   - name=value
+    #   - name2=value2
+    #
+    # Or if you want to use a file:
+    env_file:
+      - deployment/conf/kbase-ui-minikb.ini
   search:
     image: kbase/kb_search:latest
     command:
       - "-stdout"
       - "/kb/deployment/jettybase/logs/request.log"
       - "-env"
-      - "https://raw.githubusercontent.com/kbase/mini_kb/master/deployment/conf/search-minikb.yml"
+      - "https://raw.githubusercontent.com/kbase/mini_kb/master/deployment/conf/search-minikb.ini"
       - "-template"
       - "/kb/deployment/conf/.templates/deployment.cfg.templ:/kb/deployment/conf/deployment.cfg"
       - "-template"
@@ -53,7 +62,7 @@ services:
     image: kbase/kb_search:latest
     command:
       - "-env"
-      - "https://raw.githubusercontent.com/kbase/mini_kb/master/deployment/conf/search-minikb.yml"
+      - "https://raw.githubusercontent.com/kbase/mini_kb/master/deployment/conf/search-minikb.ini"
       - "-template"
       - "/kb/deployment/conf/.templates/deployment.cfg.templ:/kb/deployment/conf/deployment.cfg"
       - "-template"
@@ -66,7 +75,7 @@ services:
     image: kbase/kb_search:latest
     command:
       - "-env"
-      - "https://raw.githubusercontent.com/kbase/mini_kb/master/deployment/conf/search-minikb.yml"
+      - "https://raw.githubusercontent.com/kbase/mini_kb/master/deployment/conf/search-minikb.ini"
       - "-template"
       - "/kb/deployment/conf/.templates/deployment.cfg.templ:/kb/deployment/conf/deployment.cfg"
       - "-template"
@@ -103,7 +112,7 @@ services:
       - "/kb/deployment/bin/dockerize"
     command:
       - "-env"
-      - "https://raw.githubusercontent.com/kbase/mini_kb/master/deployment/conf/ujs-minikb.yml"
+      - "https://raw.githubusercontent.com/kbase/mini_kb/master/deployment/conf/ujs-minikb.ini"
       - "-template"
       - "/kb/deployment/conf/.templates/deployment.cfg.templ:/kb/deployment/conf/deployment.cfg"
       - "-template"
@@ -146,7 +155,7 @@ services:
       - "-template"
       - "/kb/deployment/conf/.templates/awe-server.cfg.templ:/kb/deployment/conf/awe-server.cfg"
       - "-env"
-      - "https://raw.githubusercontent.com/kbase/mini_kb/master/deployment/conf/awe-minikb.yml"
+      - "https://raw.githubusercontent.com/kbase/mini_kb/master/deployment/conf/awe-minikb.ini"
       - "/kb/deployment/bin/awe-server"
       - "--conf"
       - "/kb/deployment/conf/awe-server.cfg" 

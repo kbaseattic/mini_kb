@@ -1,3 +1,0 @@
-Mongodb_hosts : "ci-mongo"
-Mongodb_database : "AWEDB"
-Ports_api_port: 8080

@@ -1,4 +1,0 @@
-mongo_host: ci-mongo
-mongo_db: auth2
-
-auth_base_url: http://auth:8080
