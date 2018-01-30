@@ -13,7 +13,7 @@ services:
       - deployment/conf/nginx-minikb.ini
     ports:
       - "8000:80"
-    depends_on: ["auth", "handle_service", "handle_manager", "ws", "shock", "ujs"]
+    depends_on: ["auth", "handle_service", "handle_manager", "workspace", "shock", "ujs"]
 
   kbase-ui:
     image: kbase/kbase-ui:latest
@@ -22,8 +22,8 @@ services:
       - "/var/log/nginx/access.log"
       - "-stderr"
       - "/var/log/nginx/err.log"
-    #  - "-env"
-    #  - "https://raw.githubusercontent.com/kbase/mini_kb/master/deployment/conf/kbase-ui-minikb.ini"
+      - "-env"
+      - "https://raw.githubusercontent.com/kbase/mini_kb/master/deployment/conf/kbase-ui-minikb.ini"
       - "-template"
       - "/kb/deployment/conf/nginx.conf.tmpl:/etc/nginx/nginx.conf"
       - "-template"
@@ -36,8 +36,8 @@ services:
     #   - name2=value2
     #
     # Or if you want to use a file:
-    env_file:
-      - deployment/conf/kbase-ui-minikb.ini
+    #env_file:
+    #  - deployment/conf/kbase-ui-minikb.ini
   search:
     image: kbase/kb_search:latest
     command:
@@ -55,8 +55,16 @@ services:
       - "/kb/deployment/conf/.templates/server.ini.templ:/kb/deployment/jettybase/start.d/server.ini"
       - "-template"
       - "/kb/deployment/conf/.templates/start_server.sh.templ:/kb/deployment/bin/start_server.sh"
+      - "-timeout"
+      - "120s"
+      - "-wait"
+      - "tcp://auth:8080"
+      - "-wait"
+      - "tcp://workspace:8080"
+      - "-wait"
+      - "tcp://elastic:9200"
       - "/kb/deployment/bin/entrypoint.sh"
-    depends_on: ["auth", "handle_service", "ws", "shock", "ujs", "nginx"]
+    depends_on: ["auth", "handle_service", "workspace", "shock", "ujs", "nginx"]
 
   coordinator:
     image: kbase/kb_search:latest
@@ -69,7 +77,7 @@ services:
       - "/kb/deployment/conf/.templates/search_tools.cfg.templ:/kb/deployment/conf/search_tools.cfg"
       - "/kb/deployment/bin/entrypoint.sh"
       - "coordinator"
-    depends_on: ["auth", "handle_service", "ws", "shock", "ujs", "nginx", "ci-mongo"]
+    depends_on: ["auth", "handle_service", "workspace", "shock", "ujs", "nginx", "ci-mongo"]
 
   worker:
     image: kbase/kb_search:latest
@@ -80,12 +88,28 @@ services:
       - "/kb/deployment/conf/.templates/deployment.cfg.templ:/kb/deployment/conf/deployment.cfg"
       - "-template"
       - "/kb/deployment/conf/.templates/search_tools.cfg.templ:/kb/deployment/conf/search_tools.cfg"
+      - "-timeout"
+      - "120s"
+      - "-wait"
+      - "tcp://auth:8080"
+      - "-wait"
+      - "tcp://workspace:8080"
       - "/kb/deployment/bin/entrypoint.sh"
       - "worker"
-    depends_on: ["auth", "handle_service", "ws", "shock", "ujs", "nginx", "ci-mongo"]
+    depends_on: ["auth", "handle_service", "workspace", "shock", "ujs", "nginx", "ci-mongo"]
 
   logstash:
     image: kbase/kb_logstash:latest
+    command:
+      - "-template"
+      - "/usr/share/logstash/.templates/10inputs.templ:/usr/share/logstash/pipeline/10inputs"
+      - "-template"
+      - "/usr/share/logstash/.templates/99outputs.templ:/usr/share/logstash/pipeline/99outputs"
+      - "-timeout"
+      - "120s"
+      - "-wait"
+      - "tcp://elastic:9200"
+      - "logstash"
     ports:
       - "9000:9000"
     environment:
@@ -123,6 +147,8 @@ services:
       - "/kb/deployment/conf/.templates/logging.properties.templ:/kb/deployment/services/ujs/tomcat/conf/logging.properties"
       - "-template"
       - "/kb/deployment/conf/.templates/setenv.sh.templ:/kb/deployment/services/ujs/tomcat/bin/setenv.sh"
+      - "-timeout"
+      - "120s"
       - "-wait"
       - "tcp://ci-mongo:27017"
       - "-wait"
@@ -132,7 +158,7 @@ services:
       - "-wait"
       - "tcp://awe:8080"
       - "-wait"
-      - "tcp://ws:8080"
+      - "tcp://workspace:8080"
       - "-stdout"
       - "/kb/deployment/services/ujs/tomcat/logs/catalina.out"
       - "-stdout"
@@ -141,7 +167,7 @@ services:
       - "/var/log/syslog"
       - "/kb/deployment/bin/startup.sh"
       # 
-    depends_on: ["auth", "awe", "ws", "ci-mongo","db-init"]
+    depends_on: ["auth", "awe", "workspace", "ci-mongo","db-init"]
 
   awe:
     image: kbase/kb_awe:latest
@@ -164,7 +190,7 @@ services:
     depends_on: ["ci-mongo","db-init"]
 
 
-  ws:
+  workspace:
     image: kbase/kb_workspace:develop
     command:
       - "-template"
