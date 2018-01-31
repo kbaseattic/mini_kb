@@ -16,7 +16,7 @@ services:
     depends_on: ["auth", "handle_service", "handle_manager", "workspace", "shock", "ujs"]
 
   kbase-ui:
-    image: kbase/kbase-ui:latest
+    image: kbase/kbase_ui:develop
     command:
       - "-stdout"
       - "/var/log/nginx/access.log"
