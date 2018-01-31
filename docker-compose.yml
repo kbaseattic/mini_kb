@@ -318,6 +318,8 @@ services:
       - "-env"
       - "https://raw.githubusercontent.com/kbase/mini_kb/master/deployment/conf/auth2-minikb.ini"
       - "/kb/deployment/bin/start_auth2.sh"
+    #env_file:
+    #  - deployment/conf/auth2-minikb.ini
     #ports:
     #  - "8080:8080"
     depends_on: ["ci-mongo","db-init"]
