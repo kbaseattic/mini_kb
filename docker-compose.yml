@@ -327,9 +327,9 @@ services:
   db-init:
     image: kbase/db_initialize
     volumes:
-      - ./mysqldump:/mnt/mysqldump
-      - ./ws.mongodump:/mnt/ws.mongodump
-      - ./bin:/mnt/bin
+      - ./mysqldump:/tmp/mysqldump
+      - ./ws.mongodump:/tmp/ws.mongodump
+      - ./bin:/tmp/bin
     entrypoint:
       - /kb/deployment/bin/dockerize.sh
       - -wait
@@ -338,7 +338,7 @@ services:
       - tcp://ci-mongo:27017
       - -timeout
       - 120s
-      - /mnt/bin/initialize_all.sh
+      - /tmp/bin/initialize_all.sh
     depends_on: ['ci-mysql','ci-mongo']
 
   ci-mongo:

@@ -6,6 +6,6 @@
 
 sleep 5 && \
 echo "Loading mysql data..." && \
-mysql -h ci-mysql -u root -e "source /mnt/mysqldump" && \
+mysql -h ci-mysql -u root -e "source /tmp/mysqldump" && \
 echo "Loading mongodb data..." && \
-mongorestore --host ci-mongo /mnt/ws.mongodump
+mongorestore --host ci-mongo /tmp/ws.mongodump
