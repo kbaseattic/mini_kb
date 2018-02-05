@@ -61,12 +61,20 @@ the jvm to finish executing before exiting. Please see the dockerize documentati
 that can be used to tail files to the console, wait for upstream services to come up before starting the main
 program, etc...
 
-Docker-Compose
-==============
+Mini-KBase and Docker-Compose
+=============================
 
-Mini-kbase consists of multiple images with dependencies among them - this is handled using [docker-compose](https://docs.docker.com/compose/).
-This design mirrors what is used in the CI, AppDev, Next and Prod environments for KBase, and can also be
-used in [Rancher](https://rancher.com/rancher/) based environments. Docker-compose and docker are requirements
+Mini-kbase consists of multiple images with dependencies among them - this is handled using [docker-compose](https://docs.docker.com/compose/). The docker-compose.yml file refers to containers found in
+[dockerhub](https://hub.docker.com/u/kbase/). In turn, all of these dockerhub containers are built from repos found in [github](https://github.com/kbase). All of the
+images necessary for core KBase functionality have publicly accessible github repos. Some images that are
+operational (such as logging) are in private repos. Genuinely sensitive information such as details of
+credentials used for runtime services are passed into docker-compose via the env_file directive
+or as an env-file directive to the entrypoint of a docker container, which are then used to evaluate
+templated configuration files. In the core KBase infrastructure, the docker-compose file would have a
+different set of env-file directives than mini-kbase, but would otherwise use exactly the same images.
+
+Mini-kbase mirrors what is used in the KBase CI, AppDev, Next and Prod environments, and can also be
+used in [Rancher](https://rancher.com/rancher/) based deployments. Docker-compose and docker are requirements
 for mini-kbase and need to be installed locally before trying to bring up mini-kbase.
 
 The [docker-compose.yml](https://docs.docker.com/compose/compose-file/) file in this repo defines the mini-kbase
@@ -91,8 +99,30 @@ option *--network="minikb_default"*, it will also be accessible by the nginx pro
 containers within mini-kbase) by the name assigned to the container. An example of this will be shown later in
 this document.
 
+Please refer to the (docker-compose documentation)[https://docs.docker.com/compose/compose-file/] for details
+on syntax and structure of the included docker-compose.yml file. This README file assumes the reader is familiar
+with the main ocker-compose documentation and only discusses relevant customizations.
+
+Mini-KBase tasks
+================
+
+Bring up mini-kbase
+-------------------
+Mini-kbase stack is a straightforward docker-compose stack and can be brought up using the standard "docker-compose pull" and "docker-compose up" commands. There are some things to be aware of:
+1. Docker-compose is able to start services in dependency order, however it is unable to wait until a service is actually fully initialized before starting the services downstream. To deal with this, containers all use the [dockerize](https://github.com/kbase/dockerize) program as an entrypoint. This is a small Golang based binary that can be passed  a *-wait* option to poll a dependency's listener port until it accepts tcp connections before starting the main executable. Because dependencies can run deep and startup latencies begin to stackup, the dockerize command is typically given a fairly long *-timeout* flag as well.
+1. By default, all of the services in mini-kbase operate in a private docker network called "minikb_default". The services that listen on this network cannot be accessed outside of this private network. The nginx proxy serves as a gateway between external networks and the private docker network, and access to the private work is intended to pass through the nginx proxy.
+1. Some of the services, such as workspace, require their databases to be initialized before start up. This is accomplished by the [db-init container](https://github.com/kbase/db_initialize). It waits for mongodb and mysql to come up and then bootstraps the data necessary for other services. After the data is fully loaded, it brings up a dummy listener on port 8080 that accepts connections but does nothing with them. This allows other services that depend on database initialization to wait until there is a listener on db-init:8080 before starting up. In the configuration for workspace, there is a "-wait tcp://db-init:8080" directive that tells the entrypoint program to delay starting the main workspace service until db-init has finished running.
+1. The full mini-kbase stack requires significant memory and not all machines may be capable of running all of mini-kbase. On a circa 2016 Macbook Pro with 16G of memory, it is not possible to run all services available in mini-kbase. The "nginx" service in mini-kbase specifies in its depends_on directive a core set of services that many other mini-kbase services require. It should be possible to bring up the nginx proxy and its core dependencies using "*docker-compose up nginx*" on a reasonably powerful host. Other services can be brought up as needed using "*docker-compose up {servicename}*". Running "docker-compose up" to bring up all services may result in memory limitations causing startup failures.
+
+The start_minikb.sh shell script brings up the basic nginx proxy and core services. The nginx proxy is used to access all public services within mini-kbase and listens on port 8000. It is recommended to use start_minikb.sh to bring up a core set of services, and if there are additional services not brought up by default, they should be brought up explicitly using "docker-compose up {service_name}"
+
+Modifying the configuration of a service
+----------------------------------------
+
+Modifying the Nginx proxy configuration
+---------------------------------------
 Manually Adding Container to running mini-kb stack
-==================================================
+--------------------------------------------------
 
 It is sometimes useful to add containers to the mini-kb environment without modifying the docker-compose.yml
 file. Here is an example of how to add a new container called kbase-ui2 into the environment and accessing
