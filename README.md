@@ -168,8 +168,39 @@ the process with PID {pid}. Because dockerize is set as the entrypoint for most 
 container. The contents of /proc/1/environ is a stream of name=value pairs, with a null between each pair - the strings
 command parses this and displays the output on separate lines in a human friendly way.
 
-Modifying the Nginx proxy configuration
----------------------------------------
+Here is an example session that shows how to examine the environment variables in a running logstash container:
+~~~
+22:mini_kb sychan$ docker-compose exec nginx /bin/sh
+/ # ps aux
+PID   USER     TIME   COMMAND
+    1 root       0:00 /kb/deployment/bin/dockerize -template /kb/deployment/conf/.templates/ngin
+   12 root       0:00 nginx: master process nginx
+   14 nginx      0:00 nginx: worker process
+   15 nginx      0:00 nginx: worker process
+   16 nginx      0:00 nginx: worker process
+   17 nginx      0:00 nginx: worker process
+   38 root       0:00 /bin/sh
+   44 root       0:00 ps aux
+/ # strings </proc/1/environ 
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+HOSTNAME=ff932f5bb4a4
+loglevel=debug
+dns_resolver=127.0.0.11
+server_name=nginx
+NGINX_VERSION=1.12.2
+HOME=/root
+/ #
+~~~
+
+Modifying the Configuration Beyond Environment Variables
+--------------------------------------------------------
+Using the templates for modifying the running configuration works so long as the needed changes have been captured in the
+templated configuration. If there are changes that are not in the templates that are needed testing, the configuration
+file can left out of the parameters passed to dockerize, and a configuration file mounted into the running container
+using the "volumes" directive in docker-compose. The example configuration for nginx provides commented out examples of
+using a fully customizable nginx.conf via volume mounts. Note that if a volume mount is given *and* the same file is set
+as a destination for the dockerize -template directive, the template will overwrite the contents mounted via "volumes".
+
 Manually Adding Container to running mini-kb stack
 --------------------------------------------------
 
