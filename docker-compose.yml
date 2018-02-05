@@ -11,6 +11,11 @@ services:
       - "nginx"
     env_file:
       - deployment/conf/nginx-minikb.ini
+    # To bypass the nginx.conf.templ file and use a fully customized nginx.conf file, comment out the 2
+    # -template option above that expends the nginx.conf.templ file, and uncomment the following 2 lines
+    # and replace /tmp/nginx.conf with the path to the appropriate file.
+    # volumes:
+    #  - /tmp/nginx.conf:/etc/nginx/nginx,conf
     ports:
       - "8000:80"
     depends_on: ["auth", "handle_service", "handle_manager", "workspace", "shock", "ujs"]
