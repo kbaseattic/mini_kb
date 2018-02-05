@@ -118,6 +118,55 @@ The start_minikb.sh shell script brings up the basic nginx proxy and core servic
 
 Modifying the configuration of a service
 ----------------------------------------
+As a rule, the containers used in mini-kbase are intended to be exactly the same containers used in KBase CI, AppDev
+and production. Because of this, all environment specific configurations are intended to be passed in
+via environment variables that modify templated configuration files. The dockerize entrypoint handles filling in
+the templates and writing out the configuration files. Docker images in mini-kbase generally have the
+KB_DEPLOYMENT_CONFIG environment variable set in a Dockerfile. This environment variable is the convention used as the
+path to an INI file used to configure KBase services. Typically this is set to /kb/deployment/conf/deploy.cfg and the
+dockerize command is configured to write a configuration file to this path. Here is an example of a docker-compose
+stanza that shows how dockerize is called.
+
+~~~
+  nginx:
+    image: kbase/nginx:latest
+    command:
+      - "-template"
+      - "/kb/deployment/conf/.templates/nginx.conf.templ:/etc/nginx/nginx.conf"
+    #  - "-env"
+    #  - "https://raw.githubusercontent.com/kbase/mini_kb/master/deployment/conf/nginx-minikb.ini"
+      - "nginx"
+    env_file:
+      - deployment/conf/nginx-minikb.ini
+    # To bypass the nginx.conf.templ file and use a fully customized nginx.conf file, comment out the 2
+    # -template option above that expends the nginx.conf.templ file, and uncomment the following 2 lines
+    # and replace /tmp/nginx.conf with the path to the appropriate file.
+    # volumes:
+    #  - /tmp/nginx.conf:/etc/nginx/nginx,conf
+    ports:
+      - "8000:80"
+    depends_on: ["auth", "handle_service", "handle_manager", "workspace", "shock", "ujs"]
+~~~
+
+This stanza is used to configure nginx. The nginx image should have "dockerize" as the entrypoint, so the command options here are used to configure how nginx runs.
+* The first 2 command lines result in the following parameters passed to dockerize
+  *-template /kb/deployment/conf/.templates/nginx.conf.templ:/etc/nginx/nginx.conf* 
+  This results in the file /kb/deployment/conf/.templates/nginx.conf.templ in the docker image being treated as a golang template that dockerize evaluates using the available environment variables and then writes the output to /etc/nginx/nginx.conf
+
+  The nginx container doesn't have KBase specific service, so we don't have a template directive that writes anything to
+  /kb/deployment/conf/deploy.cfg, but most of the other services will have a -template directive for this target.
+* The next 2 lines are commented out, but would tell dockerize to read the url https://raw.githubusercontent.com/kbase/mini_kb/master/deployment/conf/nginx-minikb.ini as a file containing name/value pairs that are converted into environment variables for the running program, as well as used for template evaluate. This line is commmented out however it is functionally identical to the "env_file" specification lower in the file, however it doesn't require changes to the repo to be pushed to github before becoming available. This is helpful for local testing, where the changes don't need to be recorded in the repo
+* The 5th line simply tells dockerize to run nginx as the final task. Because we have generated an nginx.conf file in the default location, nginx should come up and serve the files we want. The dockerize command will continue to run until nginx exits. When nginx exits, dockerize will exit as well and the container will stop running.
+* The next 2 lines tell docker to use the file deployment/conf/nginx-minikb.ini in the current repo as a set of name=value pairs to set environment variables available in the running container. Using the env_file directive is very useful for testing and debugging configurations that are not ready or needed to be permanently committed to git (where the -env directive is passed to dockerize for use). Note that using env_file to docker-compose makes these environment variables available to any process running in the container, while the -env directive to dockerize only makes these environment variables available to the program that dockerize is configured to start. For example, if you exec a shell into the running container, the "env" command will show variables set via env_file, but will not show variables set by "-env" to dockerize
+* The next group of lines describe how to bypass the templating and use a static nginx.conf file that is mounted into the running container. This is useful when the scope of changes needed to a configuration are beyond what is captured by the templates.
+* The next 2 lines tells docker to map the port 80 in the nginx container to port 8000 on the host machine. This makes the nginx http listener available on port 8000 locally. If the listener needs to be on some other port than 8000, it can set here.
+
+If changes are made to the docker-compose.yml file or to the files tha referenced by *env_file* or *volumes* directives or a *-env* directive to dockerize, they can be put into service by performing a *docker-compose stop {service_name}* and then *docker-compose up {service_name}*
+
+After a service has been brought up, if you want to check to see if the configuration file was created properly, running *docker-compose exec {service_name} /bin/sh* will give you a shell window in the running container, at which point basic shell commands such as "cat /etc/nginx/nginx.conf" and "env" commands can be issued to examine the configuration file and environment variables. The environment variables set in the dockerize process via -env (and inherited by child processes) can be found by examining /proc/1/environ using the command "strings </proc/1/environ" to cleanly display the name=value assignments for environment variables. This works because /proc/{pid}/environ shows the environment variables set for
+the process with PID {pid}. Because dockerize is set as the entrypoint for most of the containers, it is pid 1 in the
+container. The contents of /proc/1/environ is a stream of name=value pairs, with a null between each pair - the strings
+command parses this and displays the output on separate lines in a human friendly way.
 
 Modifying the Nginx proxy configuration
 ---------------------------------------
