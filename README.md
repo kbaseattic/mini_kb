@@ -3,6 +3,15 @@ Docker-compose configuration that brings up a mini-KBase
 
 Includes configurations for all of the services to setup a minimal test environment
 
+TL;DNR
+======
+
+1. Install docker-compose and its dependencies
+1. Clone the mini-kb repo
+1. cd into the repo
+1. run "start_minikb.sh"
+1. The mini-kb front proxy is now listening on port 8000. KBase services can be found under http://localhost:8000/services/{servicename}
+
 Structure of Docker Images
 ==========================
 
@@ -89,7 +98,7 @@ It is sometimes useful to add containers to the mini-kb environment without modi
 file. Here is an example of how to add a new container called kbase-ui2 into the environment and accessing
 it via the front end proxy.
 
-We start with a mini-kbase environment with nginx and several backend services running (but nont kbase-ui)
+We start with a mini-kbase environment with nginx and several backend services running (but not kbase-ui)
 ~~~
 120:mini_kb sychan$ docker-compose ps
          Name                        Command               State            Ports          
