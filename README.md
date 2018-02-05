@@ -52,7 +52,7 @@ the jvm to finish executing before exiting. Please see the dockerize documentati
 that can be used to tail files to the console, wait for upstream services to come up before starting the main
 program, etc...
 
-Docker-compose
+Docker-Compose
 ==============
 
 Mini-kbase consists of multiple images with dependencies among them - this is handled using [docker-compose](https://docs.docker.com/compose/).
@@ -82,9 +82,8 @@ option *--network="minikb_default"*, it will also be accessible by the nginx pro
 containers within mini-kbase) by the name assigned to the container. An example of this will be shown later in
 this document.
 
-To 
-Manually Adding Container to mini-kb network
-============================================
+Manually Adding Container to running mini-kb stack
+==================================================
 
 It is sometimes useful to add containers to the mini-kb environment without modifying the docker-compose.yml
 file. Here is an example of how to add a new container called kbase-ui2 into the environment and accessing
