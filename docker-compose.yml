@@ -69,7 +69,7 @@ services:
       - "-wait"
       - "tcp://elastic:9200"
       - "/kb/deployment/bin/entrypoint.sh"
-    depends_on: ["auth", "handle_service", "ws", "shock", "ujs", "nginx"]
+    depends_on: ["auth", "handle_service", "ws", "shock", "ujs", "nginx","elastic"]
 
   coordinator:
     image: kbase/kb_search:latest
