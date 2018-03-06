@@ -135,10 +135,38 @@ services:
       - xpack.watcher.enabled=false
       - discovery.type=single-node
       - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+  
+  njs:
+    image: kbase/kb_nks:latest
+    command:
+      - "-env"
+      - "https://raw.githubusercontent.com/kbase/mini_kb/master/deployment/conf/njs-wrapper-minikb.ini"
+      - "-template"
+      - "/kb/deployment/conf/.templates/deployment.cfg.templ:/kb/deployment/conf/deployment.cfg"
+      - "-template"
+      - "/kb/deployment/conf/.templates/http.ini.templ:/kb/deployment/jettybase/start.d/http.ini"
+      - "-template"
+      - "/kb/deployment/conf/.templates/server.ini.templ:/kb/deployment/jettybase/start.d/server.ini"
+      - "-template"
+      - "/kb/deployment/conf/.templates/start_server.sh.templ:/kb/deployment/bin/start_server.sh"
+      - "-timeout"
+      - "120s"
+      - "-wait"
+      - "tcp://ci-mongo:27017"
+      - "-wait"
+      - "tcp://db-init:8080"
+      - "-wait"
+      - "tcp://auth:8080"
+      - "-wait"
+      - "tcp://awe:8080"
+      - "-wait"
+      - "tcp://ws:8080"
+      - "-stdout"
+      - "/kb/deployment/jettybase/logs/request.log"
+      - "/kb/deployment/bin/start_server.sh"
+    
   ujs:
     image: kbase/kb_ujs:latest
-    entrypoint:
-      - "/kb/deployment/bin/dockerize"
     command:
       - "-env"
       - "https://raw.githubusercontent.com/kbase/mini_kb/master/deployment/conf/ujs-minikb.ini"
