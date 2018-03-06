@@ -165,6 +165,7 @@ services:
       - "/kb/deployment/jettybase/logs/request.log"
       - "/kb/deployment/bin/start_server.sh"
     depends_on: ["auth", "awe", "ws", "ci-mongo","db-init","ujs"]
+    # env_file: deployment/conf/njs-wrapper-minikb.ini
 
   ujs:
     image: kbase/kb_ujs:latest
