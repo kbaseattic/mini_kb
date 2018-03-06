@@ -18,7 +18,7 @@ services:
     #  - /tmp/nginx.conf:/etc/nginx/nginx,conf
     ports:
       - "8000:80"
-    depends_on: ["auth", "handle_service", "handle_manager", "ws", "shock", "ujs"]
+    depends_on: ["auth", "handle_service", "handle_manager", "ws", "shock", "ujs", "njs"]
 
   kbase-ui:
     image: kbase/kbase-ui:latest
@@ -137,7 +137,7 @@ services:
       - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
   
   njs:
-    image: kbase/kb_nks:latest
+    image: kbase/kb_njs_wrapper:latest
     command:
       - "-env"
       - "https://raw.githubusercontent.com/kbase/mini_kb/master/deployment/conf/njs-wrapper-minikb.ini"
@@ -164,7 +164,8 @@ services:
       - "-stdout"
       - "/kb/deployment/jettybase/logs/request.log"
       - "/kb/deployment/bin/start_server.sh"
-    
+    depends_on: ["auth", "awe", "ws", "ci-mongo","db-init","ujs"]
+
   ujs:
     image: kbase/kb_ujs:latest
     command:
