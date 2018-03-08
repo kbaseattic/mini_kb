@@ -21,7 +21,8 @@ The following diagram shows the relationship of Mini-KBase to the overall releas
 Mini-KBase vs Full KBase
 ========================
 
-Mini-KBase is a work in progress, the images below show the mini-kbase services and the full KBase services for comparison
+Mini-KBase is a work in progress, as of March 8, 2018, the images below show the mini-kbase services and the full KBase services for comparison. The full set of services available can always be found in the docker-compose.yml file.
+
 ![Full KBase](images/FullKBaseEnvironment.png)
 ![Mini KBase](images/Mini-KBase.png)
 
