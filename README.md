@@ -3,7 +3,7 @@ Docker-compose configuration that brings up a mini-KBase
 
 Includes configurations for all of the services to setup a minimal test environment
 
-TL;DNR
+TL;DR
 ======
 
 1. Install docker-compose and its dependencies
