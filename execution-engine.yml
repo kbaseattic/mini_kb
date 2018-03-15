@@ -1,0 +1,274 @@
+version: "3.1"
+#
+services:
+  nginx:
+    image: kbase/nginx:latest
+    command:
+      - "-template"
+      - "/kb/deployment/conf/.templates/nginx.conf.templ:/etc/nginx/nginx.conf"
+    #  - "-env"
+    #  - "https://raw.githubusercontent.com/kbase/mini_kb/master/deployment/conf/nginx-minikb.ini"
+      - "nginx"
+    env_file:
+      - deployment/conf/nginx-minikb.ini
+    # To bypass the nginx.conf.templ file and use a fully customized nginx.conf file, comment out the 2
+    # -template option above that expends the nginx.conf.templ file, and uncomment the following 2 lines
+    # and replace /tmp/nginx.conf with the path to the appropriate file.
+    # volumes:
+    #  - /tmp/nginx.conf:/etc/nginx/nginx,conf
+    ports:
+      - "8000:80"
+    depends_on: ["auth", "handle_service", "handle_manager", "ws", "ujs", "njs"]
+
+  condor:
+    image: kbase/condor:latest
+    ports:
+      - "9618:9618"
+  
+  njs:
+    image: kbase/kb_njs_wrapper:condor-cli
+    command:
+      - "-env"
+      - "https://raw.githubusercontent.com/kbase/mini_kb/master/deployment/conf/njs-wrapper-minikb.ini"
+      - "-template"
+      - "/kb/deployment/conf/.templates/deployment.cfg.templ:/kb/deployment/conf/deployment.cfg"
+      - "-template"
+      - "/kb/deployment/conf/.templates/http.ini.templ:/kb/deployment/jettybase/start.d/http.ini"
+      - "-template"
+      - "/kb/deployment/conf/.templates/server.ini.templ:/kb/deployment/jettybase/start.d/server.ini"
+      - "-template"
+      - "/kb/deployment/conf/.templates/start_server.sh.templ:/kb/deployment/bin/start_server.sh"
+      - "-timeout"
+      - "120s"
+      - "-wait"
+      - "tcp://ci-mongo:27017"
+      - "-wait"
+      - "tcp://db-init:8080"
+      - "-wait"
+      - "tcp://auth:8080"
+      - "-wait"
+      - "tcp://awe:8080"
+      - "-wait"
+      - "tcp://ws:8080"
+      - "-stdout"
+      - "/kb/deployment/jettybase/logs/request.log"
+      - "/kb/deployment/bin/start_server.sh"
+    depends_on: ["auth", "awe", "ws", "ci-mongo","db-init","ujs","condor"]
+    # env_file: deployment/conf/njs-wrapper-minikb.ini
+
+  ujs:
+    image: kbase/kb_ujs:latest
+    command:
+      - "-env"
+      - "https://raw.githubusercontent.com/kbase/mini_kb/master/deployment/conf/ujs-minikb.ini"
+      - "-template"
+      - "/kb/deployment/conf/.templates/deployment.cfg.templ:/kb/deployment/conf/deployment.cfg"
+      - "-template"
+      - "/kb/deployment/conf/.templates/http.ini.templ:/kb/deployment/jettybase/start.d/http.ini"
+      - "-template"
+      - "/kb/deployment/conf/.templates/server.ini.templ:/kb/deployment/jettybase/start.d/server.ini"
+      - "-template"
+      - "/kb/deployment/conf/.templates/start_server.sh.templ:/kb/deployment/bin/start_server.sh"
+      - "-timeout"
+      - "120s"
+      - "-wait"
+      - "tcp://ci-mongo:27017"
+      - "-wait"
+      - "tcp://db-init:8080"
+      - "-wait"
+      - "tcp://auth:8080"
+      - "-wait"
+      - "tcp://awe:8080"
+      - "-wait"
+      - "tcp://ws:8080"
+      - "-stdout"
+      - "/kb/deployment/jettybase/logs/request.log"
+      - "/kb/deployment/bin/start_server.sh"
+      # 
+    depends_on: ["auth", "awe", "ws", "ci-mongo","db-init"]
+
+  awe:
+    image: kbase/kb_awe:latest
+    command:
+      - "-wait"
+      - "tcp://ci-mongo:27017"
+      - "-wait"
+      - "tcp://db-init:8080"
+      - "-timeout"
+      - "120s"
+      - "-template"
+      - "/kb/deployment/conf/.templates/awe-server.cfg.templ:/kb/deployment/conf/awe-server.cfg"
+      - "-env"
+      - "https://raw.githubusercontent.com/kbase/mini_kb/master/deployment/conf/awe-minikb.ini"
+      - "/kb/deployment/bin/awe-server"
+      - "--conf"
+      - "/kb/deployment/conf/awe-server.cfg" 
+    #ports:
+    #  - "8080:8080"
+    depends_on: ["ci-mongo","db-init"]
+
+
+  ws:
+    image: kbase/kb_workspace:develop
+    command:
+      - "-template"
+      - "/kb/deployment/conf/.templates/deployment.cfg.templ:/kb/deployment/conf/deployment.cfg"
+      - "-template"
+      - "/kb/deployment/conf/.templates/server.xml.templ:/kb/deployment/services/workspace/tomcat/conf/server.xml"
+      - "-template"
+      - "/kb/deployment/conf/.templates/tomcat-users.xml.templ:/kb/deployment/services/workspace/tomcat/conf/tomcat-users.xml"
+      - "-template"
+      - "/kb/deployment/conf/.templates/logging.properties.templ:/kb/deployment/services/workspace/tomcat/conf/logging.properties"
+      - "-template"
+      - "/kb/deployment/conf/.templates/setenv.sh.templ:/kb/deployment/services/workspace/tomcat/bin/setenv.sh"
+      - "-env"
+      - "https://raw.githubusercontent.com/kbase/mini_kb/master/deployment/conf/workspace-minikb.ini"
+      - "-wait"
+      - "tcp://ci-mongo:27017"
+      - "-wait"
+      - "tcp://db-init:8080"
+      - "-wait"
+      - "tcp://auth:8080"
+      - "-wait"
+      - "tcp://handle_service:8080"
+      - "-wait"
+      - "tcp://shock:8080"
+      - "-timeout"
+      - "150s"
+      - "-stdout"
+      - "/kb/deployment/services/workspace/tomcat/logs/catalina.out"
+      - "-stdout"
+      - "/kb/deployment/services/workspace/tomcat/logs/access.log"
+      - "/usr/share/tomcat8/bin/catalina.sh"
+      - "run"
+    #ports:
+    #  - "7058:7058"
+    depends_on: ["auth", "handle_service", "handle_manager", "ci-mongo","db-init", "shock"]
+    # Mount this stuff in when running initialize.py is needed to reset workspace config
+
+  shell:
+    image: kbase/db_initialize
+    entrypoint: [ "/bin/bash"]
+    stdin_open: true
+    tty: true
+    volumes:
+      - .:/home/workspace_deluxe
+  
+  handle_service:
+    image: kbase/handle_service:develop
+    command:
+      - "-template"
+      - "/kb/deployment/conf/.templates/deployment.cfg.templ:/kb/deployment/conf/deployment.cfg"
+      - "-env"
+      - "https://raw.githubusercontent.com/kbase/mini_kb/master/deployment/conf/handle_service-minikb.ini"
+      - "-wait"
+      - "tcp://db-init:8080"
+      - "-wait"
+      - "tcp://auth:8080"
+      - "-wait"
+      - "tcp://shock:8080"
+      - "-wait"
+      - "tcp://ci-mysql:3306"
+      - "-timeout"
+      - "150s"
+      - "starman"
+      - "--listen"
+      - ":8080"
+      - "/kb/deployment/lib/Bio/KBase/AbstractHandle/AbstractHandle.psgi"
+    environment:
+      - KB_SERVICE_NAME=handle_service
+    #ports:
+    #  - "7109:7109"
+    depends_on: ["handle_manager", "ci-mysql", "shock", "auth","db-init"]
+
+  handle_manager:
+    image: kbase/handle_mngr:develop
+    command:
+      - "-template"
+      - "/kb/deployment/conf/.templates/deployment.cfg.templ:/kb/deployment/conf/deployment.cfg"
+      - "-env"
+      - "https://raw.githubusercontent.com/kbase/mini_kb/master/deployment/conf/handle_mngr-minikb.ini"
+      - "-wait"
+      - "tcp://auth:8080"
+      - "-timeout"
+      - "120s"
+      - "starman"
+      - "--listen"
+      - ":8080"
+      - "/kb/deployment/lib/Bio/KBase/HandleMngr/HandleMngr.psgi"
+    #ports:
+    #  - "9001:9001"
+    depends_on: ["auth","db-init"]
+
+  shock:
+    image: kbase/kb_shock:develop
+    command:
+      - "-template"
+      - "/kb/deployment/conf/.templates/shock-server.cfg.templ:/kb/deployment/conf/shock-server.cfg"
+      - "-env"
+      - "https://raw.githubusercontent.com/kbase/mini_kb/master/deployment/conf/shock-minikb.ini"
+      - "-wait"
+      - "tcp://ci-mongo:27017"
+      - "-wait"
+      - "tcp://db-init:8080"
+      - "-wait"
+      - "tcp://auth:8080"
+      - "-timeout"
+      - "150s"
+      - "/kb/deployment/bin/shock-server"
+      - "--conf"
+      - "/kb/deployment/conf/shock-server.cfg"
+    #ports:
+    #  - "7044:7044"
+    depends_on: ["ci-mongo", "db-init", "auth"]
+
+  auth:
+    image: kbase/kb_auth2:develop
+    command:
+      - "-wait"
+      - "tcp://ci-mongo:27017"
+      - "-wait"
+      - "tcp://db-init:8080"
+      - "-timeout"
+      - "120s"
+      - "-template"
+      - "/kb/deployment/conf/.templates/deployment.cfg.templ:/kb/deployment/conf/deployment.cfg"
+      - "-env"
+      - "https://raw.githubusercontent.com/kbase/mini_kb/master/deployment/conf/auth2-minikb.ini"
+      - "/kb/deployment/bin/start_auth2.sh"
+    #env_file:
+    #  - deployment/conf/auth2-minikb.ini
+    #ports:
+    #  - "8080:8080"
+    depends_on: ["ci-mongo","db-init"]
+
+  db-init:
+    image: kbase/db_initialize
+    volumes:
+      - ./mysqldump:/tmp/mysqldump
+      - ./ws.mongodump:/tmp/ws.mongodump
+      - ./bin:/tmp/bin
+    entrypoint:
+      - /kb/deployment/bin/dockerize.sh
+      - -wait
+      - tcp://ci-mysql:3306/
+      - -wait
+      - tcp://ci-mongo:27017
+      - -timeout
+      - 120s
+      - /tmp/bin/initialize_all.sh
+    depends_on: ['ci-mysql','ci-mongo']
+
+  ci-mongo:
+    image: mongo:2
+    ports:
+      - "27017:27017"
+    command: --smallfiles
+
+  
+  ci-mysql:
+    image: mysql:5.5
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+    #ports:
+    #  - "3306:3306"
