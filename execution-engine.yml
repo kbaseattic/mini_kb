@@ -22,6 +22,7 @@ services:
 
   condor:
     image: kbase/condor:latest
+    hostname: condor
     ports:
       - "9618:9618"
   
@@ -38,6 +39,8 @@ services:
       - "/kb/deployment/conf/.templates/server.ini.templ:/kb/deployment/jettybase/start.d/server.ini"
       - "-template"
       - "/kb/deployment/conf/.templates/start_server.sh.templ:/kb/deployment/bin/start_server.sh"
+      - "-template"
+      - "/kb/deployment/conf/.templates/condor_config.templ:/etc/condor/condor_config.local"
       - "-timeout"
       - "120s"
       - "-wait"
