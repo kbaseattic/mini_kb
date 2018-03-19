@@ -31,7 +31,6 @@ services:
       - pool_password
     environment:
       - SEC_PASSWORD_FILE=/run/secrets/pool_password
-
     ports:
       - "9618:9618"
   
