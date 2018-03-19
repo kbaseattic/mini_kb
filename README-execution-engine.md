@@ -178,7 +178,8 @@ entry to something like this:
     command:
       - "-template"
       - "/etc/condor/.templates/condor_config.local.templ:/etc/condor/condor_config.local"
-      - "sleep 3600"
+      - "sleep"
+      - "3600"
 ```
 
 This will update the /etc/condor/condir_config.local file using the standard config and have the
@@ -192,7 +193,7 @@ to interactively change the files in /etc/condor/* and then start the service ma
 shell window, and edits can be made, restarted, etc...
 
 Once the appropriate changes have been semi-finalized, they can be made to the kbase/condor repo, and then
-tested using the command "IMAGE_NAME=kbase/condor:$TEST hooks/build" which will build a new image
+tested using the command "IMAGE_NAME=kbase/condor:latest hooks/build" which will build a new image
 locally so that it can be tested. Once the changes are ready to be ready to be pushed, they can be
 pushed to github and a new image will be built.
 
