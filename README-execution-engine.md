@@ -189,7 +189,7 @@ command can be replaced with a longer or shorter period of time.
 
 Then the command "docker-compose -f execution-engine.yml exec /bin/bash" can be used to bring up a shell
 to interactively change the files in /etc/condor/* and then start the service manually using the
-/usr/sbin/start_condor.sh script. The service can be tested, and then stopped by using control-C in the
+/usr/sbin/start-condor.sh script. The service can be tested, and then stopped by using control-C in the
 shell window, and edits can be made, restarted, etc...
 
 Once the appropriate changes have been semi-finalized, they can be made to the kbase/condor repo, and then
