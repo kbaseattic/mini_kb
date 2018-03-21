@@ -30,10 +30,16 @@ services:
     secrets:
       - pool_password
     environment:
-      - SEC_PASSWORD_FILE=/run/secrets/pool_password
+      - POOL_PASSWORD=weakpassword
     ports:
       - "9618:9618"
-  
+    entrypoint:
+      - "/usr/bin/dockerize"
+    command:
+      - "-template"
+      - "/etc/condor/.templates/condor_config.local.templ:/etc/condor/condor_config.local"
+      - "sleep"
+      - "18000"
   njs:
     image: kbase/kb_njs_wrapper:condor-cli
     command:
@@ -68,7 +74,7 @@ services:
     secrets:
       - pool_password
     environment:
-      - SEC_PASSWORD_FILE=/run/secrets/pool_password
+      - POOL_PASSWORD=weakpassword
     # env_file: deployment/conf/njs-wrapper-minikb.ini
 
   ujs:
