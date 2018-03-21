@@ -38,8 +38,9 @@ services:
     command:
       - "-template"
       - "/etc/condor/.templates/condor_config.local.templ:/etc/condor/condor_config.local"
-      - "sleep"
-      - "18000"
+      - "/usr/sbin/start-condor.sh"
+      # - "sleep"
+      # - "18000"
   njs:
     image: kbase/kb_njs_wrapper:condor-cli
     command:
