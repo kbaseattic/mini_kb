@@ -38,9 +38,32 @@ services:
     command:
       - "-template"
       - "/etc/condor/.templates/condor_config.local.templ:/etc/condor/condor_config.local"
+      - "-stdout"
+      - "/var/log/condor/MasterLog"
       - "/usr/sbin/start-condor.sh"
       # - "sleep"
       # - "18000"
+  
+  condor_worker1:
+    image: kbase/kb_njs_wrapper:condor-cli
+    command:
+      - "-template"
+      - "/kb/deployment/conf/.templates/condor_config.templ:/etc/condor/condor_config.local"
+      - "-template"
+      - "/kb/deployment/conf/.templates/shared_port_config.templ:/etc/condor/config.d/shared_port_config"
+      - "-timeout"
+      - "120s"
+      - "-stdout"
+      - "/var/log/condor/ProcLog"
+      - "-stdout"
+      - "/var/log/condor/StartLog"
+      - "/kb/deployment/bin/start-condor.sh"
+    depends_on: ["condor"]
+    secrets:
+      - pool_password
+    environment:
+      - POOL_PASSWORD=weakpassword
+
   njs:
     image: kbase/kb_njs_wrapper:condor-cli
     command:
