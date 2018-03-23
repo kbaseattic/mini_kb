@@ -40,6 +40,8 @@ services:
       - "/etc/condor/.templates/condor_config.local.templ:/etc/condor/condor_config.local"
       - "-stdout"
       - "/var/log/condor/MasterLog"
+      - "-stdout"
+      - "/var/log/condor/SchedLog"
       - "/usr/sbin/start-condor.sh"
       # - "sleep"
       # - "18000"
