@@ -1,9 +1,5 @@
 version: "3.1"
 #
-secrets:
-  pool_password:
-    file: secrets/pool_password
-
 services:
   nginx:
     image: kbase/nginx:latest
@@ -27,8 +23,6 @@ services:
   condor:
     image: kbase/condor:latest
     hostname: condor
-    secrets:
-      - pool_password
     environment:
       - POOL_PASSWORD=weakpassword
     ports:
@@ -43,8 +37,8 @@ services:
       - "-stdout"
       - "/var/log/condor/SchedLog"
       - "/usr/sbin/start-condor.sh"
-      # - "sleep"
-      # - "18000"
+      #- "sleep"
+      #- "36000"
   
   condor_worker1:
     image: kbase/kb_njs_wrapper:condor-cli
@@ -61,8 +55,6 @@ services:
       - "/var/log/condor/StartLog"
       - "/kb/deployment/bin/start-condor.sh"
     depends_on: ["condor"]
-    secrets:
-      - pool_password
     environment:
       - POOL_PASSWORD=weakpassword
 
@@ -97,8 +89,6 @@ services:
       - "/kb/deployment/jettybase/logs/request.log"
       - "/kb/deployment/bin/start_server.sh"
     depends_on: ["auth", "awe", "ws", "ci-mongo","db-init","ujs","condor"]
-    secrets:
-      - pool_password
     environment:
       - POOL_PASSWORD=weakpassword
     # env_file: deployment/conf/njs-wrapper-minikb.ini
