@@ -1,4 +1,4 @@
-version: "3.1"
+version: "2.3"
 #
 services:
   nginx:
@@ -40,11 +40,33 @@ services:
       #- "sleep"
       #- "36000"
   
-  condor_worker1:
+  condor_worker_max:
     image: kbase/kb_njs_wrapper:condor-cli
+    hostname: condor_worker_max
     command:
       - "-template"
-      - "/kb/deployment/conf/.templates/condor_config.templ:/etc/condor/condor_config.local"
+      - "/kb/deployment/conf/.templates/condor_config_worker_bigmem.templ:/etc/condor/condor_config.local"
+      - "-template"
+      - "/kb/deployment/conf/.templates/shared_port_config.templ:/etc/condor/config.d/shared_port_config"
+      - "-timeout"
+      - "120s"
+      - "-stdout"
+      - "/var/log/condor/ProcLog"
+      - "-stdout"
+      - "/var/log/condor/StartLog"
+      - "/kb/deployment/bin/start-condor.sh"
+    depends_on: ["condor"]
+    environment:
+      - POOL_PASSWORD=weakpassword
+
+  condor_worker_mini:
+    image: kbase/kb_njs_wrapper:condor-cli
+    hostname: condor_worker_mini
+    cpu_count: "1"
+    mem_limit: 20M
+    command:
+      - "-template"
+      - "/kb/deployment/conf/.templates/condor_config_worker.templ:/etc/condor/condor_config.local"
       - "-template"
       - "/kb/deployment/conf/.templates/shared_port_config.templ:/etc/condor/config.d/shared_port_config"
       - "-timeout"
