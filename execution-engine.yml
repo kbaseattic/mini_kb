@@ -1,4 +1,4 @@
-version: "2.3"
+version: "3.1"
 #
 services:
   nginx:
@@ -62,8 +62,6 @@ services:
   condor_worker_mini:
     image: kbase/kb_njs_wrapper:condor-cli
     hostname: condor_worker_mini
-    cpu_count: "1"
-    mem_limit: 20M
     command:
       - "-template"
       - "/kb/deployment/conf/.templates/condor_config_worker.templ:/etc/condor/condor_config.local"
