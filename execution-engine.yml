@@ -45,7 +45,7 @@ services:
     hostname: condor_worker_max
     command:
       - "-template"
-      - "/kb/deployment/conf/.templates/condor_config_worker_bigmem.templ:/etc/condor/condor_config.local"
+      - "/kb/deployment/conf/.templates/condor_config_worker.templ:/etc/condor/condor_config.local"
       - "-template"
       - "/kb/deployment/conf/.templates/shared_port_config.templ:/etc/condor/config.d/shared_port_config"
       - "-timeout"
@@ -58,6 +58,8 @@ services:
     depends_on: ["condor"]
     environment:
       - POOL_PASSWORD=weakpassword
+      - COLLECTOR_HOST=condor:9618?sock=collector
+      - NUM_SLOTS=1
 
   condor_worker_mini:
     image: kbase/kb_njs_wrapper:condor-cli
@@ -77,6 +79,7 @@ services:
     depends_on: ["condor"]
     environment:
       - POOL_PASSWORD=weakpassword
+      - COLLECTOR_HOST=condor:9618?sock=collector
 
   njs:
     image: kbase/kb_njs_wrapper:condor-cli
