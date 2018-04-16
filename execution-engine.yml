@@ -60,6 +60,7 @@ services:
       - POOL_PASSWORD=weakpassword
       - COLLECTOR_HOST=condor:9618?sock=collector
       - NUM_SLOTS=1
+      - CLIENTGROUP="bigmem"
 
   condor_worker_mini:
     image: kbase/kb_njs_wrapper:condor-cli
