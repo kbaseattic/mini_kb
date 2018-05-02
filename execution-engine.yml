@@ -43,7 +43,7 @@ services:
       
   
   condor_worker_max:
-    image: kbase/kb_njs_wrapper:condor-cli
+    image: kbase/kb_njs_wrapper:develop
     hostname: condor_worker_max
     command:
       - "-template"
@@ -69,7 +69,7 @@ services:
       # The line below DOES NOT WORK FOR MacOS, but should uncommented for Unix hosts
       # - /dev/log:/dev/log
   condor_worker_mini:
-    image: kbase/kb_njs_wrapper:condor-cli
+    image: kbase/kb_njs_wrapper:develop
     hostname: condor_worker_mini
     command:
       - "-template"
@@ -78,11 +78,19 @@ services:
       - "/kb/deployment/conf/.templates/shared_port_config.templ:/etc/condor/config.d/shared_port_config"
       - "-timeout"
       - "120s"
+#     Use the euid and egid flags to set the uid/gid of the final process to be run. Note
+#     that the container must start as root for this to work in most situations
+#      - "-euid"
+#      - "998"
+#      - "-egid"
+#      - "997"
       - "-stdout"
       - "/var/log/condor/ProcLog"
       - "-stdout"
       - "/var/log/condor/StartLog"
       - "/kb/deployment/bin/start-condor.sh"
+#      - "sleep"
+#      - "10000"
     depends_on: ["condor"]
     environment:
       - POOL_PASSWORD=weakpassword
@@ -94,7 +102,7 @@ services:
       # - /dev/log:/dev/log
 
   njs:
-    image: kbase/kb_njs_wrapper:condor-cli
+    image: kbase/kb_njs_wrapper:develop
     command:
       - "-env"
       - "https://raw.githubusercontent.com/kbase/mini_kb/master/deployment/conf/njs-wrapper-minikb.ini"
