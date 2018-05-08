@@ -31,6 +31,7 @@ services:
     entrypoint:
       - "/usr/bin/dockerize"
     command:
+      - "-poll"
       - "-template"
       - "/etc/condor/.templates/condor_config.local.templ:/etc/condor/condor_config.local"
       - "-stdout"
@@ -46,6 +47,7 @@ services:
     image: kbase/kb_njs_wrapper:develop
     hostname: condor_worker_max
     command:
+      - "-poll"
       - "-template"
       - "/kb/deployment/conf/.templates/condor_config_worker.templ:/etc/condor/condor_config.local"
       - "-template"
@@ -72,6 +74,7 @@ services:
     image: kbase/kb_njs_wrapper:develop
     hostname: condor_worker_mini
     command:
+      - "-poll"
       - "-template"
       - "/kb/deployment/conf/.templates/condor_config_worker.templ:/etc/condor/condor_config.local"
       - "-template"
@@ -104,6 +107,7 @@ services:
   njs:
     image: kbase/kb_njs_wrapper:develop
     command:
+      - "-poll"
       - "-env"
       - "https://raw.githubusercontent.com/kbase/mini_kb/master/deployment/conf/njs-wrapper-minikb.ini"
       - "-template"
@@ -139,6 +143,7 @@ services:
   ujs:
     image: kbase/kb_ujs:latest
     command:
+      - "-poll"
       - "-env"
       - "https://raw.githubusercontent.com/kbase/mini_kb/master/deployment/conf/ujs-minikb.ini"
       - "-template"
@@ -191,6 +196,7 @@ services:
   ws:
     image: kbase/kb_workspace:develop
     command:
+      - "-poll"
       - "-template"
       - "/kb/deployment/conf/.templates/deployment.cfg.templ:/kb/deployment/conf/deployment.cfg"
       - "-template"
