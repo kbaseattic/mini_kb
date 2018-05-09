@@ -17,12 +17,14 @@ services:
     # volumes:
     #  - /tmp/nginx.conf:/etc/nginx/nginx,conf
     ports:
-      - "8000:80"
+      - "80:80"
+      - "443:443"
     depends_on: ["auth", "handle_service", "handle_manager", "ws", "shock", "ujs", "njs"]
 
   kbase-ui:
     image: kbase/kbase-ui:develop
     command:
+      - "-poll"
       - "-stdout"
       - "/var/log/nginx/access.log"
       - "-stderr"
@@ -43,9 +45,13 @@ services:
     # Or if you want to use a file:
     #env_file:
     #  - deployment/conf/kbase-ui-minikb.ini
+
+  narrative:
+    image: kbase/narrative:dockerize
   search:
     image: kbase/kb_search:latest
     command:
+      - "-poll"
       - "-stdout"
       - "/kb/deployment/jettybase/logs/request.log"
       - "-env"
@@ -139,6 +145,7 @@ services:
   njs:
     image: kbase/kb_njs_wrapper:latest
     command:
+      - "-poll"
       - "-env"
       - "https://raw.githubusercontent.com/kbase/mini_kb/master/deployment/conf/njs-wrapper-minikb.ini"
       - "-template"
@@ -170,6 +177,7 @@ services:
   ujs:
     image: kbase/kb_ujs:latest
     command:
+      - "-poll"
       - "-env"
       - "https://raw.githubusercontent.com/kbase/mini_kb/master/deployment/conf/ujs-minikb.ini"
       - "-template"
@@ -201,6 +209,7 @@ services:
   awe:
     image: kbase/kb_awe:latest
     command:
+      - "-poll"
       - "-wait"
       - "tcp://ci-mongo:27017"
       - "-wait"
@@ -222,6 +231,7 @@ services:
   ws:
     image: kbase/kb_workspace:develop
     command:
+      - "-poll"
       - "-template"
       - "/kb/deployment/conf/.templates/deployment.cfg.templ:/kb/deployment/conf/deployment.cfg"
       - "-template"
@@ -268,6 +278,7 @@ services:
   handle_service:
     image: kbase/handle_service:develop
     command:
+      - "-poll"
       - "-template"
       - "/kb/deployment/conf/.templates/deployment.cfg.templ:/kb/deployment/conf/deployment.cfg"
       - "-env"
