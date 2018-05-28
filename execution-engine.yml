@@ -103,9 +103,11 @@ services:
       - USE_TCP=True
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock 
-       - /mnt/awe/condor:/mnt/awe/condor
+      - /mnt/awe/condor:/mnt/awe/condor
       # The line below DOES NOT WORK FOR MacOS, but should uncommented for Unix hosts
       # - /dev/log:/dev/log
+      # Place your jars directory and njs_wrapper code here for local dev
+      # /njs_wrapper/:/njs_wrapper
 
   njs:
     image: kbase/kb_njs_wrapper:develop
