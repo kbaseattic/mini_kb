@@ -69,6 +69,7 @@ services:
       - USE_TCP=True
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock 
+      - /mnt/awe/condor:/mnt/awe/condor
       # The line below DOES NOT WORK FOR MacOS, but should uncommented for Unix hosts
       # - /dev/log:/dev/log
   condor_worker_mini:
@@ -102,6 +103,7 @@ services:
       - USE_TCP=True
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock 
+      - /mnt/awe/condor:/mnt/awe/condor
       # The line below DOES NOT WORK FOR MacOS, but should uncommented for Unix hosts
       # - /dev/log:/dev/log
 
@@ -140,6 +142,10 @@ services:
     environment:
       - POOL_PASSWORD=weakpassword
     # env_file: deployment/conf/njs-wrapper-minikb.ini
+    volumes:
+      - /mnt/awe/condor:/mnt/awe/condor
+      # Place your jars directory and njs_wrapper code here for local dev
+      # - /njs_wrapper:/njs_wrapper
 
   ujs:
     image: kbase/kb_ujs:latest
