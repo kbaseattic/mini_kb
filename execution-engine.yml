@@ -118,6 +118,8 @@ services:
       - "-template"
       - "/kb/deployment/conf/.templates/http.ini.templ:/kb/deployment/jettybase/start.d/http.ini"
       - "-template"
+      - "/kb/deployment/misc/sdklocalmethodrunner_dev.sh:/kb/deployment/misc/sdklocalmethodrunner.sh"
+      - "-template"
       - "/kb/deployment/conf/.templates/server.ini.templ:/kb/deployment/jettybase/start.d/server.ini"
       - "-template"
       - "/kb/deployment/conf/.templates/start_server.sh.templ:/kb/deployment/bin/start_server.sh"
