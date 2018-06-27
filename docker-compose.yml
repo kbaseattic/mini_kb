@@ -2,7 +2,7 @@ version: "3.1"
 #
 services:
   nginx:
-    image: kbase/nginx:latest
+    image: kbase/nginx:mini
     command:
       - "-template"
       - "/kb/deployment/conf/.templates/nginx.conf.templ:/etc/nginx/nginx.conf"
@@ -48,6 +48,9 @@ services:
 
   narrative:
     image: kbase/narrative:dockerize
+    environment:
+      - CONFIG_ENV=ci
+      - VERSION_CHECK=/services/narrative_version
   search:
     image: kbase/kb_search:latest
     command:
