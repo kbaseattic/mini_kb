@@ -5,7 +5,15 @@ services:
     image: kbase/nginx:mini
     command:
       - "-template"
-      - "/kb/deployment/conf/.templates/nginx.conf.templ:/etc/nginx/nginx.conf"
+      - "/kb/deployment/conf/.templates/openresty.conf.templ:/etc/nginx/nginx.conf"
+      - "-template"
+      - "/kb/deployment/conf/.templates/minikb-narrative.templ:/etc/nginx/sites-enabled/minikb-narrative"
+      - "-template"
+      - "/kb/deployment/conf/.templates/lua.templ:/etc/nginx/conf.d/lua"
+      - "-stdout"
+      - "/var/log/nginx/access.log"
+      - "-stdout"
+      - "/var/log/nginx/error.log"
     #  - "-env"
     #  - "https://raw.githubusercontent.com/kbase/mini_kb/master/deployment/conf/nginx-minikb.ini"
       - "nginx"
@@ -16,26 +24,31 @@ services:
     # and replace /tmp/nginx.conf with the path to the appropriate file.
     # volumes:
     #  - /tmp/nginx.conf:/etc/nginx/nginx,conf
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock 
     ports:
       - "80:80"
       - "443:443"
-    depends_on: ["auth", "handle_service", "handle_manager", "ws", "shock", "ujs", "njs"]
-
+    depends_on: ["auth", "ws", "shock", "narrative_version", "kbase-ui"]
+  narrative_version:
+    image: kbase/narrative_version:latest
+    expose:
+      - '80'
+      - '443'
   kbase-ui:
-    image: kbase/kbase-ui:develop
+    image: kbase/kbase-ui:latest
     command:
       - "-poll"
       - "-stdout"
       - "/var/log/nginx/access.log"
       - "-stderr"
       - "/var/log/nginx/err.log"
-      - "-env"
-      - "https://raw.githubusercontent.com/kbase/mini_kb/master/deployment/conf/kbase-ui-minikb.ini"
       - "-template"
-      - "/kb/deployment/conf/nginx.conf.tmpl:/etc/nginx/nginx.conf"
+      - "/kb/deployment/templates/nginx.conf.tmpl:/etc/nginx/nginx.conf"
       - "-template"
-      - "/kb/deployment/conf/config.json.tmpl:/kb/deployment/services/kbase-ui/modules/deploy/config.json"
-      - "nginx"
+      - "/kb/deployment/templates/config.json.tmpl:/kb/deployment/services/kbase-ui/dist/modules/deploy/config.json"
+      - "bash"
+      - "/kb/deployment/scripts/start-server.bash"
     # Alternatively you can comment out the -env params to the container and use your local
     # environment definitions with something like the following:
     # environment:
@@ -43,14 +56,9 @@ services:
     #   - name2=value2
     #
     # Or if you want to use a file:
-    #env_file:
-    #  - deployment/conf/kbase-ui-minikb.ini
+    env_file:
+      - deployment/conf/kbase-ui-minikb.ini
 
-  narrative:
-    image: kbase/narrative:dockerize
-    environment:
-      - CONFIG_ENV=ci
-      - VERSION_CHECK=/services/narrative_version
   search:
     image: kbase/kb_search:latest
     command:
@@ -229,7 +237,6 @@ services:
     #ports:
     #  - "8080:8080"
     depends_on: ["ci-mongo","db-init"]
-
 
   ws:
     image: kbase/kb_workspace:develop
