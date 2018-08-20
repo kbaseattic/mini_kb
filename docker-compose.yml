@@ -29,7 +29,7 @@ services:
     ports:
       - "80:80"
       - "443:443"
-    depends_on: ["auth", "ws", "shock", "narrative_version", "kbase-ui"]
+    depends_on: ["auth", "ws", "shock", "narrative_version", "kbase-ui", "searchapi"]
   narrative_version:
     image: kbase/narrative_version:latest
     expose:
@@ -59,6 +59,35 @@ services:
     env_file:
       - deployment/conf/kbase-ui-minikb.ini
 
+  searchapi:
+    image: kbase/kb_search:latest
+    command:
+    - -template
+    - /kb/deployment/conf/.templates/deployment.cfg.templ:/kb/deployment/conf/deployment.cfg
+    - -template
+    - /kb/deployment/conf/.templates/search_tools.cfg.templ:/kb/deployment/conf/search_tools.cfg
+    - -template
+    - /kb/deployment/conf/.templates/http.ini.templ:/kb/deployment/jettybase/start.d/http.ini
+    - -template
+    - /kb/deployment/conf/.templates/server.ini.templ:/kb/deployment/jettybase/start.d/server.ini
+    - -template
+    - /kb/deployment/conf/.templates/start_server.sh.templ:/kb/deployment/bin/start_server.sh
+    - "-wait"
+    - "tcp://ws:8080"
+    - "-wait"
+    - "tcp://auth:8080"
+    - "-wait"
+    - "tcp://elastic:9200"
+    - "-timeout"
+    - "150s"
+    - "-stdout"
+    - "/kb/deployment/jettybase/logs/request.log"
+    - "/kb/deployment/bin/entrypoint.sh"
+    env_file:
+      - deployment/conf/search-minikb.ini
+    depends_on: ["auth", "handle_service", "ws", "shock", "ujs", "elastic"]
+
+
   search:
     image: kbase/kb_search:latest
     command:
@@ -86,7 +115,7 @@ services:
       - "-wait"
       - "tcp://elastic:9200"
       - "/kb/deployment/bin/entrypoint.sh"
-    depends_on: ["auth", "handle_service", "ws", "shock", "ujs", "nginx","elastic"]
+    depends_on: ["auth", "handle_service", "ws", "shock", "ujs", "elastic"]
 
   coordinator:
     image: kbase/kb_search:latest
