@@ -29,12 +29,36 @@ services:
     ports:
       - "80:80"
       - "443:443"
-    depends_on: ["auth", "ws", "shock", "narrative_version", "kbase-ui", "searchapi"]
+    depends_on: ["auth", "ws", "shock", "narrative_version", "kbase-ui", "searchapi", "service_wizard", "narrative_method_store", "user_profile", "catalog" ]
+  # stubs for service_wizard, narrative_method_store, user_profile, catalog to capture the URLs that are being requested
+  service_wizard:
+    image: bitnami/nginx:latest
+  narrative_method_store:
+    image: bitnami/nginx:latest
+  user_profile:
+    image: kbase/user_profile:latest
+    command:
+      - "-template"
+      - "/kb/deployment/conf/.templates/deployment.cfg.templ:/kb/deployment/conf/deployment.cfg"
+      - "-template"
+      - "/kb/deployment/conf/.templates/http.ini.templ:/kb/deployment/jettybase/start.d/http.ini"
+      - "-template"
+      - "/kb/deployment/conf/.templates/server.ini.templ:/kb/deployment/jettybase/start.d/server.ini"
+      - "-template"
+      - "/kb/deployment/conf/.templates/start-server.sh.templ:/kb/deployment/bin/start-server.sh"
+      - "-stdout"
+      - "/kb/deployment/jettybase/logs/request.log"
+      - "-poll"
+      - "/bin/sh"
+      - "/kb/deployment/bin/start-server.sh"
+    env_file:
+      - deployment/conf/user_profile.ini
+  catalog:
+    image: bitnami/nginx:latest
+    ports:
+      - "8080:80"
   narrative_version:
     image: kbase/narrative_version:latest
-    expose:
-      - '80'
-      - '443'
   kbase-ui:
     image: kbase/kbase-ui:latest
     command:
