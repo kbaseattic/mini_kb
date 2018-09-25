@@ -35,6 +35,8 @@ services:
     image: bitnami/nginx:latest
   narrative_method_store:
     image: bitnami/nginx:latest
+  catalog:
+    image: bitnami/nginx:latest
   user_profile:
     image: kbase/user_profile:latest
     command:
@@ -53,10 +55,6 @@ services:
       - "/kb/deployment/bin/start-server.sh"
     env_file:
       - deployment/conf/user_profile.ini
-  catalog:
-    image: bitnami/nginx:latest
-    ports:
-      - "8080:80"
   narrative_version:
     image: kbase/narrative_version:latest
   kbase-ui:
