@@ -5,7 +5,15 @@ services:
     image: kbase/nginx:mini
     command:
       - "-template"
-      - "/kb/deployment/conf/.templates/nginx.conf.templ:/etc/nginx/nginx.conf"
+      - "/kb/deployment/conf/.templates/openresty.conf.templ:/etc/nginx/nginx.conf"
+      - "-template"
+      - "/kb/deployment/conf/.templates/minikb-narrative.templ:/etc/nginx/sites-enabled/minikb-narrative"
+      - "-template"
+      - "/kb/deployment/conf/.templates/lua.templ:/etc/nginx/conf.d/lua"
+      - "-stdout"
+      - "/var/log/nginx/access.log"
+      - "-stdout"
+      - "/var/log/nginx/error.log"
     #  - "-env"
     #  - "https://raw.githubusercontent.com/kbase/mini_kb/master/deployment/conf/nginx-minikb.ini"
       - "nginx"
