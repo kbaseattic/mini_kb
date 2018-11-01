@@ -36,7 +36,19 @@ services:
   narrative_method_store:
     image: bitnami/nginx:latest
   catalog:
-    image: bitnami/nginx:latest
+    image: kbase/catalog:develop
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock 
+    command:
+      - "-template"
+      - "/kb/deployment/conf/.templates/deploy.cfg.templ:/kb/deployment/conf/deploy.cfg"
+      - "-poll"
+      - "-stderr"
+      - "/kb/deployment/services/catalog/error.log"
+      - "/kb/deployment/services/catalog/start_service"
+    depends_on: ["auth", "ci-mongo", "narrative_method_store" ]
+    env_file:
+      - deployment/conf/catalog-minikb.ini
   user_profile:
     image: kbase/user_profile:latest
     command:
