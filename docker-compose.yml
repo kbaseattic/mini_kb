@@ -1,6 +1,19 @@
 version: "3.1"
 #
 services:
+  rancher:
+    image: rancher/server:v1.6.21
+    command:
+      - "--db-host"
+      - "ci-mysql"
+      - "--db-port"
+      - "3306"
+      - "--db-user"
+      - "cattle"
+      - "--db-pass"
+      - "cattle"
+      - "--db-name"
+      - "cattle"
   nginx:
     image: kbase/nginx:mini
     command:
@@ -463,6 +476,13 @@ services:
   
   ci-mysql:
     image: mysql:5.5
+    command:
+      - "mysqld"
+      - "--max_allowed_packet=64M"
+      - "--wait-timeout=600"
+      - "--innodb_log_buffer_size=32M"
+      - "--innodb_buffer_pool_size=256M"
+      - "--innodb_log_file_size=128M"
     environment:
       MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
     #ports:

@@ -6,6 +6,6 @@
 
 sleep 5 && \
 echo "Loading mysql data..." && \
-mysql -h ci-mysql -u root -e "source /tmp/mysqldump" && \
+mysql -h ci-mysql -u root --max_allowed_packet=64M --init-command="SET SESSION wait_timeout=30" -e "source /tmp/mysqldump" && \
 echo "Loading mongodb data..." && \
 mongorestore --host ci-mongo /tmp/ws.mongodump
