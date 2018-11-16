@@ -1,6 +1,9 @@
 version: "3.1"
 #
 services:
+  registry:
+    image: registry
+  
   rancher:
     image: rancher/server:v1.6.21
     command:
@@ -45,7 +48,15 @@ services:
     depends_on: ["auth", "ws", "shock", "narrative_version", "kbase-ui", "searchapi", "service_wizard", "narrative_method_store", "user_profile", "catalog" ]
   # stubs for service_wizard, narrative_method_store, user_profile, catalog to capture the URLs that are being requested
   service_wizard:
-    image: bitnami/nginx:latest
+    image: kbase/service_wizard:dockerize
+    command:
+      - "-template"
+      - "/kb/deployment/conf/.templates/deployment.cfg.templ:/kb/deployment/conf/deployment.cfg"
+      - "/kb/deployment/services/service_wizard/start_service"
+    env_file:
+      - deployment/conf/servicewiz-minikb.ini
+    depends_on: ["rancher", "registry" ]
+
   narrative_method_store:
     image: kbase/narrative_method_store:develop
     command:
