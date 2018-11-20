@@ -30,6 +30,7 @@ services:
       - "/var/log/nginx/access.log"
       - "-stdout"
       - "/var/log/nginx/error.log"
+      - "-poll"
     #  - "-env"
     #  - "https://raw.githubusercontent.com/kbase/mini_kb/master/deployment/conf/nginx-minikb.ini"
       - "nginx"
@@ -106,6 +107,7 @@ services:
       - "/kb/deployment/bin/start-server.sh"
     env_file:
       - deployment/conf/user_profile.ini
+    depends_on: ["auth", "ci-mongo","db-init"]
   narrative_version:
     image: kbase/narrative_version:latest
   kbase-ui:
