@@ -46,7 +46,7 @@ services:
     ports:
       - "80:80"
       - "443:443"
-    depends_on: ["auth", "ws", "shock", "narrative_version", "searchapi", "service_wizard", "narrative_method_store", "user_profile", "catalog" ]
+    depends_on: ["auth", "ws", "shock", "narrative_version", "service_wizard", "narrative_method_store", "user_profile", "catalog" ]
   # stubs for service_wizard, narrative_method_store, user_profile, catalog to capture the URLs that are being requested
   service_wizard:
     image: kbase/service_wizard:dockerize
@@ -71,6 +71,14 @@ services:
       - "/kb/deployment/conf/.templates/start_server.sh.templ:/kb/deployment/bin/start_server.sh"
       - "-stdout"
       - "/kb/deployment/services/narrative_method_store/logs/request.log"
+      - "-wait"
+      - "tcp://ci-mongo:27017"
+      - "-wait"
+      - "tcp://db-init:8080"
+      - "-wait"
+      - "tcp://auth:8080"
+      - "-timeout"
+      - "150s"
       - "/kb/deployment/bin/start_server.sh"
     env_file:
       - deployment/conf/nms-minikb.ini
@@ -85,6 +93,14 @@ services:
       - "-poll"
       - "-stderr"
       - "/kb/deployment/services/catalog/error.log"
+      - "-wait"
+      - "tcp://ci-mongo:27017"
+      - "-wait"
+      - "tcp://db-init:8080"
+      - "-wait"
+      - "tcp://auth:8080"
+      - "-timeout"
+      - "150s"
       - "/kb/deployment/services/catalog/start_service"
     depends_on: ["auth", "ci-mongo", "narrative_method_store" ]
     env_file:
@@ -103,7 +119,15 @@ services:
       - "-stdout"
       - "/kb/deployment/jettybase/logs/request.log"
       - "-poll"
-      - "/bin/sh"
+      - "-wait"
+      - "tcp://ci-mongo:27017"
+      - "-wait"
+      - "tcp://db-init:8080"
+      - "-wait"
+      - "tcp://auth:8080"
+      - "-timeout"
+      - "150s"
+      - "/bin/bash"
       - "/kb/deployment/bin/start-server.sh"
     env_file:
       - deployment/conf/user_profile.ini
