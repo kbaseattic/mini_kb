@@ -46,7 +46,7 @@ services:
     ports:
       - "80:80"
       - "443:443"
-    depends_on: ["auth", "ws", "shock", "narrative_version", "kbase-ui", "searchapi", "service_wizard", "narrative_method_store", "user_profile", "catalog" ]
+    depends_on: ["auth", "ws", "shock", "narrative_version", "searchapi", "service_wizard", "narrative_method_store", "user_profile", "catalog" ]
   # stubs for service_wizard, narrative_method_store, user_profile, catalog to capture the URLs that are being requested
   service_wizard:
     image: kbase/service_wizard:dockerize
@@ -133,7 +133,7 @@ services:
     # Or if you want to use a file:
     env_file:
       - deployment/conf/kbase-ui-minikb.ini
-
+    depends_on: ["nginx"]
   searchapi:
     image: kbase/kb_search:latest
     command:
@@ -225,7 +225,7 @@ services:
     depends_on: ["auth", "handle_service", "ws", "shock", "ujs", "nginx", "ci-mongo"]
 
   logstash:
-    image: kbase/kb_logstash:latest
+    image: kbase/logstash:latest
     command:
       - "-template"
       - "/usr/share/logstash/.templates/10inputs.templ:/usr/share/logstash/pipeline/10inputs"
