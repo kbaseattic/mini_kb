@@ -86,7 +86,8 @@ services:
   catalog:
     image: kbase/catalog:latest
     volumes:
-      - /var/run/docker.sock:/var/run/docker.sock 
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /tmp:/tmp
     command:
       - "-template"
       - "/kb/deployment/conf/.templates/deploy.cfg.templ:/kb/deployment/conf/deploy.cfg"
