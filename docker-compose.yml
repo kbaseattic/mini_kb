@@ -2,7 +2,10 @@ version: "3.1"
 #
 services:
   registry:
-    image: registry
+    image: registry:2
+    ports: ["5000:5000"]
+    env_file:
+      deployment/conf/registry.ini
   
   rancher:
     image: rancher/server:v1.6.21
@@ -100,6 +103,8 @@ services:
       - "tcp://db-init:8080"
       - "-wait"
       - "tcp://auth:8080"
+      - "-wait"
+      - "tcp://registry:5000"
       - "-timeout"
       - "150s"
       - "/kb/deployment/services/catalog/start_service"
