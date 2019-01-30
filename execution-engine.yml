@@ -371,6 +371,13 @@ services:
   
   ci-mysql:
     image: mysql:5.5
+    command:
+      - "mysqld"
+      - "--max_allowed_packet=64M"
+      - "--wait-timeout=600"
+      - "--innodb_log_buffer_size=32M"
+      - "--innodb_buffer_pool_size=256M"
+#      - "--innodb_log_file_size=128M"
     environment:
       MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
     #ports:

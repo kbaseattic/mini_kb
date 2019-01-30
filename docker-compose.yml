@@ -50,7 +50,6 @@ services:
       - "80:80"
       - "443:443"
     depends_on: ["auth", "ws", "shock", "narrative_version", "service_wizard", "narrative_method_store", "user_profile", "catalog" ]
-  # stubs for service_wizard, narrative_method_store, user_profile, catalog to capture the URLs that are being requested
   service_wizard:
     image: kbase/service_wizard:dockerize
     command:
