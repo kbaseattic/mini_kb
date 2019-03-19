@@ -158,7 +158,7 @@ services:
       # - /njs_wrapper:/njs_wrapper
 
   ujs:
-    image: kbase/kb_ujs:latest
+    image: kbase/ujs:develop
     command:
       - "-poll"
       - "-env"
