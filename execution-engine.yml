@@ -142,13 +142,11 @@ services:
       - "-wait"
       - "tcp://auth:8080"
       - "-wait"
-      - "tcp://awe:8080"
-      - "-wait"
       - "tcp://ws:8080"
       - "-stdout"
       - "/kb/deployment/jettybase/logs/request.log"
       - "/kb/deployment/bin/start_server.sh"
-    depends_on: ["auth", "awe", "ws", "ci-mongo","db-init","ujs","condor"]
+    depends_on: ["auth", "ws", "ci-mongo","db-init","ujs","condor"]
     environment:
       - POOL_PASSWORD=weakpassword
     # env_file: deployment/conf/njs-wrapper-minikb.ini
@@ -180,34 +178,12 @@ services:
       - "-wait"
       - "tcp://auth:8080"
       - "-wait"
-      - "tcp://awe:8080"
-      - "-wait"
       - "tcp://ws:8080"
       - "-stdout"
       - "/kb/deployment/jettybase/logs/request.log"
       - "/kb/deployment/bin/start_server.sh"
       # 
-    depends_on: ["auth", "awe", "ws", "ci-mongo","db-init"]
-
-  awe:
-    image: kbase/kb_awe:latest
-    command:
-      - "-wait"
-      - "tcp://ci-mongo:27017"
-      - "-wait"
-      - "tcp://db-init:8080"
-      - "-timeout"
-      - "120s"
-      - "-template"
-      - "/kb/deployment/conf/.templates/awe-server.cfg.templ:/kb/deployment/conf/awe-server.cfg"
-      - "-env"
-      - "https://raw.githubusercontent.com/kbase/mini_kb/master/deployment/conf/awe-minikb.ini"
-      - "/kb/deployment/bin/awe-server"
-      - "--conf"
-      - "/kb/deployment/conf/awe-server.cfg" 
-    #ports:
-    #  - "8080:8080"
-    depends_on: ["ci-mongo","db-init"]
+    depends_on: ["auth", "ws", "ci-mongo","db-init"]
 
 
   ws:
