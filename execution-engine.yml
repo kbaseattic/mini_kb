@@ -27,7 +27,40 @@ services:
     ports:
       - "80:80"
       - "443:443"
-    depends_on: ["auth", "handle_service", "handle_manager", "ws", "ujs", "njs"]
+    depends_on: ["auth", "handle_service", "handle_manager", "ws", "ujs", "njs", "narrative_method_store",  "catalog"] 
+
+  narrative_method_store:
+    image: kbase/narrative_method_store:develop
+    command:
+      - "-template"
+      - "/kb/deployment/conf/.templates/deployment.cfg.templ:/kb/deployment/conf/deployment.cfg"
+      - "-template"
+      - "/kb/deployment/conf/.templates/http.ini.templ:/kb/deployment/services/narrative_method_store/start.d/http.ini"
+      - "-template"
+      - "/kb/deployment/conf/.templates/server.ini.templ:/kb/deployment/services/narrative_method_store/start.d/server.ini"
+      - "-template"
+      - "/kb/deployment/conf/.templates/start_server.sh.templ:/kb/deployment/bin/start_server.sh"
+      - "-stdout"
+      - "/kb/deployment/services/narrative_method_store/logs/request.log"
+      - "/kb/deployment/bin/start_server.sh"
+    env_file:
+      - deployment/conf/nms-minikb.ini
+    depends_on: ["auth", "ci-mongo" ]
+
+  catalog:
+    image: kbase/catalog:latest
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock 
+    command:
+      - "-template"
+      - "/kb/deployment/conf/.templates/deploy.cfg.templ:/kb/deployment/conf/deploy.cfg"
+      - "-poll"
+      - "-stderr"
+      - "/kb/deployment/services/catalog/error.log"
+      - "/kb/deployment/services/catalog/start_service"
+    depends_on: ["auth", "ci-mongo", "narrative_method_store" ]
+    env_file:
+      - deployment/conf/catalog-minikb.ini
 
   condor:
     image: kbase/condor:latest
@@ -142,13 +175,11 @@ services:
       - "-wait"
       - "tcp://auth:8080"
       - "-wait"
-      - "tcp://awe:8080"
-      - "-wait"
       - "tcp://ws:8080"
       - "-stdout"
       - "/kb/deployment/jettybase/logs/request.log"
       - "/kb/deployment/bin/start_server.sh"
-    depends_on: ["auth", "awe", "ws", "ci-mongo","db-init","ujs","condor"]
+    depends_on: ["auth", "ws", "ci-mongo","db-init","ujs","condor"]
     environment:
       - POOL_PASSWORD=weakpassword
     # env_file: deployment/conf/njs-wrapper-minikb.ini
@@ -158,7 +189,7 @@ services:
       # - /njs_wrapper:/njs_wrapper
 
   ujs:
-    image: kbase/kb_ujs:latest
+    image: kbase/ujs:develop
     command:
       - "-poll"
       - "-env"
@@ -180,34 +211,12 @@ services:
       - "-wait"
       - "tcp://auth:8080"
       - "-wait"
-      - "tcp://awe:8080"
-      - "-wait"
       - "tcp://ws:8080"
       - "-stdout"
       - "/kb/deployment/jettybase/logs/request.log"
       - "/kb/deployment/bin/start_server.sh"
       # 
-    depends_on: ["auth", "awe", "ws", "ci-mongo","db-init"]
-
-  awe:
-    image: kbase/kb_awe:latest
-    command:
-      - "-wait"
-      - "tcp://ci-mongo:27017"
-      - "-wait"
-      - "tcp://db-init:8080"
-      - "-timeout"
-      - "120s"
-      - "-template"
-      - "/kb/deployment/conf/.templates/awe-server.cfg.templ:/kb/deployment/conf/awe-server.cfg"
-      - "-env"
-      - "https://raw.githubusercontent.com/kbase/mini_kb/master/deployment/conf/awe-minikb.ini"
-      - "/kb/deployment/bin/awe-server"
-      - "--conf"
-      - "/kb/deployment/conf/awe-server.cfg" 
-    #ports:
-    #  - "8080:8080"
-    depends_on: ["ci-mongo","db-init"]
+    depends_on: ["auth", "ws", "ci-mongo","db-init"]
 
 
   ws:
