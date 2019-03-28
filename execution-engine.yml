@@ -27,7 +27,40 @@ services:
     ports:
       - "80:80"
       - "443:443"
-    depends_on: ["auth", "handle_service", "handle_manager", "ws", "ujs", "njs"]
+    depends_on: ["auth", "handle_service", "handle_manager", "ws", "ujs", "njs", "narrative_method_store",  "catalog"] 
+
+  narrative_method_store:
+    image: kbase/narrative_method_store:develop
+    command:
+      - "-template"
+      - "/kb/deployment/conf/.templates/deployment.cfg.templ:/kb/deployment/conf/deployment.cfg"
+      - "-template"
+      - "/kb/deployment/conf/.templates/http.ini.templ:/kb/deployment/services/narrative_method_store/start.d/http.ini"
+      - "-template"
+      - "/kb/deployment/conf/.templates/server.ini.templ:/kb/deployment/services/narrative_method_store/start.d/server.ini"
+      - "-template"
+      - "/kb/deployment/conf/.templates/start_server.sh.templ:/kb/deployment/bin/start_server.sh"
+      - "-stdout"
+      - "/kb/deployment/services/narrative_method_store/logs/request.log"
+      - "/kb/deployment/bin/start_server.sh"
+    env_file:
+      - deployment/conf/nms-minikb.ini
+    depends_on: ["auth", "ci-mongo" ]
+
+  catalog:
+    image: kbase/catalog:latest
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock 
+    command:
+      - "-template"
+      - "/kb/deployment/conf/.templates/deploy.cfg.templ:/kb/deployment/conf/deploy.cfg"
+      - "-poll"
+      - "-stderr"
+      - "/kb/deployment/services/catalog/error.log"
+      - "/kb/deployment/services/catalog/start_service"
+    depends_on: ["auth", "ci-mongo", "narrative_method_store" ]
+    env_file:
+      - deployment/conf/catalog-minikb.ini
 
   condor:
     image: kbase/condor:latest
