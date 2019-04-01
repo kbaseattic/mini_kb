@@ -223,7 +223,7 @@ services:
     depends_on: ["auth", "handle_service", "ws", "shock", "ujs", "nginx", "ci-mongo"]
 
   logstash:
-    image: kbase/kb_logstash:latest
+    image: kbase/logstash:latest
     command:
       - "-template"
       - "/usr/share/logstash/.templates/10inputs.templ:/usr/share/logstash/pipeline/10inputs"
@@ -288,7 +288,7 @@ services:
     # env_file: deployment/conf/njs-wrapper-minikb.ini
 
   ujs:
-    image: kbase/kb_ujs:latest
+    image: kbase/ujs:develop
     command:
       - "-poll"
       - "-env"

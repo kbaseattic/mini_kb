@@ -48,12 +48,12 @@ services:
     depends_on: ["auth", "ci-mongo" ]
 
   catalog:
-    image: kbase/catalog:latest
+    image: kbase/catalog:develop
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock 
     command:
       - "-template"
-      - "/kb/deployment/conf/.templates/deploy.cfg.templ:/kb/deployment/conf/deploy.cfg"
+      - "/kb/deployment/conf/.templates/deploy.minikb.cfg.templ:/kb/deployment/conf/deploy.cfg"
       - "-poll"
       - "-stderr"
       - "/kb/deployment/services/catalog/error.log"
