@@ -60,14 +60,8 @@ services:
       - /refdata/:/kbase/data/sdk/ci/refdata
     depends_on: ["auth", "ci-mongo" ]
 
-
-
-  #- "-template"
-  #- "/kb/deployment/conf/.templates/deploy.minikb.cfg.templ:/kb/deployment/conf/deploy.cfg"
   #image: kbase/catalog:developer
   catalog:
-    #image: kbase/catalog:latest
-    #image: kbase/catalog:developer
     image: kbase/catalog:develop
     #image: catalogwithsimpleapp
     volumes:
