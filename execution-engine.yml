@@ -1,6 +1,12 @@
 version: "3.1"
 #
 services:
+  registry:
+#    image: dockerhubwithsimpleapp
+    image: registry
+    ports:
+      - "5000:5000"
+
   nginx:
     image: kbase/nginx:mini
     command:
@@ -32,6 +38,10 @@ services:
   narrative_method_store:
     image: kbase/narrative_method_store:develop
     command:
+      - "-wait"
+      - "tcp://auth:8080"
+      - "-timeout"
+      - "150s" 
       - "-template"
       - "/kb/deployment/conf/.templates/deployment.cfg.templ:/kb/deployment/conf/deployment.cfg"
       - "-template"
@@ -45,12 +55,25 @@ services:
       - "/kb/deployment/bin/start_server.sh"
     env_file:
       - deployment/conf/nms-minikb.ini
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /refdata/:/kbase/data/sdk/ci/refdata
     depends_on: ["auth", "ci-mongo" ]
 
+
+
+  #- "-template"
+  #- "/kb/deployment/conf/.templates/deploy.minikb.cfg.templ:/kb/deployment/conf/deploy.cfg"
+  #image: kbase/catalog:developer
   catalog:
+    #image: kbase/catalog:latest
+    #image: kbase/catalog:developer
     image: kbase/catalog:develop
+    #image: catalogwithsimpleapp
     volumes:
-      - /var/run/docker.sock:/var/run/docker.sock 
+      - /refdata/:/kbase/data/sdk/ci/refdata
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /tmp/:/tmp/ 
     command:
       - "-template"
       - "/kb/deployment/conf/.templates/deploy.minikb.cfg.templ:/kb/deployment/conf/deploy.cfg"
@@ -86,7 +109,7 @@ services:
       
   
   condor_worker_max:
-    image: kbase/kb_njs_wrapper:develop
+    image: kbase/condor-worker:develop
     hostname: condor_worker_max
     command:
       - "-poll"
@@ -111,10 +134,11 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock 
       - /mnt/condor:/mnt/condor
+      - /sys/fs/cgroup:/sys/fs/cgroup
       # The line below DOES NOT WORK FOR MacOS, but should uncommented for Unix hosts
       # - /dev/log:/dev/log
   condor_worker_mini:
-    image: kbase/kb_njs_wrapper:develop
+    image: kbase/condor-worker:develop
     hostname: condor_worker_mini
     command:
       - "-poll"
@@ -145,15 +169,17 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock 
       - /mnt/condor:/mnt/condor
+      - /sys/fs/cgroup:/sys/fs/cgroup
       # The line below DOES NOT WORK FOR MacOS, but should uncommented for Unix hosts
       # - /dev/log:/dev/log
 
+  #- "https://raw.githubusercontent.com/kbase/mini_kb/master/deployment/conf/njs-wrapper-minikb.ini"
   njs:
-    image: kbase/kb_njs_wrapper:develop
+    image: kbase/njs_wrapper:develop
     command:
       - "-poll"
-      - "-env"
-      - "https://raw.githubusercontent.com/kbase/mini_kb/master/deployment/conf/njs-wrapper-minikb.ini"
+      #- "-env"
+      #- "https://raw.githubusercontent.com/bio-boris/mini_kb/justExecutionEngine/deployment/conf/njs-wrapper-minikb.ini"
       - "-template"
       - "/kb/deployment/conf/.templates/deployment.cfg.templ:/kb/deployment/conf/deployment.cfg"
       - "-template"
@@ -182,9 +208,11 @@ services:
     depends_on: ["auth", "ws", "ci-mongo","db-init","ujs","condor"]
     environment:
       - POOL_PASSWORD=weakpassword
-    # env_file: deployment/conf/njs-wrapper-minikb.ini
+    env_file: deployment/conf/njs-wrapper-minikb.ini
     volumes:
       - /mnt/condor:/mnt/condor
+      - /mnt/condor/service.pid:/kb/deployment/services/catalog/service.pid
+      - /mnt/condor/error.log:/kb/deployment/services/catalog/error.log
       # Place your jars directory and njs_wrapper code here for local dev
       # - /njs_wrapper:/njs_wrapper
 
