@@ -548,7 +548,6 @@ services:
     command:
       - "-wait"
       - "tcp://ci-mongo:27017"
-      - "-wait"
       - "-timeout"
       - "120s"
       - "-template"
