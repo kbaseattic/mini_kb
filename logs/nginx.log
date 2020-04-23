@@ -1,0 +1,435 @@
+2020/04/17 22:34:14 [info] 12#12: [lua] proxy_mgr.lua:421: initialize(): conf(docker_map) = table: 0x40fdbb10
+2020/04/17 22:34:14 [info] 12#12: [lua] proxy_mgr.lua:421: initialize(): conf(token_cache) = table: 0x40fd69c0
+2020/04/17 22:34:14 [info] 12#12: [lua] proxy_mgr.lua:421: initialize(): conf(lock_name) = lock_map
+2020/04/17 22:34:14 [info] 12#12: [lua] proxy_mgr.lua:421: initialize(): conf(session_map) = table: 0x40fdbab0
+2020/04/17 22:34:14 [info] 12#12: [lua] proxy_mgr.lua:421: initialize(): conf(provision_count) = 0
+2020/04/17 22:34:14 [info] 12#12: [lua] proxy_mgr.lua:421: initialize(): conf(proxy_mgr) = table: 0x40fd1f08
+2020/04/17 22:34:14 [info] 12#12: [lua] kbase_auth.lua:44: initialize(): Auth.init conf(token_cache) = table: 0x40fd69c0
+2020/04/17 22:34:14 [info] 12#12: [lua] kbase_auth.lua:53: initialize(): Initializing Auth module: token lifespan = 300 seconds
+2020/04/17 22:34:14 [info] 12#12: [lua] proxy_mgr.lua:443: initialize(): Initializing proxy manager: sweep_interval 600 mark_interval 120 idle_timeout 300 
+2020/04/17 22:34:14 [info] 12#12: [lua] proxy_mgr.lua:445: initialize(): Image kbase/narrative:latest
+2020/04/17 22:34:14 [notice] 12#12: using the "epoll" event method
+2020/04/17 22:34:14 [notice] 12#12: openresty/1.13.6.1
+2020/04/17 22:34:14 [notice] 12#12: built by gcc 4.9.2 (Debian 4.9.2-10+deb8u1) 
+2020/04/17 22:34:14 [notice] 12#12: OS: Linux 5.3.0-7648-generic
+2020/04/17 22:34:14 [notice] 12#12: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2020/04/17 22:34:14 [notice] 12#12: start worker processes
+2020/04/17 22:34:14 [notice] 12#12: start worker process 13
+2020/04/17 22:34:14 [notice] 12#12: start worker process 14
+2020/04/17 22:34:14 [notice] 12#12: start worker process 15
+2020/04/17 22:34:14 [notice] 12#12: start worker process 16
+2020/04/17 22:34:14 [notice] 12#12: start worker process 17
+2020/04/17 22:34:14 [notice] 12#12: start worker process 18
+2020/04/17 22:34:14 [notice] 12#12: start worker process 19
+2020/04/17 22:34:14 [notice] 12#12: start worker process 20
+2020/04/17 22:34:14 [notice] 12#12: start worker process 21
+2020/04/17 22:34:14 [notice] 12#12: start worker process 22
+2020/04/17 22:34:14 [notice] 12#12: start worker process 23
+2020/04/17 22:34:14 [notice] 12#12: start worker process 24
+127.0.0.1 - - [17/Apr/2020:22:34:14 +0000] "GET /containers/json HTTP/1.1" 200 42686 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:34:14 +0000] "GET /containers/56b1c3cfbb9e8501be391499299c67e661904100080856626ddeead7411a820e/json HTTP/1.1" 200 9069 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:34:14 +0000] "GET /containers/950223e42e67b355265de0d47883e81052e2f9ab17a848f776a0345ac19725d6/json HTTP/1.1" 200 7608 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:34:14 +0000] "GET /containers/9336d4320bfb07cf78bd6772bf125285ed12125b8a76e3fc465e15e27d5542f0/json HTTP/1.1" 200 9900 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:34:14 +0000] "GET /containers/4ac1d7878ca752ae7af6fba6c19944fa64082beabafb98555c9dde5050b37fe6/json HTTP/1.1" 200 6805 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:34:14 +0000] "GET /containers/2f9775b73c68f40507c593905a9630609fba439fd109e19f1b4217c1cd8ec64f/json HTTP/1.1" 200 9057 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:34:14 +0000] "GET /containers/cba101fba80a5d75ef2a8af5cc574d38309fd500437f300dcb33d3c0c58165a6/json HTTP/1.1" 200 6338 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:34:14 +0000] "GET /containers/0188efe2ef669b3cc9e10713f85b67536eebbd3ac4bebbd48544058f3e042763/json HTTP/1.1" 200 9875 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:34:14 +0000] "GET /containers/edeaf91a44989901a5dd48b5dc63fa0d914d6698608c6153f0c4d5b855757f49/json HTTP/1.1" 200 6414 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:34:14 +0000] "GET /containers/75513df3c2dd6f024a45ebbf5ab0fcf613451e3d202b952a50fddf983cc5c89b/json HTTP/1.1" 200 9374 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:34:14 +0000] "GET /containers/ee5d12a2c180b982cd74d6ce7092a2dc634ab60cd87e7d7b2304960bde2715e3/json HTTP/1.1" 200 8408 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:34:14 +0000] "GET /containers/e88e308c7c3987f5b5ab5e16129c013c61dc0efcaeb3d364637e41c676f9a20c/json HTTP/1.1" 200 7641 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:34:14 +0000] "GET /containers/483fb665c75538e44d3fdab18f717ee67e002a0dc619309f6acbdb93a55c65be/json HTTP/1.1" 200 6580 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:34:14 +0000] "GET /containers/7405358fd045635d1d7e065fa2f352eae8c748990c45a9d347eaa432daf490b3/json HTTP/1.1" 200 8393 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:34:14 +0000] "GET /containers/8ba1fdd5cfe560e4d3141cefc30b6dc731bfde30fbffc33af167f9107f29d18c/json HTTP/1.1" 200 8421 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:34:14 +0000] "GET /containers/b8ea4ecb18d83a8dcd2db7b99b8471e6e8d6c9e093c140a303c2c828507a096e/json HTTP/1.1" 200 8166 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:34:14 +0000] "GET /containers/778d4935eb0a34884e4d4243ae10bc3deb5bb67c83e8f8bdd75e46727edf1191/json HTTP/1.1" 200 9871 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:34:14 +0000] "GET /containers/372fe2a21bd336224181afa6b501f3ea32317f6c376af2996977ccbbc4fa4f2c/json HTTP/1.1" 200 6166 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:34:14 +0000] "GET /containers/156bb5395a46a3013e878b232a6766451308871af315c8db77b32eb4291a0063/json HTTP/1.1" 200 5603 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:34:14 +0000] "GET /containers/8198f8a124918add75757ec843afbe18560525e7ff85ad7a4a21ecf18b33e5ac/json HTTP/1.1" 200 6561 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:34:14 +0000] "GET /containers/7a2c86067a79c2f494418dfdd77743a30ad0738c23b619037749c7f5197af166/json HTTP/1.1" 200 5814 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:34:14 +0000] "GET /containers/1cb9ac7929727140dcbecc04964562e582fcbd1c7a48f0384f5cb975ff071535/json HTTP/1.1" 200 6493 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:34:14 +0000] "GET /containers/1bdea3847df7c02de2eb66fbe71e8f9a2140a64b9b701eb256dba05be93a7de4/json HTTP/1.1" 200 5776 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:34:14 +0000] "GET /containers/33b62531629d742d3026d8388a4ca1caa0618b17718d90a612d54150fc91db89/json HTTP/1.1" 200 6447 "-" "lua-Spore v0.3.3"
+2020/04/17 22:34:14 [info] 13#13: *1 [lua] proxy_mgr.lua:313: check_marker(): Enqueuing marker to run in 120 seconds, context: init_worker_by_lua*
+2020/04/17 22:34:14 [info] 13#13: *1 [lua] proxy_mgr.lua:399: check_provisioner(): Enqueuing provisioner to run in 0 seconds, context: init_worker_by_lua*
+2020/04/17 22:34:14 [info] 13#13: *6 [lua] proxy_mgr.lua:334: provisioner running, context: ngx.timer
+2020/04/17 22:34:14 [info] 13#13: *6 [lua] proxy_mgr.lua:836: sync_containers(): Syncing docker memory map with docker container state, context: ngx.timer
+2020/04/17 22:34:14 [info] 13#13: *6 [lua] notelauncher.lua:49: get_notebooks(): use image kbase/narrative:latest, context: ngx.timer
+2020/04/17 22:34:14 [info] 13#13: *6 [lua] proxy_mgr.lua:399: check_provisioner(): Enqueuing provisioner to run in 30 seconds, context: ngx.timer
+2020/04/17 22:34:44 [info] 13#13: *62 [lua] proxy_mgr.lua:334: provisioner running, context: ngx.timer
+2020/04/17 22:34:44 [info] 13#13: *62 [lua] proxy_mgr.lua:836: sync_containers(): Syncing docker memory map with docker container state, context: ngx.timer
+127.0.0.1 - - [17/Apr/2020:22:34:44 +0000] "GET /containers/json HTTP/1.1" 200 51269 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:34:44 +0000] "GET /containers/e2a33de9368bdd64bdb99937477440faaa8bb31fdb52822947dc447c2d9b02a2/json HTTP/1.1" 200 8686 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:34:44 +0000] "GET /containers/a9608c77feffa9844420be6466f1265730a6a3577c2e1410b9c6d4587ba494ac/json HTTP/1.1" 200 7156 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:34:44 +0000] "GET /containers/191e538377fe0caa60b953e7ed1aadc3ded7caef08c85974cec7bba80203afca/json HTTP/1.1" 200 8797 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:34:44 +0000] "GET /containers/1c410a4e90a52c479f25074cfc39b15bd8380d8e3f31858b7d46aecf939cd19e/json HTTP/1.1" 200 9266 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:34:44 +0000] "GET /containers/ef36ed639457ca9a828a2c1565d0ce6ae6a21ca5573a7899a7392ad5ec32a893/json HTTP/1.1" 200 9581 "-" "lua-Spore v0.3.3"
+2020/04/17 22:34:44 [info] 13#13: *62 [lua] notelauncher.lua:49: get_notebooks(): use image kbase/narrative:latest, context: ngx.timer
+127.0.0.1 - - [17/Apr/2020:22:34:44 +0000] "GET /containers/26a534ed987a71b22ce41183f689fce1ff55d0fdea9d30adb775102ff47f2a76/json HTTP/1.1" 200 10315 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:34:44 +0000] "GET /containers/56b1c3cfbb9e8501be391499299c67e661904100080856626ddeead7411a820e/json HTTP/1.1" 200 9069 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:34:44 +0000] "GET /containers/950223e42e67b355265de0d47883e81052e2f9ab17a848f776a0345ac19725d6/json HTTP/1.1" 200 7608 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:34:44 +0000] "GET /containers/9336d4320bfb07cf78bd6772bf125285ed12125b8a76e3fc465e15e27d5542f0/json HTTP/1.1" 200 9900 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:34:44 +0000] "GET /containers/4ac1d7878ca752ae7af6fba6c19944fa64082beabafb98555c9dde5050b37fe6/json HTTP/1.1" 200 6805 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:34:44 +0000] "GET /containers/2f9775b73c68f40507c593905a9630609fba439fd109e19f1b4217c1cd8ec64f/json HTTP/1.1" 200 9057 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:34:44 +0000] "GET /containers/cba101fba80a5d75ef2a8af5cc574d38309fd500437f300dcb33d3c0c58165a6/json HTTP/1.1" 200 6338 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:34:44 +0000] "GET /containers/0188efe2ef669b3cc9e10713f85b67536eebbd3ac4bebbd48544058f3e042763/json HTTP/1.1" 200 9875 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:34:44 +0000] "GET /containers/edeaf91a44989901a5dd48b5dc63fa0d914d6698608c6153f0c4d5b855757f49/json HTTP/1.1" 200 6414 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:34:44 +0000] "GET /containers/75513df3c2dd6f024a45ebbf5ab0fcf613451e3d202b952a50fddf983cc5c89b/json HTTP/1.1" 200 9374 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:34:44 +0000] "GET /containers/ee5d12a2c180b982cd74d6ce7092a2dc634ab60cd87e7d7b2304960bde2715e3/json HTTP/1.1" 200 8408 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:34:44 +0000] "GET /containers/e88e308c7c3987f5b5ab5e16129c013c61dc0efcaeb3d364637e41c676f9a20c/json HTTP/1.1" 200 7641 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:34:44 +0000] "GET /containers/7405358fd045635d1d7e065fa2f352eae8c748990c45a9d347eaa432daf490b3/json HTTP/1.1" 200 8393 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:34:44 +0000] "GET /containers/8ba1fdd5cfe560e4d3141cefc30b6dc731bfde30fbffc33af167f9107f29d18c/json HTTP/1.1" 200 8428 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:34:44 +0000] "GET /containers/778d4935eb0a34884e4d4243ae10bc3deb5bb67c83e8f8bdd75e46727edf1191/json HTTP/1.1" 200 9871 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:34:44 +0000] "GET /containers/372fe2a21bd336224181afa6b501f3ea32317f6c376af2996977ccbbc4fa4f2c/json HTTP/1.1" 200 6166 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:34:44 +0000] "GET /containers/156bb5395a46a3013e878b232a6766451308871af315c8db77b32eb4291a0063/json HTTP/1.1" 200 5603 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:34:44 +0000] "GET /containers/8198f8a124918add75757ec843afbe18560525e7ff85ad7a4a21ecf18b33e5ac/json HTTP/1.1" 200 6561 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:34:44 +0000] "GET /containers/7a2c86067a79c2f494418dfdd77743a30ad0738c23b619037749c7f5197af166/json HTTP/1.1" 200 5814 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:34:44 +0000] "GET /containers/1cb9ac7929727140dcbecc04964562e582fcbd1c7a48f0384f5cb975ff071535/json HTTP/1.1" 200 6493 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:34:44 +0000] "GET /containers/1bdea3847df7c02de2eb66fbe71e8f9a2140a64b9b701eb256dba05be93a7de4/json HTTP/1.1" 200 5776 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:34:44 +0000] "GET /containers/33b62531629d742d3026d8388a4ca1caa0618b17718d90a612d54150fc91db89/json HTTP/1.1" 200 6447 "-" "lua-Spore v0.3.3"
+2020/04/17 22:34:44 [info] 13#13: *62 [lua] proxy_mgr.lua:399: check_provisioner(): Enqueuing provisioner to run in 30 seconds, context: ngx.timer
+2020/04/17 22:35:14 [info] 13#13: *119 [lua] proxy_mgr.lua:334: provisioner running, context: ngx.timer
+2020/04/17 22:35:14 [info] 13#13: *119 [lua] proxy_mgr.lua:836: sync_containers(): Syncing docker memory map with docker container state, context: ngx.timer
+127.0.0.1 - - [17/Apr/2020:22:35:14 +0000] "GET /containers/json HTTP/1.1" 200 51338 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:35:14 +0000] "GET /containers/e2a33de9368bdd64bdb99937477440faaa8bb31fdb52822947dc447c2d9b02a2/json HTTP/1.1" 200 8679 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:35:14 +0000] "GET /containers/a9608c77feffa9844420be6466f1265730a6a3577c2e1410b9c6d4587ba494ac/json HTTP/1.1" 200 7150 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:35:14 +0000] "GET /containers/191e538377fe0caa60b953e7ed1aadc3ded7caef08c85974cec7bba80203afca/json HTTP/1.1" 200 8797 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:35:14 +0000] "GET /containers/1c410a4e90a52c479f25074cfc39b15bd8380d8e3f31858b7d46aecf939cd19e/json HTTP/1.1" 200 9266 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:35:14 +0000] "GET /containers/ef36ed639457ca9a828a2c1565d0ce6ae6a21ca5573a7899a7392ad5ec32a893/json HTTP/1.1" 200 9581 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:35:14 +0000] "GET /containers/26a534ed987a71b22ce41183f689fce1ff55d0fdea9d30adb775102ff47f2a76/json HTTP/1.1" 200 10308 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:35:14 +0000] "GET /containers/56b1c3cfbb9e8501be391499299c67e661904100080856626ddeead7411a820e/json HTTP/1.1" 200 9069 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:35:14 +0000] "GET /containers/950223e42e67b355265de0d47883e81052e2f9ab17a848f776a0345ac19725d6/json HTTP/1.1" 200 7608 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:35:14 +0000] "GET /containers/9336d4320bfb07cf78bd6772bf125285ed12125b8a76e3fc465e15e27d5542f0/json HTTP/1.1" 200 9893 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:35:14 +0000] "GET /containers/4ac1d7878ca752ae7af6fba6c19944fa64082beabafb98555c9dde5050b37fe6/json HTTP/1.1" 200 6805 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:35:14 +0000] "GET /containers/2f9775b73c68f40507c593905a9630609fba439fd109e19f1b4217c1cd8ec64f/json HTTP/1.1" 200 9050 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:35:14 +0000] "GET /containers/cba101fba80a5d75ef2a8af5cc574d38309fd500437f300dcb33d3c0c58165a6/json HTTP/1.1" 200 6332 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:35:14 +0000] "GET /containers/0188efe2ef669b3cc9e10713f85b67536eebbd3ac4bebbd48544058f3e042763/json HTTP/1.1" 200 9875 "-" "lua-Spore v0.3.3"
+2020/04/17 22:35:14 [info] 13#13: *119 [lua] notelauncher.lua:49: get_notebooks(): use image kbase/narrative:latest, context: ngx.timer
+2020/04/17 22:35:14 [info] 13#13: *119 [lua] proxy_mgr.lua:399: check_provisioner(): Enqueuing provisioner to run in 30 seconds, context: ngx.timer
+127.0.0.1 - - [17/Apr/2020:22:35:14 +0000] "GET /containers/edeaf91a44989901a5dd48b5dc63fa0d914d6698608c6153f0c4d5b855757f49/json HTTP/1.1" 200 6414 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:35:14 +0000] "GET /containers/75513df3c2dd6f024a45ebbf5ab0fcf613451e3d202b952a50fddf983cc5c89b/json HTTP/1.1" 200 9374 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:35:14 +0000] "GET /containers/ee5d12a2c180b982cd74d6ce7092a2dc634ab60cd87e7d7b2304960bde2715e3/json HTTP/1.1" 200 8401 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:35:14 +0000] "GET /containers/e88e308c7c3987f5b5ab5e16129c013c61dc0efcaeb3d364637e41c676f9a20c/json HTTP/1.1" 200 7641 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:35:14 +0000] "GET /containers/7405358fd045635d1d7e065fa2f352eae8c748990c45a9d347eaa432daf490b3/json HTTP/1.1" 200 8393 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:35:14 +0000] "GET /containers/8ba1fdd5cfe560e4d3141cefc30b6dc731bfde30fbffc33af167f9107f29d18c/json HTTP/1.1" 200 8421 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:35:14 +0000] "GET /containers/778d4935eb0a34884e4d4243ae10bc3deb5bb67c83e8f8bdd75e46727edf1191/json HTTP/1.1" 200 9871 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:35:14 +0000] "GET /containers/372fe2a21bd336224181afa6b501f3ea32317f6c376af2996977ccbbc4fa4f2c/json HTTP/1.1" 200 6166 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:35:14 +0000] "GET /containers/156bb5395a46a3013e878b232a6766451308871af315c8db77b32eb4291a0063/json HTTP/1.1" 200 5603 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:35:14 +0000] "GET /containers/8198f8a124918add75757ec843afbe18560525e7ff85ad7a4a21ecf18b33e5ac/json HTTP/1.1" 200 6555 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:35:14 +0000] "GET /containers/7a2c86067a79c2f494418dfdd77743a30ad0738c23b619037749c7f5197af166/json HTTP/1.1" 200 5814 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:35:14 +0000] "GET /containers/1cb9ac7929727140dcbecc04964562e582fcbd1c7a48f0384f5cb975ff071535/json HTTP/1.1" 200 6493 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:35:14 +0000] "GET /containers/1bdea3847df7c02de2eb66fbe71e8f9a2140a64b9b701eb256dba05be93a7de4/json HTTP/1.1" 200 5776 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:35:14 +0000] "GET /containers/33b62531629d742d3026d8388a4ca1caa0618b17718d90a612d54150fc91db89/json HTTP/1.1" 200 6447 "-" "lua-Spore v0.3.3"
+2020/04/17 22:35:44 [info] 13#13: *176 [lua] proxy_mgr.lua:334: provisioner running, context: ngx.timer
+2020/04/17 22:35:44 [info] 13#13: *176 [lua] proxy_mgr.lua:836: sync_containers(): Syncing docker memory map with docker container state, context: ngx.timer
+2020/04/17 22:35:44 [info] 13#13: *176 [lua] notelauncher.lua:49: get_notebooks(): use image kbase/narrative:latest, context: ngx.timer
+2020/04/17 22:35:44 [info] 13#13: *176 [lua] proxy_mgr.lua:399: check_provisioner(): Enqueuing provisioner to run in 30 seconds, context: ngx.timer
+127.0.0.1 - - [17/Apr/2020:22:35:44 +0000] "GET /containers/json HTTP/1.1" 200 51377 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:35:44 +0000] "GET /containers/e2a33de9368bdd64bdb99937477440faaa8bb31fdb52822947dc447c2d9b02a2/json HTTP/1.1" 200 8679 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:35:44 +0000] "GET /containers/a9608c77feffa9844420be6466f1265730a6a3577c2e1410b9c6d4587ba494ac/json HTTP/1.1" 200 7156 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:35:44 +0000] "GET /containers/191e538377fe0caa60b953e7ed1aadc3ded7caef08c85974cec7bba80203afca/json HTTP/1.1" 200 8797 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:35:44 +0000] "GET /containers/1c410a4e90a52c479f25074cfc39b15bd8380d8e3f31858b7d46aecf939cd19e/json HTTP/1.1" 200 9259 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:35:44 +0000] "GET /containers/ef36ed639457ca9a828a2c1565d0ce6ae6a21ca5573a7899a7392ad5ec32a893/json HTTP/1.1" 200 9574 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:35:44 +0000] "GET /containers/26a534ed987a71b22ce41183f689fce1ff55d0fdea9d30adb775102ff47f2a76/json HTTP/1.1" 200 10308 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:35:44 +0000] "GET /containers/56b1c3cfbb9e8501be391499299c67e661904100080856626ddeead7411a820e/json HTTP/1.1" 200 9062 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:35:44 +0000] "GET /containers/950223e42e67b355265de0d47883e81052e2f9ab17a848f776a0345ac19725d6/json HTTP/1.1" 200 7602 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:35:44 +0000] "GET /containers/9336d4320bfb07cf78bd6772bf125285ed12125b8a76e3fc465e15e27d5542f0/json HTTP/1.1" 200 9893 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:35:44 +0000] "GET /containers/4ac1d7878ca752ae7af6fba6c19944fa64082beabafb98555c9dde5050b37fe6/json HTTP/1.1" 200 6805 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:35:44 +0000] "GET /containers/2f9775b73c68f40507c593905a9630609fba439fd109e19f1b4217c1cd8ec64f/json HTTP/1.1" 200 9057 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:35:44 +0000] "GET /containers/cba101fba80a5d75ef2a8af5cc574d38309fd500437f300dcb33d3c0c58165a6/json HTTP/1.1" 200 6338 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:35:44 +0000] "GET /containers/0188efe2ef669b3cc9e10713f85b67536eebbd3ac4bebbd48544058f3e042763/json HTTP/1.1" 200 9868 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:35:44 +0000] "GET /containers/edeaf91a44989901a5dd48b5dc63fa0d914d6698608c6153f0c4d5b855757f49/json HTTP/1.1" 200 6414 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:35:44 +0000] "GET /containers/75513df3c2dd6f024a45ebbf5ab0fcf613451e3d202b952a50fddf983cc5c89b/json HTTP/1.1" 200 9367 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:35:44 +0000] "GET /containers/ee5d12a2c180b982cd74d6ce7092a2dc634ab60cd87e7d7b2304960bde2715e3/json HTTP/1.1" 200 8408 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:35:44 +0000] "GET /containers/e88e308c7c3987f5b5ab5e16129c013c61dc0efcaeb3d364637e41c676f9a20c/json HTTP/1.1" 200 7635 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:35:44 +0000] "GET /containers/7405358fd045635d1d7e065fa2f352eae8c748990c45a9d347eaa432daf490b3/json HTTP/1.1" 200 8386 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:35:44 +0000] "GET /containers/8ba1fdd5cfe560e4d3141cefc30b6dc731bfde30fbffc33af167f9107f29d18c/json HTTP/1.1" 200 8421 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:35:44 +0000] "GET /containers/778d4935eb0a34884e4d4243ae10bc3deb5bb67c83e8f8bdd75e46727edf1191/json HTTP/1.1" 200 9864 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:35:44 +0000] "GET /containers/372fe2a21bd336224181afa6b501f3ea32317f6c376af2996977ccbbc4fa4f2c/json HTTP/1.1" 200 6166 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:35:44 +0000] "GET /containers/156bb5395a46a3013e878b232a6766451308871af315c8db77b32eb4291a0063/json HTTP/1.1" 200 5603 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:35:44 +0000] "GET /containers/8198f8a124918add75757ec843afbe18560525e7ff85ad7a4a21ecf18b33e5ac/json HTTP/1.1" 200 6555 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:35:44 +0000] "GET /containers/7a2c86067a79c2f494418dfdd77743a30ad0738c23b619037749c7f5197af166/json HTTP/1.1" 200 5814 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:35:44 +0000] "GET /containers/1cb9ac7929727140dcbecc04964562e582fcbd1c7a48f0384f5cb975ff071535/json HTTP/1.1" 200 6493 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:35:44 +0000] "GET /containers/1bdea3847df7c02de2eb66fbe71e8f9a2140a64b9b701eb256dba05be93a7de4/json HTTP/1.1" 200 5776 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:35:44 +0000] "GET /containers/33b62531629d742d3026d8388a4ca1caa0618b17718d90a612d54150fc91db89/json HTTP/1.1" 200 6447 "-" "lua-Spore v0.3.3"
+2020/04/17 22:36:14 [notice] 13#13: signal 17 (SIGCHLD) received from 27
+2020/04/17 22:36:14 [notice] 13#13: unknown process 27 exited with code 0
+2020/04/17 22:36:14 [info] 13#13: *233 [lua] proxy_mgr.lua:249: marker running, context: ngx.timer
+2020/04/17 22:36:14 [info] 13#13: *233 [lua] proxy_mgr.lua:227: check_sweeper(): Enqueuing sweeper to run in 600 seconds, context: ngx.timer
+2020/04/17 22:36:14 [info] 13#13: *233 [lua] proxy_mgr.lua:313: check_marker(): Enqueuing marker to run in 120 seconds, context: ngx.timer
+127.0.0.1 - - [17/Apr/2020:22:36:14 +0000] "GET /containers/json HTTP/1.1" 200 47806 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:36:14 +0000] "GET /containers/e2a33de9368bdd64bdb99937477440faaa8bb31fdb52822947dc447c2d9b02a2/json HTTP/1.1" 200 8679 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:36:14 +0000] "GET /containers/a9608c77feffa9844420be6466f1265730a6a3577c2e1410b9c6d4587ba494ac/json HTTP/1.1" 200 7150 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:36:14 +0000] "GET /containers/191e538377fe0caa60b953e7ed1aadc3ded7caef08c85974cec7bba80203afca/json HTTP/1.1" 200 8790 "-" "lua-Spore v0.3.3"
+2020/04/17 22:36:14 [info] 13#13: *234 [lua] proxy_mgr.lua:334: provisioner running, context: ngx.timer
+2020/04/17 22:36:14 [info] 13#13: *234 [lua] proxy_mgr.lua:836: sync_containers(): Syncing docker memory map with docker container state, context: ngx.timer
+127.0.0.1 - - [17/Apr/2020:22:36:14 +0000] "GET /containers/1c410a4e90a52c479f25074cfc39b15bd8380d8e3f31858b7d46aecf939cd19e/json HTTP/1.1" 200 9259 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:36:14 +0000] "GET /containers/ef36ed639457ca9a828a2c1565d0ce6ae6a21ca5573a7899a7392ad5ec32a893/json HTTP/1.1" 200 9574 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:36:14 +0000] "GET /containers/26a534ed987a71b22ce41183f689fce1ff55d0fdea9d30adb775102ff47f2a76/json HTTP/1.1" 200 10315 "-" "lua-Spore v0.3.3"
+2020/04/17 22:36:14 [info] 13#13: *234 [lua] notelauncher.lua:49: get_notebooks(): use image kbase/narrative:latest, context: ngx.timer
+127.0.0.1 - - [17/Apr/2020:22:36:15 +0000] "GET /containers/56b1c3cfbb9e8501be391499299c67e661904100080856626ddeead7411a820e/json HTTP/1.1" 200 8941 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:36:15 +0000] "GET /containers/950223e42e67b355265de0d47883e81052e2f9ab17a848f776a0345ac19725d6/json HTTP/1.1" 200 7602 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:36:15 +0000] "GET /containers/9336d4320bfb07cf78bd6772bf125285ed12125b8a76e3fc465e15e27d5542f0/json HTTP/1.1" 200 9900 "-" "lua-Spore v0.3.3"
+2020/04/17 22:36:14 [info] 13#13: *234 [lua] proxy_mgr.lua:399: check_provisioner(): Enqueuing provisioner to run in 30 seconds, context: ngx.timer
+127.0.0.1 - - [17/Apr/2020:22:36:15 +0000] "GET /containers/4ac1d7878ca752ae7af6fba6c19944fa64082beabafb98555c9dde5050b37fe6/json HTTP/1.1" 200 6805 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:36:15 +0000] "GET /containers/2f9775b73c68f40507c593905a9630609fba439fd109e19f1b4217c1cd8ec64f/json HTTP/1.1" 200 9057 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:36:15 +0000] "GET /containers/cba101fba80a5d75ef2a8af5cc574d38309fd500437f300dcb33d3c0c58165a6/json HTTP/1.1" 200 6338 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:36:15 +0000] "GET /containers/0188efe2ef669b3cc9e10713f85b67536eebbd3ac4bebbd48544058f3e042763/json HTTP/1.1" 200 9875 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:36:15 +0000] "GET /containers/75513df3c2dd6f024a45ebbf5ab0fcf613451e3d202b952a50fddf983cc5c89b/json HTTP/1.1" 200 9374 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:36:15 +0000] "GET /containers/e88e308c7c3987f5b5ab5e16129c013c61dc0efcaeb3d364637e41c676f9a20c/json HTTP/1.1" 200 7641 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:36:15 +0000] "GET /containers/7405358fd045635d1d7e065fa2f352eae8c748990c45a9d347eaa432daf490b3/json HTTP/1.1" 200 8393 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:36:15 +0000] "GET /containers/8ba1fdd5cfe560e4d3141cefc30b6dc731bfde30fbffc33af167f9107f29d18c/json HTTP/1.1" 200 8428 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:36:15 +0000] "GET /containers/778d4935eb0a34884e4d4243ae10bc3deb5bb67c83e8f8bdd75e46727edf1191/json HTTP/1.1" 200 9871 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:36:15 +0000] "GET /containers/372fe2a21bd336224181afa6b501f3ea32317f6c376af2996977ccbbc4fa4f2c/json HTTP/1.1" 200 6166 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:36:15 +0000] "GET /containers/156bb5395a46a3013e878b232a6766451308871af315c8db77b32eb4291a0063/json HTTP/1.1" 200 5603 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:36:15 +0000] "GET /containers/8198f8a124918add75757ec843afbe18560525e7ff85ad7a4a21ecf18b33e5ac/json HTTP/1.1" 200 6561 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:36:15 +0000] "GET /containers/7a2c86067a79c2f494418dfdd77743a30ad0738c23b619037749c7f5197af166/json HTTP/1.1" 200 5814 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:36:15 +0000] "GET /containers/1cb9ac7929727140dcbecc04964562e582fcbd1c7a48f0384f5cb975ff071535/json HTTP/1.1" 200 6493 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:36:15 +0000] "GET /containers/1bdea3847df7c02de2eb66fbe71e8f9a2140a64b9b701eb256dba05be93a7de4/json HTTP/1.1" 200 5776 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:36:15 +0000] "GET /containers/33b62531629d742d3026d8388a4ca1caa0618b17718d90a612d54150fc91db89/json HTTP/1.1" 200 6447 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:36:45 +0000] "GET /containers/json HTTP/1.1" 200 26311 "-" "lua-Spore v0.3.3"
+2020/04/17 22:36:45 [info] 13#13: *287 [lua] proxy_mgr.lua:334: provisioner running, context: ngx.timer
+2020/04/17 22:36:45 [info] 13#13: *287 [lua] proxy_mgr.lua:836: sync_containers(): Syncing docker memory map with docker container state, context: ngx.timer
+127.0.0.1 - - [17/Apr/2020:22:36:45 +0000] "GET /containers/e2a33de9368bdd64bdb99937477440faaa8bb31fdb52822947dc447c2d9b02a2/json HTTP/1.1" 200 8679 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:36:45 +0000] "GET /containers/a9608c77feffa9844420be6466f1265730a6a3577c2e1410b9c6d4587ba494ac/json HTTP/1.1" 200 7156 "-" "lua-Spore v0.3.3"
+2020/04/17 22:36:45 [info] 13#13: *287 [lua] notelauncher.lua:49: get_notebooks(): use image kbase/narrative:latest, context: ngx.timer
+127.0.0.1 - - [17/Apr/2020:22:36:45 +0000] "GET /containers/26a534ed987a71b22ce41183f689fce1ff55d0fdea9d30adb775102ff47f2a76/json HTTP/1.1" 200 10315 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:36:45 +0000] "GET /containers/950223e42e67b355265de0d47883e81052e2f9ab17a848f776a0345ac19725d6/json HTTP/1.1" 200 7608 "-" "lua-Spore v0.3.3"
+2020/04/17 22:36:45 [info] 13#13: *287 [lua] proxy_mgr.lua:399: check_provisioner(): Enqueuing provisioner to run in 30 seconds, context: ngx.timer
+127.0.0.1 - - [17/Apr/2020:22:36:45 +0000] "GET /containers/e88e308c7c3987f5b5ab5e16129c013c61dc0efcaeb3d364637e41c676f9a20c/json HTTP/1.1" 200 7641 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:36:45 +0000] "GET /containers/7405358fd045635d1d7e065fa2f352eae8c748990c45a9d347eaa432daf490b3/json HTTP/1.1" 200 8393 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:36:45 +0000] "GET /containers/8ba1fdd5cfe560e4d3141cefc30b6dc731bfde30fbffc33af167f9107f29d18c/json HTTP/1.1" 200 8428 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:36:45 +0000] "GET /containers/778d4935eb0a34884e4d4243ae10bc3deb5bb67c83e8f8bdd75e46727edf1191/json HTTP/1.1" 200 9871 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:36:45 +0000] "GET /containers/372fe2a21bd336224181afa6b501f3ea32317f6c376af2996977ccbbc4fa4f2c/json HTTP/1.1" 200 6166 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:36:45 +0000] "GET /containers/156bb5395a46a3013e878b232a6766451308871af315c8db77b32eb4291a0063/json HTTP/1.1" 200 5597 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:36:45 +0000] "GET /containers/8198f8a124918add75757ec843afbe18560525e7ff85ad7a4a21ecf18b33e5ac/json HTTP/1.1" 200 6561 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:36:45 +0000] "GET /containers/7a2c86067a79c2f494418dfdd77743a30ad0738c23b619037749c7f5197af166/json HTTP/1.1" 200 5814 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:36:45 +0000] "GET /containers/1cb9ac7929727140dcbecc04964562e582fcbd1c7a48f0384f5cb975ff071535/json HTTP/1.1" 200 6493 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:36:45 +0000] "GET /containers/1bdea3847df7c02de2eb66fbe71e8f9a2140a64b9b701eb256dba05be93a7de4/json HTTP/1.1" 200 5776 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:36:45 +0000] "GET /containers/33b62531629d742d3026d8388a4ca1caa0618b17718d90a612d54150fc91db89/json HTTP/1.1" 200 6447 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:37:15 +0000] "GET /containers/json HTTP/1.1" 200 24180 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:37:15 +0000] "GET /containers/e2a33de9368bdd64bdb99937477440faaa8bb31fdb52822947dc447c2d9b02a2/json HTTP/1.1" 200 8686 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:37:15 +0000] "GET /containers/a9608c77feffa9844420be6466f1265730a6a3577c2e1410b9c6d4587ba494ac/json HTTP/1.1" 200 7156 "-" "lua-Spore v0.3.3"
+2020/04/17 22:37:15 [info] 13#13: *320 [lua] proxy_mgr.lua:334: provisioner running, context: ngx.timer
+2020/04/17 22:37:15 [info] 13#13: *320 [lua] proxy_mgr.lua:836: sync_containers(): Syncing docker memory map with docker container state, context: ngx.timer
+2020/04/17 22:37:15 [info] 13#13: *320 [lua] notelauncher.lua:49: get_notebooks(): use image kbase/narrative:latest, context: ngx.timer
+2020/04/17 22:37:15 [info] 13#13: *320 [lua] proxy_mgr.lua:399: check_provisioner(): Enqueuing provisioner to run in 30 seconds, context: ngx.timer
+127.0.0.1 - - [17/Apr/2020:22:37:15 +0000] "GET /containers/950223e42e67b355265de0d47883e81052e2f9ab17a848f776a0345ac19725d6/json HTTP/1.1" 200 7608 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:37:15 +0000] "GET /containers/e88e308c7c3987f5b5ab5e16129c013c61dc0efcaeb3d364637e41c676f9a20c/json HTTP/1.1" 200 7641 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:37:15 +0000] "GET /containers/7405358fd045635d1d7e065fa2f352eae8c748990c45a9d347eaa432daf490b3/json HTTP/1.1" 200 8393 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:37:15 +0000] "GET /containers/8ba1fdd5cfe560e4d3141cefc30b6dc731bfde30fbffc33af167f9107f29d18c/json HTTP/1.1" 200 8428 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:37:15 +0000] "GET /containers/778d4935eb0a34884e4d4243ae10bc3deb5bb67c83e8f8bdd75e46727edf1191/json HTTP/1.1" 200 9871 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:37:15 +0000] "GET /containers/372fe2a21bd336224181afa6b501f3ea32317f6c376af2996977ccbbc4fa4f2c/json HTTP/1.1" 200 6166 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:37:15 +0000] "GET /containers/156bb5395a46a3013e878b232a6766451308871af315c8db77b32eb4291a0063/json HTTP/1.1" 200 5603 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:37:15 +0000] "GET /containers/8198f8a124918add75757ec843afbe18560525e7ff85ad7a4a21ecf18b33e5ac/json HTTP/1.1" 200 6555 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:37:15 +0000] "GET /containers/7a2c86067a79c2f494418dfdd77743a30ad0738c23b619037749c7f5197af166/json HTTP/1.1" 200 5814 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:37:15 +0000] "GET /containers/1cb9ac7929727140dcbecc04964562e582fcbd1c7a48f0384f5cb975ff071535/json HTTP/1.1" 200 6493 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:37:15 +0000] "GET /containers/1bdea3847df7c02de2eb66fbe71e8f9a2140a64b9b701eb256dba05be93a7de4/json HTTP/1.1" 200 5770 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:37:15 +0000] "GET /containers/33b62531629d742d3026d8388a4ca1caa0618b17718d90a612d54150fc91db89/json HTTP/1.1" 200 6447 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:37:45 +0000] "GET /containers/json HTTP/1.1" 200 24180 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:37:45 +0000] "GET /containers/e2a33de9368bdd64bdb99937477440faaa8bb31fdb52822947dc447c2d9b02a2/json HTTP/1.1" 200 8686 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:37:45 +0000] "GET /containers/a9608c77feffa9844420be6466f1265730a6a3577c2e1410b9c6d4587ba494ac/json HTTP/1.1" 200 7150 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:37:45 +0000] "GET /containers/950223e42e67b355265de0d47883e81052e2f9ab17a848f776a0345ac19725d6/json HTTP/1.1" 200 7608 "-" "lua-Spore v0.3.3"
+2020/04/17 22:37:45 [info] 13#13: *351 [lua] proxy_mgr.lua:334: provisioner running, context: ngx.timer
+127.0.0.1 - - [17/Apr/2020:22:37:45 +0000] "GET /containers/e88e308c7c3987f5b5ab5e16129c013c61dc0efcaeb3d364637e41c676f9a20c/json HTTP/1.1" 200 7635 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:37:45 +0000] "GET /containers/7405358fd045635d1d7e065fa2f352eae8c748990c45a9d347eaa432daf490b3/json HTTP/1.1" 200 8393 "-" "lua-Spore v0.3.3"
+2020/04/17 22:37:45 [info] 13#13: *351 [lua] proxy_mgr.lua:836: sync_containers(): Syncing docker memory map with docker container state, context: ngx.timer
+127.0.0.1 - - [17/Apr/2020:22:37:45 +0000] "GET /containers/8ba1fdd5cfe560e4d3141cefc30b6dc731bfde30fbffc33af167f9107f29d18c/json HTTP/1.1" 200 8428 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:37:45 +0000] "GET /containers/778d4935eb0a34884e4d4243ae10bc3deb5bb67c83e8f8bdd75e46727edf1191/json HTTP/1.1" 200 9871 "-" "lua-Spore v0.3.3"
+2020/04/17 22:37:45 [info] 13#13: *351 [lua] notelauncher.lua:49: get_notebooks(): use image kbase/narrative:latest, context: ngx.timer
+2020/04/17 22:37:45 [info] 13#13: *351 [lua] proxy_mgr.lua:399: check_provisioner(): Enqueuing provisioner to run in 30 seconds, context: ngx.timer
+127.0.0.1 - - [17/Apr/2020:22:37:45 +0000] "GET /containers/372fe2a21bd336224181afa6b501f3ea32317f6c376af2996977ccbbc4fa4f2c/json HTTP/1.1" 200 6166 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:37:45 +0000] "GET /containers/156bb5395a46a3013e878b232a6766451308871af315c8db77b32eb4291a0063/json HTTP/1.1" 200 5603 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:37:45 +0000] "GET /containers/8198f8a124918add75757ec843afbe18560525e7ff85ad7a4a21ecf18b33e5ac/json HTTP/1.1" 200 6561 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:37:45 +0000] "GET /containers/7a2c86067a79c2f494418dfdd77743a30ad0738c23b619037749c7f5197af166/json HTTP/1.1" 200 5814 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:37:45 +0000] "GET /containers/1cb9ac7929727140dcbecc04964562e582fcbd1c7a48f0384f5cb975ff071535/json HTTP/1.1" 200 6493 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:37:45 +0000] "GET /containers/1bdea3847df7c02de2eb66fbe71e8f9a2140a64b9b701eb256dba05be93a7de4/json HTTP/1.1" 200 5776 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:37:45 +0000] "GET /containers/33b62531629d742d3026d8388a4ca1caa0618b17718d90a612d54150fc91db89/json HTTP/1.1" 200 6447 "-" "lua-Spore v0.3.3"
+2020/04/17 22:38:14 [notice] 13#13: signal 17 (SIGCHLD) received from 29
+2020/04/17 22:38:14 [notice] 13#13: unknown process 29 exited with code 0
+2020/04/17 22:38:14 [info] 13#13: *382 [lua] proxy_mgr.lua:249: marker running, context: ngx.timer
+2020/04/17 22:38:14 [info] 13#13: *382 [lua] proxy_mgr.lua:313: check_marker(): Enqueuing marker to run in 120 seconds, context: ngx.timer
+2020/04/17 22:38:15 [info] 13#13: *383 [lua] proxy_mgr.lua:334: provisioner running, context: ngx.timer
+2020/04/17 22:38:15 [info] 13#13: *383 [lua] proxy_mgr.lua:836: sync_containers(): Syncing docker memory map with docker container state, context: ngx.timer
+127.0.0.1 - - [17/Apr/2020:22:38:15 +0000] "GET /containers/json HTTP/1.1" 200 24180 "-" "lua-Spore v0.3.3"
+2020/04/17 22:38:15 [info] 13#13: *383 [lua] notelauncher.lua:49: get_notebooks(): use image kbase/narrative:latest, context: ngx.timer
+127.0.0.1 - - [17/Apr/2020:22:38:15 +0000] "GET /containers/e2a33de9368bdd64bdb99937477440faaa8bb31fdb52822947dc447c2d9b02a2/json HTTP/1.1" 200 8679 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:38:15 +0000] "GET /containers/a9608c77feffa9844420be6466f1265730a6a3577c2e1410b9c6d4587ba494ac/json HTTP/1.1" 200 7150 "-" "lua-Spore v0.3.3"
+2020/04/17 22:38:15 [info] 13#13: *383 [lua] proxy_mgr.lua:399: check_provisioner(): Enqueuing provisioner to run in 30 seconds, context: ngx.timer
+127.0.0.1 - - [17/Apr/2020:22:38:15 +0000] "GET /containers/950223e42e67b355265de0d47883e81052e2f9ab17a848f776a0345ac19725d6/json HTTP/1.1" 200 7602 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:38:15 +0000] "GET /containers/e88e308c7c3987f5b5ab5e16129c013c61dc0efcaeb3d364637e41c676f9a20c/json HTTP/1.1" 200 7641 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:38:15 +0000] "GET /containers/7405358fd045635d1d7e065fa2f352eae8c748990c45a9d347eaa432daf490b3/json HTTP/1.1" 200 8386 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:38:15 +0000] "GET /containers/8ba1fdd5cfe560e4d3141cefc30b6dc731bfde30fbffc33af167f9107f29d18c/json HTTP/1.1" 200 8428 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:38:15 +0000] "GET /containers/778d4935eb0a34884e4d4243ae10bc3deb5bb67c83e8f8bdd75e46727edf1191/json HTTP/1.1" 200 9864 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:38:15 +0000] "GET /containers/372fe2a21bd336224181afa6b501f3ea32317f6c376af2996977ccbbc4fa4f2c/json HTTP/1.1" 200 6166 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:38:15 +0000] "GET /containers/156bb5395a46a3013e878b232a6766451308871af315c8db77b32eb4291a0063/json HTTP/1.1" 200 5603 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:38:15 +0000] "GET /containers/8198f8a124918add75757ec843afbe18560525e7ff85ad7a4a21ecf18b33e5ac/json HTTP/1.1" 200 6561 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:38:15 +0000] "GET /containers/7a2c86067a79c2f494418dfdd77743a30ad0738c23b619037749c7f5197af166/json HTTP/1.1" 200 5814 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:38:15 +0000] "GET /containers/1cb9ac7929727140dcbecc04964562e582fcbd1c7a48f0384f5cb975ff071535/json HTTP/1.1" 200 6487 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:38:15 +0000] "GET /containers/1bdea3847df7c02de2eb66fbe71e8f9a2140a64b9b701eb256dba05be93a7de4/json HTTP/1.1" 200 5776 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:38:15 +0000] "GET /containers/33b62531629d742d3026d8388a4ca1caa0618b17718d90a612d54150fc91db89/json HTTP/1.1" 200 6441 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:38:45 +0000] "GET /containers/json HTTP/1.1" 200 24180 "-" "lua-Spore v0.3.3"
+2020/04/17 22:38:45 [info] 13#13: *414 [lua] proxy_mgr.lua:334: provisioner running, context: ngx.timer
+127.0.0.1 - - [17/Apr/2020:22:38:45 +0000] "GET /containers/e2a33de9368bdd64bdb99937477440faaa8bb31fdb52822947dc447c2d9b02a2/json HTTP/1.1" 200 8679 "-" "lua-Spore v0.3.3"
+2020/04/17 22:38:45 [info] 13#13: *414 [lua] proxy_mgr.lua:836: sync_containers(): Syncing docker memory map with docker container state, context: ngx.timer
+2020/04/17 22:38:45 [info] 13#13: *414 [lua] notelauncher.lua:49: get_notebooks(): use image kbase/narrative:latest, context: ngx.timer
+2020/04/17 22:38:45 [info] 13#13: *414 [lua] proxy_mgr.lua:399: check_provisioner(): Enqueuing provisioner to run in 30 seconds, context: ngx.timer
+127.0.0.1 - - [17/Apr/2020:22:38:45 +0000] "GET /containers/a9608c77feffa9844420be6466f1265730a6a3577c2e1410b9c6d4587ba494ac/json HTTP/1.1" 200 7156 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:38:45 +0000] "GET /containers/950223e42e67b355265de0d47883e81052e2f9ab17a848f776a0345ac19725d6/json HTTP/1.1" 200 7608 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:38:45 +0000] "GET /containers/e88e308c7c3987f5b5ab5e16129c013c61dc0efcaeb3d364637e41c676f9a20c/json HTTP/1.1" 200 7641 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:38:45 +0000] "GET /containers/7405358fd045635d1d7e065fa2f352eae8c748990c45a9d347eaa432daf490b3/json HTTP/1.1" 200 8393 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:38:45 +0000] "GET /containers/8ba1fdd5cfe560e4d3141cefc30b6dc731bfde30fbffc33af167f9107f29d18c/json HTTP/1.1" 200 8428 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:38:45 +0000] "GET /containers/778d4935eb0a34884e4d4243ae10bc3deb5bb67c83e8f8bdd75e46727edf1191/json HTTP/1.1" 200 9871 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:38:45 +0000] "GET /containers/372fe2a21bd336224181afa6b501f3ea32317f6c376af2996977ccbbc4fa4f2c/json HTTP/1.1" 200 6166 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:38:45 +0000] "GET /containers/156bb5395a46a3013e878b232a6766451308871af315c8db77b32eb4291a0063/json HTTP/1.1" 200 5597 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:38:45 +0000] "GET /containers/8198f8a124918add75757ec843afbe18560525e7ff85ad7a4a21ecf18b33e5ac/json HTTP/1.1" 200 6555 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:38:45 +0000] "GET /containers/7a2c86067a79c2f494418dfdd77743a30ad0738c23b619037749c7f5197af166/json HTTP/1.1" 200 5814 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:38:45 +0000] "GET /containers/1cb9ac7929727140dcbecc04964562e582fcbd1c7a48f0384f5cb975ff071535/json HTTP/1.1" 200 6487 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:38:45 +0000] "GET /containers/1bdea3847df7c02de2eb66fbe71e8f9a2140a64b9b701eb256dba05be93a7de4/json HTTP/1.1" 200 5770 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:38:45 +0000] "GET /containers/33b62531629d742d3026d8388a4ca1caa0618b17718d90a612d54150fc91db89/json HTTP/1.1" 200 6441 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:39:15 +0000] "GET /containers/json HTTP/1.1" 200 24180 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:39:15 +0000] "GET /containers/e2a33de9368bdd64bdb99937477440faaa8bb31fdb52822947dc447c2d9b02a2/json HTTP/1.1" 200 8679 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:39:15 +0000] "GET /containers/a9608c77feffa9844420be6466f1265730a6a3577c2e1410b9c6d4587ba494ac/json HTTP/1.1" 200 7156 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:39:15 +0000] "GET /containers/950223e42e67b355265de0d47883e81052e2f9ab17a848f776a0345ac19725d6/json HTTP/1.1" 200 7608 "-" "lua-Spore v0.3.3"
+2020/04/17 22:39:15 [info] 13#13: *445 [lua] proxy_mgr.lua:334: provisioner running, context: ngx.timer
+2020/04/17 22:39:15 [info] 13#13: *445 [lua] proxy_mgr.lua:836: sync_containers(): Syncing docker memory map with docker container state, context: ngx.timer
+127.0.0.1 - - [17/Apr/2020:22:39:15 +0000] "GET /containers/e88e308c7c3987f5b5ab5e16129c013c61dc0efcaeb3d364637e41c676f9a20c/json HTTP/1.1" 200 7641 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:39:15 +0000] "GET /containers/7405358fd045635d1d7e065fa2f352eae8c748990c45a9d347eaa432daf490b3/json HTTP/1.1" 200 8386 "-" "lua-Spore v0.3.3"
+2020/04/17 22:39:15 [info] 13#13: *445 [lua] notelauncher.lua:49: get_notebooks(): use image kbase/narrative:latest, context: ngx.timer
+2020/04/17 22:39:15 [info] 13#13: *445 [lua] proxy_mgr.lua:399: check_provisioner(): Enqueuing provisioner to run in 30 seconds, context: ngx.timer
+127.0.0.1 - - [17/Apr/2020:22:39:15 +0000] "GET /containers/8ba1fdd5cfe560e4d3141cefc30b6dc731bfde30fbffc33af167f9107f29d18c/json HTTP/1.1" 200 8428 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:39:15 +0000] "GET /containers/778d4935eb0a34884e4d4243ae10bc3deb5bb67c83e8f8bdd75e46727edf1191/json HTTP/1.1" 200 9871 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:39:15 +0000] "GET /containers/372fe2a21bd336224181afa6b501f3ea32317f6c376af2996977ccbbc4fa4f2c/json HTTP/1.1" 200 6166 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:39:15 +0000] "GET /containers/156bb5395a46a3013e878b232a6766451308871af315c8db77b32eb4291a0063/json HTTP/1.1" 200 5597 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:39:15 +0000] "GET /containers/8198f8a124918add75757ec843afbe18560525e7ff85ad7a4a21ecf18b33e5ac/json HTTP/1.1" 200 6561 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:39:15 +0000] "GET /containers/7a2c86067a79c2f494418dfdd77743a30ad0738c23b619037749c7f5197af166/json HTTP/1.1" 200 5814 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:39:15 +0000] "GET /containers/1cb9ac7929727140dcbecc04964562e582fcbd1c7a48f0384f5cb975ff071535/json HTTP/1.1" 200 6493 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:39:15 +0000] "GET /containers/1bdea3847df7c02de2eb66fbe71e8f9a2140a64b9b701eb256dba05be93a7de4/json HTTP/1.1" 200 5770 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:39:15 +0000] "GET /containers/33b62531629d742d3026d8388a4ca1caa0618b17718d90a612d54150fc91db89/json HTTP/1.1" 200 6447 "-" "lua-Spore v0.3.3"
+2020/04/17 22:39:45 [info] 13#13: *476 [lua] proxy_mgr.lua:334: provisioner running, context: ngx.timer
+2020/04/17 22:39:45 [info] 13#13: *476 [lua] proxy_mgr.lua:836: sync_containers(): Syncing docker memory map with docker container state, context: ngx.timer
+2020/04/17 22:39:45 [info] 13#13: *476 [lua] notelauncher.lua:49: get_notebooks(): use image kbase/narrative:latest, context: ngx.timer
+2020/04/17 22:39:45 [info] 13#13: *476 [lua] proxy_mgr.lua:399: check_provisioner(): Enqueuing provisioner to run in 30 seconds, context: ngx.timer
+127.0.0.1 - - [17/Apr/2020:22:39:45 +0000] "GET /containers/json HTTP/1.1" 200 24180 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:39:45 +0000] "GET /containers/e2a33de9368bdd64bdb99937477440faaa8bb31fdb52822947dc447c2d9b02a2/json HTTP/1.1" 200 8686 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:39:45 +0000] "GET /containers/a9608c77feffa9844420be6466f1265730a6a3577c2e1410b9c6d4587ba494ac/json HTTP/1.1" 200 7156 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:39:45 +0000] "GET /containers/950223e42e67b355265de0d47883e81052e2f9ab17a848f776a0345ac19725d6/json HTTP/1.1" 200 7608 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:39:45 +0000] "GET /containers/e88e308c7c3987f5b5ab5e16129c013c61dc0efcaeb3d364637e41c676f9a20c/json HTTP/1.1" 200 7641 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:39:45 +0000] "GET /containers/7405358fd045635d1d7e065fa2f352eae8c748990c45a9d347eaa432daf490b3/json HTTP/1.1" 200 8393 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:39:45 +0000] "GET /containers/8ba1fdd5cfe560e4d3141cefc30b6dc731bfde30fbffc33af167f9107f29d18c/json HTTP/1.1" 200 8421 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:39:45 +0000] "GET /containers/778d4935eb0a34884e4d4243ae10bc3deb5bb67c83e8f8bdd75e46727edf1191/json HTTP/1.1" 200 9864 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:39:45 +0000] "GET /containers/372fe2a21bd336224181afa6b501f3ea32317f6c376af2996977ccbbc4fa4f2c/json HTTP/1.1" 200 6160 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:39:45 +0000] "GET /containers/156bb5395a46a3013e878b232a6766451308871af315c8db77b32eb4291a0063/json HTTP/1.1" 200 5603 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:39:45 +0000] "GET /containers/8198f8a124918add75757ec843afbe18560525e7ff85ad7a4a21ecf18b33e5ac/json HTTP/1.1" 200 6555 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:39:45 +0000] "GET /containers/7a2c86067a79c2f494418dfdd77743a30ad0738c23b619037749c7f5197af166/json HTTP/1.1" 200 5808 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:39:45 +0000] "GET /containers/1cb9ac7929727140dcbecc04964562e582fcbd1c7a48f0384f5cb975ff071535/json HTTP/1.1" 200 6487 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:39:45 +0000] "GET /containers/1bdea3847df7c02de2eb66fbe71e8f9a2140a64b9b701eb256dba05be93a7de4/json HTTP/1.1" 200 5776 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:39:45 +0000] "GET /containers/33b62531629d742d3026d8388a4ca1caa0618b17718d90a612d54150fc91db89/json HTTP/1.1" 200 6447 "-" "lua-Spore v0.3.3"
+172.18.0.1 - - [17/Apr/2020:22:39:46 +0000] "GET / HTTP/1.1" 502 179 "-" "curl/7.65.3"
+2020/04/17 22:39:46 [error] 17#17: *507 connect() failed (111: Connection refused) while connecting to upstream, client: 172.18.0.1, server: localhost, request: "GET / HTTP/1.1", upstream: "http://172.18.0.29:8080/", host: "localhost"
+2020/04/17 22:39:46 [info] 17#17: *507 client 172.18.0.1 closed keepalive connection
+2020/04/17 22:39:52 [info] 21#21: *510 client 172.18.0.1 closed keepalive connection
+172.18.0.1 - - [17/Apr/2020:22:39:52 +0000] "GET /services/auth HTTP/1.1" 301 191 "-" "curl/7.65.3"
+2020/04/17 22:40:14 [notice] 13#13: signal 17 (SIGCHLD) received from 31
+2020/04/17 22:40:14 [notice] 13#13: unknown process 31 exited with code 0
+2020/04/17 22:40:14 [info] 13#13: *511 [lua] proxy_mgr.lua:249: marker running, context: ngx.timer
+2020/04/17 22:40:14 [info] 13#13: *511 [lua] proxy_mgr.lua:313: check_marker(): Enqueuing marker to run in 120 seconds, context: ngx.timer
+2020/04/17 22:40:15 [info] 13#13: *512 [lua] proxy_mgr.lua:334: provisioner running, context: ngx.timer
+2020/04/17 22:40:15 [info] 13#13: *512 [lua] proxy_mgr.lua:836: sync_containers(): Syncing docker memory map with docker container state, context: ngx.timer
+127.0.0.1 - - [17/Apr/2020:22:40:15 +0000] "GET /containers/json HTTP/1.1" 200 24180 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:40:15 +0000] "GET /containers/e2a33de9368bdd64bdb99937477440faaa8bb31fdb52822947dc447c2d9b02a2/json HTTP/1.1" 200 8686 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:40:15 +0000] "GET /containers/a9608c77feffa9844420be6466f1265730a6a3577c2e1410b9c6d4587ba494ac/json HTTP/1.1" 200 7156 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:40:15 +0000] "GET /containers/950223e42e67b355265de0d47883e81052e2f9ab17a848f776a0345ac19725d6/json HTTP/1.1" 200 7602 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:40:15 +0000] "GET /containers/e88e308c7c3987f5b5ab5e16129c013c61dc0efcaeb3d364637e41c676f9a20c/json HTTP/1.1" 200 7641 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:40:15 +0000] "GET /containers/7405358fd045635d1d7e065fa2f352eae8c748990c45a9d347eaa432daf490b3/json HTTP/1.1" 200 8393 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:40:15 +0000] "GET /containers/8ba1fdd5cfe560e4d3141cefc30b6dc731bfde30fbffc33af167f9107f29d18c/json HTTP/1.1" 200 8421 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:40:15 +0000] "GET /containers/778d4935eb0a34884e4d4243ae10bc3deb5bb67c83e8f8bdd75e46727edf1191/json HTTP/1.1" 200 9864 "-" "lua-Spore v0.3.3"
+2020/04/17 22:40:15 [info] 13#13: *512 [lua] notelauncher.lua:49: get_notebooks(): use image kbase/narrative:latest, context: ngx.timer
+2020/04/17 22:40:15 [info] 13#13: *512 [lua] proxy_mgr.lua:399: check_provisioner(): Enqueuing provisioner to run in 30 seconds, context: ngx.timer
+127.0.0.1 - - [17/Apr/2020:22:40:15 +0000] "GET /containers/372fe2a21bd336224181afa6b501f3ea32317f6c376af2996977ccbbc4fa4f2c/json HTTP/1.1" 200 6166 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:40:15 +0000] "GET /containers/156bb5395a46a3013e878b232a6766451308871af315c8db77b32eb4291a0063/json HTTP/1.1" 200 5603 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:40:15 +0000] "GET /containers/8198f8a124918add75757ec843afbe18560525e7ff85ad7a4a21ecf18b33e5ac/json HTTP/1.1" 200 6555 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:40:15 +0000] "GET /containers/7a2c86067a79c2f494418dfdd77743a30ad0738c23b619037749c7f5197af166/json HTTP/1.1" 200 5814 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:40:15 +0000] "GET /containers/1cb9ac7929727140dcbecc04964562e582fcbd1c7a48f0384f5cb975ff071535/json HTTP/1.1" 200 6493 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:40:15 +0000] "GET /containers/1bdea3847df7c02de2eb66fbe71e8f9a2140a64b9b701eb256dba05be93a7de4/json HTTP/1.1" 200 5770 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:40:15 +0000] "GET /containers/33b62531629d742d3026d8388a4ca1caa0618b17718d90a612d54150fc91db89/json HTTP/1.1" 200 6447 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:40:45 +0000] "GET /containers/json HTTP/1.1" 200 24157 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:40:45 +0000] "GET /containers/e2a33de9368bdd64bdb99937477440faaa8bb31fdb52822947dc447c2d9b02a2/json HTTP/1.1" 200 8686 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:40:45 +0000] "GET /containers/a9608c77feffa9844420be6466f1265730a6a3577c2e1410b9c6d4587ba494ac/json HTTP/1.1" 200 7150 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:40:45 +0000] "GET /containers/950223e42e67b355265de0d47883e81052e2f9ab17a848f776a0345ac19725d6/json HTTP/1.1" 200 7602 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:40:45 +0000] "GET /containers/e88e308c7c3987f5b5ab5e16129c013c61dc0efcaeb3d364637e41c676f9a20c/json HTTP/1.1" 200 7635 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:40:45 +0000] "GET /containers/7405358fd045635d1d7e065fa2f352eae8c748990c45a9d347eaa432daf490b3/json HTTP/1.1" 200 8386 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:40:45 +0000] "GET /containers/8ba1fdd5cfe560e4d3141cefc30b6dc731bfde30fbffc33af167f9107f29d18c/json HTTP/1.1" 200 8421 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:40:45 +0000] "GET /containers/778d4935eb0a34884e4d4243ae10bc3deb5bb67c83e8f8bdd75e46727edf1191/json HTTP/1.1" 200 9864 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:40:45 +0000] "GET /containers/372fe2a21bd336224181afa6b501f3ea32317f6c376af2996977ccbbc4fa4f2c/json HTTP/1.1" 200 6160 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:40:45 +0000] "GET /containers/156bb5395a46a3013e878b232a6766451308871af315c8db77b32eb4291a0063/json HTTP/1.1" 200 5597 "-" "lua-Spore v0.3.3"
+2020/04/17 22:40:45 [info] 13#13: *543 [lua] proxy_mgr.lua:334: provisioner running, context: ngx.timer
+2020/04/17 22:40:45 [info] 13#13: *543 [lua] proxy_mgr.lua:836: sync_containers(): Syncing docker memory map with docker container state, context: ngx.timer
+2020/04/17 22:40:45 [info] 13#13: *543 [lua] notelauncher.lua:49: get_notebooks(): use image kbase/narrative:latest, context: ngx.timer
+2020/04/17 22:40:45 [info] 13#13: *543 [lua] proxy_mgr.lua:399: check_provisioner(): Enqueuing provisioner to run in 30 seconds, context: ngx.timer
+127.0.0.1 - - [17/Apr/2020:22:40:45 +0000] "GET /containers/8198f8a124918add75757ec843afbe18560525e7ff85ad7a4a21ecf18b33e5ac/json HTTP/1.1" 200 6555 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:40:45 +0000] "GET /containers/7a2c86067a79c2f494418dfdd77743a30ad0738c23b619037749c7f5197af166/json HTTP/1.1" 200 5814 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:40:45 +0000] "GET /containers/1cb9ac7929727140dcbecc04964562e582fcbd1c7a48f0384f5cb975ff071535/json HTTP/1.1" 200 6493 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:40:45 +0000] "GET /containers/1bdea3847df7c02de2eb66fbe71e8f9a2140a64b9b701eb256dba05be93a7de4/json HTTP/1.1" 200 5770 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:40:45 +0000] "GET /containers/33b62531629d742d3026d8388a4ca1caa0618b17718d90a612d54150fc91db89/json HTTP/1.1" 200 6447 "-" "lua-Spore v0.3.3"
+2020/04/17 22:41:15 [info] 13#13: *574 [lua] proxy_mgr.lua:334: provisioner running, context: ngx.timer
+2020/04/17 22:41:15 [info] 13#13: *574 [lua] proxy_mgr.lua:836: sync_containers(): Syncing docker memory map with docker container state, context: ngx.timer
+127.0.0.1 - - [17/Apr/2020:22:41:15 +0000] "GET /containers/json HTTP/1.1" 200 24180 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:41:15 +0000] "GET /containers/e2a33de9368bdd64bdb99937477440faaa8bb31fdb52822947dc447c2d9b02a2/json HTTP/1.1" 200 8686 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:41:15 +0000] "GET /containers/a9608c77feffa9844420be6466f1265730a6a3577c2e1410b9c6d4587ba494ac/json HTTP/1.1" 200 7156 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:41:15 +0000] "GET /containers/950223e42e67b355265de0d47883e81052e2f9ab17a848f776a0345ac19725d6/json HTTP/1.1" 200 7608 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:41:15 +0000] "GET /containers/e88e308c7c3987f5b5ab5e16129c013c61dc0efcaeb3d364637e41c676f9a20c/json HTTP/1.1" 200 7641 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:41:15 +0000] "GET /containers/7405358fd045635d1d7e065fa2f352eae8c748990c45a9d347eaa432daf490b3/json HTTP/1.1" 200 8393 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:41:15 +0000] "GET /containers/8ba1fdd5cfe560e4d3141cefc30b6dc731bfde30fbffc33af167f9107f29d18c/json HTTP/1.1" 200 8428 "-" "lua-Spore v0.3.3"
+2020/04/17 22:41:15 [info] 13#13: *574 [lua] notelauncher.lua:49: get_notebooks(): use image kbase/narrative:latest, context: ngx.timer
+127.0.0.1 - - [17/Apr/2020:22:41:15 +0000] "GET /containers/778d4935eb0a34884e4d4243ae10bc3deb5bb67c83e8f8bdd75e46727edf1191/json HTTP/1.1" 200 9871 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:41:15 +0000] "GET /containers/372fe2a21bd336224181afa6b501f3ea32317f6c376af2996977ccbbc4fa4f2c/json HTTP/1.1" 200 6166 "-" "lua-Spore v0.3.3"
+2020/04/17 22:41:15 [info] 13#13: *574 [lua] proxy_mgr.lua:399: check_provisioner(): Enqueuing provisioner to run in 30 seconds, context: ngx.timer
+127.0.0.1 - - [17/Apr/2020:22:41:15 +0000] "GET /containers/156bb5395a46a3013e878b232a6766451308871af315c8db77b32eb4291a0063/json HTTP/1.1" 200 5597 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:41:15 +0000] "GET /containers/8198f8a124918add75757ec843afbe18560525e7ff85ad7a4a21ecf18b33e5ac/json HTTP/1.1" 200 6555 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:41:15 +0000] "GET /containers/7a2c86067a79c2f494418dfdd77743a30ad0738c23b619037749c7f5197af166/json HTTP/1.1" 200 5808 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:41:15 +0000] "GET /containers/1cb9ac7929727140dcbecc04964562e582fcbd1c7a48f0384f5cb975ff071535/json HTTP/1.1" 200 6493 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:41:15 +0000] "GET /containers/1bdea3847df7c02de2eb66fbe71e8f9a2140a64b9b701eb256dba05be93a7de4/json HTTP/1.1" 200 5776 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:41:15 +0000] "GET /containers/33b62531629d742d3026d8388a4ca1caa0618b17718d90a612d54150fc91db89/json HTTP/1.1" 200 6447 "-" "lua-Spore v0.3.3"
+2020/04/17 22:41:45 [info] 13#13: *605 [lua] proxy_mgr.lua:334: provisioner running, context: ngx.timer
+2020/04/17 22:41:45 [info] 13#13: *605 [lua] proxy_mgr.lua:836: sync_containers(): Syncing docker memory map with docker container state, context: ngx.timer
+127.0.0.1 - - [17/Apr/2020:22:41:45 +0000] "GET /containers/json HTTP/1.1" 200 24157 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:41:45 +0000] "GET /containers/e2a33de9368bdd64bdb99937477440faaa8bb31fdb52822947dc447c2d9b02a2/json HTTP/1.1" 200 8686 "-" "lua-Spore v0.3.3"
+2020/04/17 22:41:45 [info] 13#13: *605 [lua] notelauncher.lua:49: get_notebooks(): use image kbase/narrative:latest, context: ngx.timer
+127.0.0.1 - - [17/Apr/2020:22:41:45 +0000] "GET /containers/a9608c77feffa9844420be6466f1265730a6a3577c2e1410b9c6d4587ba494ac/json HTTP/1.1" 200 7150 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:41:45 +0000] "GET /containers/950223e42e67b355265de0d47883e81052e2f9ab17a848f776a0345ac19725d6/json HTTP/1.1" 200 7608 "-" "lua-Spore v0.3.3"
+2020/04/17 22:41:45 [info] 13#13: *605 [lua] proxy_mgr.lua:399: check_provisioner(): Enqueuing provisioner to run in 30 seconds, context: ngx.timer
+127.0.0.1 - - [17/Apr/2020:22:41:45 +0000] "GET /containers/e88e308c7c3987f5b5ab5e16129c013c61dc0efcaeb3d364637e41c676f9a20c/json HTTP/1.1" 200 7635 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:41:45 +0000] "GET /containers/7405358fd045635d1d7e065fa2f352eae8c748990c45a9d347eaa432daf490b3/json HTTP/1.1" 200 8393 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:41:45 +0000] "GET /containers/8ba1fdd5cfe560e4d3141cefc30b6dc731bfde30fbffc33af167f9107f29d18c/json HTTP/1.1" 200 8421 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:41:45 +0000] "GET /containers/778d4935eb0a34884e4d4243ae10bc3deb5bb67c83e8f8bdd75e46727edf1191/json HTTP/1.1" 200 9864 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:41:45 +0000] "GET /containers/372fe2a21bd336224181afa6b501f3ea32317f6c376af2996977ccbbc4fa4f2c/json HTTP/1.1" 200 6160 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:41:45 +0000] "GET /containers/156bb5395a46a3013e878b232a6766451308871af315c8db77b32eb4291a0063/json HTTP/1.1" 200 5603 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:41:45 +0000] "GET /containers/8198f8a124918add75757ec843afbe18560525e7ff85ad7a4a21ecf18b33e5ac/json HTTP/1.1" 200 6555 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:41:45 +0000] "GET /containers/7a2c86067a79c2f494418dfdd77743a30ad0738c23b619037749c7f5197af166/json HTTP/1.1" 200 5808 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:41:45 +0000] "GET /containers/1cb9ac7929727140dcbecc04964562e582fcbd1c7a48f0384f5cb975ff071535/json HTTP/1.1" 200 6487 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:41:45 +0000] "GET /containers/1bdea3847df7c02de2eb66fbe71e8f9a2140a64b9b701eb256dba05be93a7de4/json HTTP/1.1" 200 5770 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:41:45 +0000] "GET /containers/33b62531629d742d3026d8388a4ca1caa0618b17718d90a612d54150fc91db89/json HTTP/1.1" 200 6441 "-" "lua-Spore v0.3.3"
+2020/04/17 22:42:14 [notice] 13#13: signal 17 (SIGCHLD) received from 33
+2020/04/17 22:42:14 [notice] 13#13: unknown process 33 exited with code 0
+2020/04/17 22:42:14 [info] 13#13: *636 [lua] proxy_mgr.lua:249: marker running, context: ngx.timer
+2020/04/17 22:42:14 [info] 13#13: *636 [lua] proxy_mgr.lua:313: check_marker(): Enqueuing marker to run in 120 seconds, context: ngx.timer
+2020/04/17 22:42:15 [info] 13#13: *637 [lua] proxy_mgr.lua:334: provisioner running, context: ngx.timer
+2020/04/17 22:42:15 [info] 13#13: *637 [lua] proxy_mgr.lua:836: sync_containers(): Syncing docker memory map with docker container state, context: ngx.timer
+127.0.0.1 - - [17/Apr/2020:22:42:15 +0000] "GET /containers/json HTTP/1.1" 200 24180 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:42:15 +0000] "GET /containers/e2a33de9368bdd64bdb99937477440faaa8bb31fdb52822947dc447c2d9b02a2/json HTTP/1.1" 200 8686 "-" "lua-Spore v0.3.3"
+2020/04/17 22:42:15 [info] 13#13: *637 [lua] notelauncher.lua:49: get_notebooks(): use image kbase/narrative:latest, context: ngx.timer
+127.0.0.1 - - [17/Apr/2020:22:42:15 +0000] "GET /containers/a9608c77feffa9844420be6466f1265730a6a3577c2e1410b9c6d4587ba494ac/json HTTP/1.1" 200 7156 "-" "lua-Spore v0.3.3"
+2020/04/17 22:42:15 [info] 13#13: *637 [lua] proxy_mgr.lua:399: check_provisioner(): Enqueuing provisioner to run in 30 seconds, context: ngx.timer
+127.0.0.1 - - [17/Apr/2020:22:42:15 +0000] "GET /containers/950223e42e67b355265de0d47883e81052e2f9ab17a848f776a0345ac19725d6/json HTTP/1.1" 200 7608 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:42:15 +0000] "GET /containers/e88e308c7c3987f5b5ab5e16129c013c61dc0efcaeb3d364637e41c676f9a20c/json HTTP/1.1" 200 7641 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:42:15 +0000] "GET /containers/7405358fd045635d1d7e065fa2f352eae8c748990c45a9d347eaa432daf490b3/json HTTP/1.1" 200 8386 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:42:15 +0000] "GET /containers/8ba1fdd5cfe560e4d3141cefc30b6dc731bfde30fbffc33af167f9107f29d18c/json HTTP/1.1" 200 8428 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:42:15 +0000] "GET /containers/778d4935eb0a34884e4d4243ae10bc3deb5bb67c83e8f8bdd75e46727edf1191/json HTTP/1.1" 200 9871 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:42:15 +0000] "GET /containers/372fe2a21bd336224181afa6b501f3ea32317f6c376af2996977ccbbc4fa4f2c/json HTTP/1.1" 200 6166 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:42:15 +0000] "GET /containers/156bb5395a46a3013e878b232a6766451308871af315c8db77b32eb4291a0063/json HTTP/1.1" 200 5603 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:42:15 +0000] "GET /containers/8198f8a124918add75757ec843afbe18560525e7ff85ad7a4a21ecf18b33e5ac/json HTTP/1.1" 200 6561 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:42:15 +0000] "GET /containers/7a2c86067a79c2f494418dfdd77743a30ad0738c23b619037749c7f5197af166/json HTTP/1.1" 200 5814 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:42:15 +0000] "GET /containers/1cb9ac7929727140dcbecc04964562e582fcbd1c7a48f0384f5cb975ff071535/json HTTP/1.1" 200 6487 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:42:15 +0000] "GET /containers/1bdea3847df7c02de2eb66fbe71e8f9a2140a64b9b701eb256dba05be93a7de4/json HTTP/1.1" 200 5770 "-" "lua-Spore v0.3.3"
+127.0.0.1 - - [17/Apr/2020:22:42:15 +0000] "GET /containers/33b62531629d742d3026d8388a4ca1caa0618b17718d90a612d54150fc91db89/json HTTP/1.1" 200 6441 "-" "lua-Spore v0.3.3"

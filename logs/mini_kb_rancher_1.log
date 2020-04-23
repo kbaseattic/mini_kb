@@ -1,0 +1,343 @@
+time="2020-04-17T22:34:52Z" level=info msg="Downloading key from http://localhost:8081/v1/scripts/api.crt" 
+time="2020-04-17T22:34:52Z" level=fatal msg="Error getting config." error="Invalid key content" 
+time="2020-04-17T22:34:54Z" level=fatal msg="Failed to configure cattle client: Get http://localhost:8080/v2-beta: dial tcp 127.0.0.1:8080: connect: connection refused" 
+time="2020-04-17T22:34:54Z" level=warning msg="Couldn't load install uuid: Get http://localhost:8080/v2-beta: dial tcp 127.0.0.1:8080: getsockopt: connection refused" 
+time="2020-04-17T22:34:54Z" level=info msg="Starting Catalog Service (port 8088, refresh interval 300 seconds)" 
+time="2020-04-17T22:34:54Z" level=info msg="Downloading key from http://localhost:8081/v1/scripts/api.crt" 
+time="2020-04-17T22:34:54Z" level=info msg="Starting websocket proxy. Listening on [:8080], Proxying to cattle API at [localhost:8081], Monitoring parent pid [10]." 
+time="2020-04-17T22:34:54Z" level=info msg="Configured http API filter" 
+time="2020-04-17T22:34:54Z" level=info msg="Configured authTokenValidator API filter" 
+time="2020-04-17T22:34:54Z" level=info msg="Master config file: master.conf" 
+time="2020-04-17T22:34:54Z" level=info msg="Downloading certificate from http://localhost:8081/v1/credentials/1c1/certificate" 
+time="2020-04-17 22:34:55" level=info msg="Telemetry Client v0.4.0" 
+time="2020-04-17 22:34:55" level=info msg="Listening on 0.0.0.0:8114" 
+time="2020-04-17T22:34:55Z" level=info msg="Webhook service listening on 8085" 
+time="2020-04-17T22:34:55Z" level=info msg="Starting go-machine-service..." gitcommit=v0.39.2 service=gms 
+time="2020-04-17T22:34:55Z" level=info msg="Waiting for handler registration (1/2)" service=gms 
+time="2020-04-17T22:34:56Z" level=info msg="Initializing event router" workerCount=5 
+time="2020-04-17T22:34:56Z" level=info msg="Connection established" 
+time="2020-04-17T22:34:56Z" level=info msg="Starting websocket pings" 
+time="2020-04-17T22:34:56Z" level=info msg="Waiting for handler registration (2/2)" service=gms 
+time="2020-04-17T22:34:56Z" level=info msg="Starting Rancher Auth service" 
+time="2020-04-17T22:34:56Z" level=info msg="Initializing event router" workerCount=250 
+time="2020-04-17T22:34:56Z" level=info msg="Initializing event router" workerCount=250 
+time="2020-04-17T22:34:56Z" level=info msg="Connection established" 
+time="2020-04-17T22:34:56Z" level=info msg="Starting websocket pings" 
+time="2020-04-17T22:34:56Z" level=info msg="Connection established" 
+time="2020-04-17T22:34:56Z" level=info msg="Starting websocket pings" 
+time="2020-04-17T22:34:56Z" level=info msg="No Auth provider configured" 
+time="2020-04-17T22:34:57Z" level=info msg="Installing builtin drivers" service=gms 
+time="2020-04-17T22:34:57Z" level=info msg="Listening on :8090" 
+time="2020-04-17T22:35:00Z" level=info msg="Waiting for machinedriver.activate event" service=gms 
+time="2020-04-17T22:35:03Z" level=info msg="Waiting for machinedriver.activate event" service=gms 
+time="2020-04-17T22:35:06Z" level=info msg="Waiting for machinedriver.activate event" service=gms 
+time="2020-04-17T22:35:09Z" level=info msg="Waiting for machinedriver.activate event" service=gms 
+time="2020-04-17T22:35:12Z" level=info msg="Waiting for machinedriver.activate event" service=gms 
+time="2020-04-17T22:35:15Z" level=info msg="machinedriver.activate event detected" service=gms 
+time="2020-04-17T22:35:15Z" level=info msg="Downloading all drivers" service=gms 
+time="2020-04-17T22:35:15Z" level=info msg="Download https://github.com/packethost/docker-machine-driver-packet/releases/download/v0.1.2/docker-machine-driver-packet_linux-amd64.zip" service=gms 
+time="2020-04-17T22:35:21Z" level=info msg="Found driver docker-machine-driver-packet" service=gms 
+time="2020-04-17T22:35:21Z" level=info msg="Copying /var/lib/cattle/machine-drivers/1f7058341420e2f525168052818c3f819ff78e9ca5f57d5a650a049bcd5945e9-docker-machine-driver-packet => /usr/local/bin/docker-machine-driver-packet-tmp" service=gms 
+time="2020-04-17T22:35:21Z" level=info msg="Done downloading all drivers" service=gms
+
+CATTLE_AGENT_PACKAGE_HOST_API_URL=/usr/share/cattle/artifacts/host-api.tar.gz
+CATTLE_AGENT_PACKAGE_PER_HOST_SUBNET_URL=/usr/share/cattle/artifacts/rancher-per-host-subnet.zip
+CATTLE_AGENT_PACKAGE_PYTHON_AGENT_URL=/usr/share/cattle/artifacts/go-agent.tar.gz
+CATTLE_AGENT_PACKAGE_WINDOWS_AGENT_URL=/usr/share/cattle/artifacts/go-agent.zip
+CATTLE_API_UI_URL=//releases.rancher.com/api-ui/1.0.8
+CATTLE_CATTLE_VERSION=v0.183.60
+CATTLE_DB_CATTLE_DATABASE=mysql
+CATTLE_DB_CATTLE_MYSQL_HOST=ci-mysql
+CATTLE_DB_CATTLE_MYSQL_NAME=cattle
+CATTLE_DB_CATTLE_MYSQL_PORT=3306
+CATTLE_DB_CATTLE_USERNAME=cattle
+CATTLE_GRAPHITE_HOST=
+CATTLE_GRAPHITE_PORT=
+CATTLE_HOME=/var/lib/cattle
+CATTLE_HOST_API_PROXY_MODE=embedded
+CATTLE_LOGBACK_OUTPUT_GELF_HOST=
+CATTLE_LOGBACK_OUTPUT_GELF_PORT=
+CATTLE_RANCHER_CLI_VERSION=v0.6.11
+CATTLE_RANCHER_COMPOSE_VERSION=v0.12.5
+CATTLE_RANCHER_SERVER_IMAGE=rancher/server
+CATTLE_RANCHER_SERVER_VERSION=v1.6.21
+CATTLE_USE_LOCAL_ARTIFACTS=true
+DEFAULT_CATTLE_API_UI_CSS_URL=/api-ui/ui.min.css
+DEFAULT_CATTLE_API_UI_INDEX=//releases.rancher.com/ui/1.6.45
+DEFAULT_CATTLE_API_UI_JS_URL=/api-ui/ui.min.js
+DEFAULT_CATTLE_AUTH_SERVICE_EXECUTE=true
+DEFAULT_CATTLE_CATALOG_EXECUTE=true
+DEFAULT_CATTLE_CATALOG_URL={"catalogs":{"community":{"url":"https://git.rancher.io/community-catalog.git","branch":"master"},"library":{"url":"https://git.rancher.io/rancher-catalog.git","branch":"${RELEASE}"}}}
+DEFAULT_CATTLE_COMPOSE_EXECUTOR_EXECUTE=true
+DEFAULT_CATTLE_MACHINE_EXECUTE=true
+DEFAULT_CATTLE_RANCHER_CLI_DARWIN_URL=https://releases.rancher.com/cli/v0.6.11/rancher-darwin-amd64-v0.6.11.tar.gz
+DEFAULT_CATTLE_RANCHER_CLI_LINUX_URL=https://releases.rancher.com/cli/v0.6.11/rancher-linux-amd64-v0.6.11.tar.gz
+DEFAULT_CATTLE_RANCHER_CLI_WINDOWS_URL=https://releases.rancher.com/cli/v0.6.11/rancher-windows-386-v0.6.11.zip
+DEFAULT_CATTLE_RANCHER_COMPOSE_DARWIN_URL=https://releases.rancher.com/compose/v0.12.5/rancher-compose-darwin-amd64-v0.12.5.tar.gz
+DEFAULT_CATTLE_RANCHER_COMPOSE_LINUX_URL=https://releases.rancher.com/compose/v0.12.5/rancher-compose-linux-amd64-v0.12.5.tar.gz
+DEFAULT_CATTLE_RANCHER_COMPOSE_WINDOWS_URL=https://releases.rancher.com/compose/v0.12.5/rancher-compose-windows-386-v0.12.5.zip
+DEFAULT_CATTLE_SECRETS_API_EXECUTE=true
+DEFAULT_CATTLE_WEBHOOK_SERVICE_EXECUTE=true
+22:34:12.739 [main] INFO  ConsoleStatus - Loading configuration
+22:34:13.040 [main] ERROR i.c.p.a.sources.LazyJDBCSource - Failed to get connection to database, will retry for 5 minutes
+org.apache.commons.dbcp.SQLNestedException: Cannot create PoolableConnectionFactory (Could not connect to address=(host=ci-mysql)(port=3306)(type=master) : Connection refused)
+	at org.apache.commons.dbcp.BasicDataSource.createPoolableConnectionFactory(BasicDataSource.java:1549)
+	at org.apache.commons.dbcp.BasicDataSource.createDataSource(BasicDataSource.java:1388)
+	at org.apache.commons.dbcp.BasicDataSource.getConnection(BasicDataSource.java:1044)
+	at io.cattle.platform.archaius.sources.LazyJDBCSource.checkInitial(LazyJDBCSource.java:50)
+	at io.cattle.platform.archaius.sources.LazyJDBCSource.poll(LazyJDBCSource.java:34)
+	at com.netflix.config.AbstractPollingScheduler$1.run(AbstractPollingScheduler.java:163)
+	at io.cattle.platform.archaius.polling.RefreshableFixedDelayPollingScheduler.refresh(RefreshableFixedDelayPollingScheduler.java:34)
+	at io.cattle.platform.archaius.startup.ArchaiusStartup.load(ArchaiusStartup.java:100)
+	at io.cattle.platform.archaius.startup.ArchaiusStartup.start(ArchaiusStartup.java:77)
+	at io.cattle.platform.app.ConfigConfig.ArchaiusStartup(ConfigConfig.java:86)
+	at io.cattle.platform.app.ConfigConfig$$EnhancerBySpringCGLIB$$c0cd995d.CGLIB$ArchaiusStartup$0(<generated>)
+	at io.cattle.platform.app.ConfigConfig$$EnhancerBySpringCGLIB$$c0cd995d$$FastClassBySpringCGLIB$$22dce619.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invokeSuper(MethodProxy.java:228)
+	at org.springframework.context.annotation.ConfigurationClassEnhancer$BeanMethodInterceptor.intercept(ConfigurationClassEnhancer.java:356)
+	at io.cattle.platform.app.ConfigConfig$$EnhancerBySpringCGLIB$$c0cd995d.ArchaiusStartup(<generated>)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:162)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:588)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1123)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1018)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:510)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:482)
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:306)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:302)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:197)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:296)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:207)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.findAutowireCandidates(DefaultListableBeanFactory.java:1214)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1054)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1019)
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:835)
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:741)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:467)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1123)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1018)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:510)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:482)
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:306)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:302)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:207)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.findAutowireCandidates(DefaultListableBeanFactory.java:1214)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1054)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1019)
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:835)
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:741)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:467)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1123)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1018)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:510)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:482)
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:306)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:302)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:207)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.findAutowireCandidates(DefaultListableBeanFactory.java:1214)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1054)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1019)
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:835)
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:741)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:467)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1123)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1018)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:510)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:482)
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:306)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:302)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:207)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.findAutowireCandidates(DefaultListableBeanFactory.java:1214)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1054)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1019)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredMethodElement.inject(AutowiredAnnotationBeanPostProcessor.java:640)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:88)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:349)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1214)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:543)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:482)
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:306)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:302)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:197)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:776)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:861)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:541)
+	at org.springframework.web.context.ContextLoader.configureAndRefreshWebApplicationContext(ContextLoader.java:444)
+	at org.springframework.web.context.ContextLoader.initWebApplicationContext(ContextLoader.java:326)
+	at org.springframework.web.context.ContextLoaderListener.contextInitialized(ContextLoaderListener.java:107)
+	at org.eclipse.jetty.server.handler.ContextHandler.callContextInitialized(ContextHandler.java:800)
+	at org.eclipse.jetty.servlet.ServletContextHandler.callContextInitialized(ServletContextHandler.java:444)
+	at org.eclipse.jetty.server.handler.ContextHandler.startContext(ContextHandler.java:791)
+	at org.eclipse.jetty.servlet.ServletContextHandler.startContext(ServletContextHandler.java:294)
+	at org.eclipse.jetty.webapp.WebAppContext.startWebapp(WebAppContext.java:1349)
+	at org.eclipse.jetty.webapp.WebAppContext.startContext(WebAppContext.java:1342)
+	at org.eclipse.jetty.server.handler.ContextHandler.doStart(ContextHandler.java:741)
+	at org.eclipse.jetty.webapp.WebAppContext.doStart(WebAppContext.java:505)
+	at org.eclipse.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:68)
+	at org.eclipse.jetty.util.component.ContainerLifeCycle.start(ContainerLifeCycle.java:132)
+	at org.eclipse.jetty.server.Server.start(Server.java:387)
+	at org.eclipse.jetty.util.component.ContainerLifeCycle.doStart(ContainerLifeCycle.java:114)
+	at org.eclipse.jetty.server.handler.AbstractHandler.doStart(AbstractHandler.java:61)
+	at org.eclipse.jetty.server.Server.doStart(Server.java:354)
+	at org.eclipse.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:68)
+	at io.cattle.platform.launcher.jetty.Main.main(Main.java:146)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at io.cattle.platform.launcher.Main.run(Main.java:188)
+	at io.cattle.platform.launcher.Main.main(Main.java:251)
+Caused by: java.sql.SQLNonTransientConnectionException: Could not connect to address=(host=ci-mysql)(port=3306)(type=master) : Connection refused
+	at org.mariadb.jdbc.internal.util.ExceptionMapper.get(ExceptionMapper.java:137)
+	at org.mariadb.jdbc.internal.util.ExceptionMapper.getException(ExceptionMapper.java:101)
+	at org.mariadb.jdbc.internal.util.ExceptionMapper.throwException(ExceptionMapper.java:91)
+	at org.mariadb.jdbc.Driver.connect(Driver.java:109)
+	at org.apache.commons.dbcp.DriverConnectionFactory.createConnection(DriverConnectionFactory.java:38)
+	at org.apache.commons.dbcp.PoolableConnectionFactory.makeObject(PoolableConnectionFactory.java:582)
+	at org.apache.commons.dbcp.BasicDataSource.validateConnectionFactory(BasicDataSource.java:1556)
+	at org.apache.commons.dbcp.BasicDataSource.createPoolableConnectionFactory(BasicDataSource.java:1545)
+	... 117 common frames omitted
+Caused by: org.mariadb.jdbc.internal.util.dao.QueryException: Could not connect to address=(host=ci-mysql)(port=3306)(type=master) : Connection refused
+	at org.mariadb.jdbc.internal.protocol.AbstractConnectProtocol.connectWithoutProxy(AbstractConnectProtocol.java:827)
+	at org.mariadb.jdbc.internal.util.Utils.retrieveProxy(Utils.java:469)
+	at org.mariadb.jdbc.Driver.connect(Driver.java:104)
+	... 121 common frames omitted
+Caused by: java.net.ConnectException: Connection refused
+	at java.net.PlainSocketImpl.socketConnect(Native Method)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:350)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:589)
+	at org.mariadb.jdbc.internal.protocol.AbstractConnectProtocol.connect(AbstractConnectProtocol.java:371)
+	at org.mariadb.jdbc.internal.protocol.AbstractConnectProtocol.connectWithoutProxy(AbstractConnectProtocol.java:823)
+	... 123 common frames omitted
+22:34:14.047 [main] ERROR i.c.p.a.sources.LazyJDBCSource - Failed to get connection to database, will retry for 5 minutes
+22:34:15.047 [main] ERROR i.c.p.a.sources.LazyJDBCSource - Failed to get connection to database, will retry for 5 minutes
+22:34:16.054 [main] ERROR i.c.p.a.sources.LazyJDBCSource - Failed to get connection to database, will retry for 5 minutes
+22:34:17.055 [main] ERROR i.c.p.a.sources.LazyJDBCSource - Failed to get connection to database, will retry for 5 minutes
+22:34:18.057 [main] ERROR i.c.p.a.sources.LazyJDBCSource - Failed to get connection to database, will retry for 5 minutes
+22:34:19.059 [main] ERROR i.c.p.a.sources.LazyJDBCSource - Failed to get connection to database, will retry for 5 minutes
+22:34:20.060 [main] ERROR i.c.p.a.sources.LazyJDBCSource - Failed to get connection to database, will retry for 5 minutes
+22:34:21.062 [main] ERROR i.c.p.a.sources.LazyJDBCSource - Failed to get connection to database, will retry for 5 minutes
+22:34:22.063 [main] ERROR i.c.p.a.sources.LazyJDBCSource - Failed to get connection to database, will retry for 5 minutes
+22:34:23.066 [main] ERROR i.c.p.a.sources.LazyJDBCSource - Failed to get connection to database, will retry for 5 minutes
+2020-04-17 22:34:27,227 INFO    [main] [ConsoleStatus] Starting DB migration 
+2020-04-17 22:34:28,488 INFO    [main] [ConsoleStatus] DB migration done 
+2020-04-17 22:34:28,769 INFO    [main] [ConsoleStatus] Cluster membership changed [127.0.0.1:9345] 
+2020-04-17 22:34:28,769 INFO    [main] [ConsoleStatus] Checking cluster state on start-up 
+2020-04-17 22:34:28,769 INFO    [main] [ConsoleStatus] Waiting to become master 
+2020-04-17 22:34:49,787 INFO    [main] [ConsoleStatus] Loading processes 
+2020-04-17 22:34:50,031 INFO    [main] [ConsoleStatus] Starting [1/94]: LockDelegatorImpl 
+2020-04-17 22:34:50,031 INFO    [main] [ConsoleStatus] Starting [2/94]: AnnotatedListenerRegistration 
+2020-04-17 22:34:50,034 INFO    [main] [ConsoleStatus] Starting [3/94]: EventService 
+2020-04-17 22:34:50,034 INFO    [main] [ConsoleStatus] Starting [4/94]: DefaultObjectMetaDataManager 
+2020-04-17 22:34:50,576 INFO    [main] [ConsoleStatus] Starting [5/94]: JsonDefaultsProvider 
+2020-04-17 22:34:50,609 INFO    [main] [ConsoleStatus] Starting [6/94]: ObjectDefaultsPostInstantiationHandler 
+2020-04-17 22:34:50,609 INFO    [main] [ConsoleStatus] Starting [7/94]: DefaultProcessManager 
+2020-04-17 22:34:50,609 INFO    [main] [ConsoleStatus] Starting [8/94]: SampleDataStartupV3 
+2020-04-17 22:34:50,612 INFO    [main] [ConsoleStatus] Starting [9/94]: TaskManagerImpl 
+2020-04-17 22:34:50,636 INFO    [main] [ConsoleStatus] Starting [10/94]: ServiceAccountCreateStartup 
+2020-04-17 22:34:50,646 INFO    [main] [ConsoleStatus] Starting [11/94]: WebsocketProxyLauncher 
+2020-04-17 22:34:50,646 INFO    [main] [ConsoleStatus] Starting [12/94]: SampleDataStartupV15 
+2020-04-17 22:34:50,646 INFO    [main] [ConsoleStatus] Starting [13/94]: SchemaFactory:v1-admin 
+2020-04-17 22:34:50,894 INFO    [main] [ConsoleStatus] Starting [14/94]: SchemaFactory:v1-agent 
+2020-04-17 22:34:50,902 INFO    [main] [ConsoleStatus] Starting [15/94]: SchemaFactory:v1-agentRegister 
+2020-04-17 22:34:50,905 INFO    [main] [ConsoleStatus] Starting [16/94]: SchemaFactory:v1-base 
+2020-04-17 22:34:51,205 INFO    [main] [ConsoleStatus] Starting [17/94]: SchemaFactory:v1-member 
+2020-04-17 22:34:51,358 INFO    [main] [ConsoleStatus] Starting [18/94]: SchemaFactory:v1-owner 
+2020-04-17 22:34:51,501 INFO    [main] [ConsoleStatus] Starting [19/94]: SchemaFactory:v1-project 
+2020-04-17 22:34:51,649 INFO    [main] [ConsoleStatus] Starting [20/94]: SchemaFactory:v1-projectadmin 
+2020-04-17 22:34:51,794 INFO    [main] [ConsoleStatus] Starting [21/94]: SchemaFactory:v1-readAdmin 
+2020-04-17 22:34:51,978 INFO    [main] [ConsoleStatus] Starting [22/94]: SchemaFactory:v1-readonly 
+2020-04-17 22:34:52,113 INFO    [main] [ConsoleStatus] Starting [23/94]: SchemaFactory:v1-register 
+2020-04-17 22:34:52,116 INFO    [main] [ConsoleStatus] Starting [24/94]: SchemaFactory:v1-restricted 
+2020-04-17 22:34:52,256 INFO    [main] [ConsoleStatus] Starting [25/94]: SchemaFactory:v1-service 
+2020-04-17 22:34:52,436 INFO    [main] [ConsoleStatus] Starting [26/94]: SchemaFactory:v1-token 
+2020-04-17 22:34:52,438 INFO    [main] [ConsoleStatus] Starting [27/94]: SchemaFactory:v1-user 
+2020-04-17 22:34:52,584 INFO    [main] [ConsoleStatus] Starting [28/94]: AgentBasedProcessHandler 
+2020-04-17 22:34:52,584 INFO    [main] [ConsoleStatus] Starting [29/94]: AgentHostStateUpdate 
+2020-04-17 22:34:52,585 INFO    [main] [ConsoleStatus] Starting [30/94]: AgentManager 
+2020-04-17 22:34:52,585 INFO    [main] [ConsoleStatus] Starting [31/94]: AuthServiceLauncher 
+2020-04-17 22:34:52,585 INFO    [main] [ConsoleStatus] Starting [32/94]: BackupCreate 
+2020-04-17 22:34:52,586 INFO    [main] [ConsoleStatus] Starting [33/94]: BackupRemove 
+2020-04-17 22:34:52,586 INFO    [main] [ConsoleStatus] Starting [34/94]: CatalogLauncher 
+2020-04-17 22:34:52,586 INFO    [main] [ConsoleStatus] Starting [35/94]: ComposeExecutorLauncher 
+2020-04-17 22:34:52,587 INFO    [main] [ConsoleStatus] Starting [36/94]: ConfigItemRegistryImpl 
+2020-04-17 22:34:52,694 INFO    [main] [ConsoleStatus] Starting [37/94]: ConfigItemServerImpl 
+2020-04-17 22:34:52,799 INFO    [main] [ConsoleStatus] Starting [38/94]: ConfigUpdatePublisher 
+2020-04-17 22:34:52,800 INFO    [main] [ConsoleStatus] Starting [39/94]: DataManager 
+2020-04-17 22:34:52,800 INFO    [main] [ConsoleStatus] Starting [40/94]: DefaultAuthorizationProvider 
+2020-04-17 22:34:53,627 INFO    [main] [ConsoleStatus] Starting [41/94]: DefaultJooqResourceManager 
+2020-04-17 22:34:53,627 INFO    [main] [ConsoleStatus] Starting [42/94]: DefaultObjectSerializerFactoryImpl 
+2020-04-17 22:34:53,627 INFO    [main] [ConsoleStatus] Starting [43/94]: DockerComposeStackHandler 
+2020-04-17 22:34:53,627 INFO    [main] [ConsoleStatus] Starting [44/94]: DynamicExtensionManager 
+2020-04-17 22:34:53,627 INFO    [main] [ConsoleStatus] Starting [45/94]: ExtensionResourceManagerLocator 
+2020-04-17 22:34:53,627 INFO    [main] [ConsoleStatus] Starting [46/94]: HostApiRSAKeyProvider 
+2020-04-17 22:34:53,627 INFO    [main] [ConsoleStatus] Starting [47/94]: HostTemplateManager 
+2020-04-17 22:34:53,627 INFO    [main] [ConsoleStatus] Starting [48/94]: ImageStoragePoolMapActivate 
+2020-04-17 22:34:53,627 INFO    [main] [ConsoleStatus] Starting [49/94]: InstanceHostMapActivate 
+2020-04-17 22:34:53,628 INFO    [main] [ConsoleStatus] Starting [50/94]: InstanceHostMapDeactivate 
+2020-04-17 22:34:53,628 INFO    [main] [ConsoleStatus] Starting [51/94]: InstanceManager 
+2020-04-17 22:34:53,628 INFO    [main] [ConsoleStatus] Starting [52/94]: IpsecHealthcheckEnabledListener 
+2020-04-17 22:34:53,628 INFO    [main] [ConsoleStatus] Starting [53/94]: LoadBalancerServiceInstanceStopPreListener 
+2020-04-17 22:34:53,628 INFO    [main] [ConsoleStatus] Starting [54/94]: MachineDriverLoader 
+2020-04-17 22:34:53,629 INFO    [main] [ConsoleStatus] Starting [55/94]: MachineLauncher 
+2020-04-17 22:34:53,629 INFO    [main] [ConsoleStatus] Starting [56/94]: MetadataConfigItemFactory 
+2020-04-17 22:34:53,630 INFO    [main] [ConsoleStatus] Starting [57/94]: MountRemove 
+2020-04-17 22:34:53,631 INFO    [main] [ConsoleStatus] Starting [58/94]: PostInstancePurge 
+2020-04-17 22:34:53,631 INFO    [main] [ConsoleStatus] Starting [59/94]: PostStartLabelsProviders 
+2020-04-17 22:34:53,631 INFO    [main] [ConsoleStatus] Starting [60/94]: ProjectMemberResourceManager 
+2020-04-17 22:34:53,631 INFO    [main] [ConsoleStatus] Starting [61/94]: ProjectResourceManager 
+2020-04-17 22:34:53,631 INFO    [main] [ConsoleStatus] Starting [62/94]: PullTaskCreate 
+2020-04-17 22:34:53,631 INFO    [main] [ConsoleStatus] Starting [63/94]: RestoreFromBackup 
+2020-04-17 22:34:53,631 INFO    [main] [ConsoleStatus] Starting [64/94]: RevertToSnapshot 
+2020-04-17 22:34:53,631 INFO    [main] [ConsoleStatus] Starting [65/94]: SampleDataStartupV10 
+2020-04-17 22:34:53,631 INFO    [main] [ConsoleStatus] Starting [66/94]: SampleDataStartupV11 
+2020-04-17 22:34:53,632 INFO    [main] [ConsoleStatus] Starting [67/94]: SampleDataStartupV12 
+2020-04-17 22:34:53,632 INFO    [main] [ConsoleStatus] Starting [68/94]: SampleDataStartupV13 
+2020-04-17 22:34:53,633 INFO    [main] [ConsoleStatus] Starting [69/94]: SampleDataStartupV14 
+2020-04-17 22:34:53,633 INFO    [main] [ConsoleStatus] Starting [70/94]: SampleDataStartupV16 
+2020-04-17 22:34:53,633 INFO    [main] [ConsoleStatus] Starting [71/94]: SampleDataStartupV17 
+2020-04-17 22:34:53,634 INFO    [main] [ConsoleStatus] Starting [72/94]: SampleDataStartupV5 
+2020-04-17 22:34:53,634 INFO    [main] [ConsoleStatus] Starting [73/94]: SampleDataStartupV6 
+2020-04-17 22:34:53,635 INFO    [main] [ConsoleStatus] Starting [74/94]: SampleDataStartupV7 
+2020-04-17 22:34:53,635 INFO    [main] [ConsoleStatus] Starting [75/94]: SampleDataStartupV8 
+2020-04-17 22:34:53,635 INFO    [main] [ConsoleStatus] Starting [76/94]: SampleDataStartupV9 
+2020-04-17 22:34:53,636 INFO    [main] [ConsoleStatus] Starting [77/94]: SecretManager 
+2020-04-17 22:34:53,636 INFO    [main] [ConsoleStatus] Starting [78/94]: SecretsApiLauncher 
+2020-04-17 22:34:53,636 INFO    [main] [ConsoleStatus] Starting [79/94]: ServiceManager 
+2020-04-17 22:34:53,636 INFO    [main] [ConsoleStatus] Starting [80/94]: SettingManager 
+2020-04-17 22:34:53,636 INFO    [main] [ConsoleStatus] Starting [81/94]: SnapshotCreate 
+2020-04-17 22:34:53,636 INFO    [main] [ConsoleStatus] Starting [82/94]: SnapshotRemove 
+2020-04-17 22:34:53,636 INFO    [main] [ConsoleStatus] Starting [83/94]: StackAgentHandler 
+2020-04-17 22:34:53,636 INFO    [main] [ConsoleStatus] Starting [84/94]: StackAgentHandler 
+2020-04-17 22:34:53,636 INFO    [main] [ConsoleStatus] Starting [85/94]: StackAgentHandler 
+2020-04-17 22:34:53,636 INFO    [main] [ConsoleStatus] Starting [86/94]: StackAgentHandler 
+2020-04-17 22:34:53,636 INFO    [main] [ConsoleStatus] Starting [87/94]: StackAgentHandler 
+2020-04-17 22:34:53,636 INFO    [main] [ConsoleStatus] Starting [88/94]: TelemetryLauncher 
+2020-04-17 22:34:53,636 INFO    [main] [ConsoleStatus] Starting [89/94]: VolumeManager 
+2020-04-17 22:34:53,636 INFO    [main] [ConsoleStatus] Starting [90/94]: VolumeRemove 
+2020-04-17 22:34:53,636 INFO    [main] [ConsoleStatus] Starting [91/94]: VolumeStoragePoolMapActivate 
+2020-04-17 22:34:53,636 INFO    [main] [ConsoleStatus] Starting [92/94]: VolumeStoragePoolMapRemove 
+2020-04-17 22:34:53,636 INFO    [main] [ConsoleStatus] Starting [93/94]: WebhookServiceLauncher 
+2020-04-17 22:34:53,636 INFO    [main] [ConsoleStatus] Starting [94/94]: project.template.reload 
+2020-04-17 22:34:53,661 INFO    [main] [ConsoleStatus] [DONE ] [44446ms] Startup Succeeded, Listening on port 8081 
+time="2020-04-17T22:34:54Z" level=info msg="Starting rancher-compose-executor" version=v0.14.29 
+time="2020-04-17T22:34:54Z" level=fatal msg="Unable to create event router" error="Get http://localhost:8080/v2-beta: dial tcp 127.0.0.1:8080: getsockopt: connection refused" 
+time="2020-04-17T22:34:56Z" level=info msg="Starting rancher-compose-executor" version=v0.14.29 
+time="2020-04-17T22:34:57Z" level=info msg="Initializing event router" workerCount=250 
+time="2020-04-17T22:34:57Z" level=info msg="Connection established" 
+time="2020-04-17T22:34:57Z" level=info msg="Starting websocket pings" 

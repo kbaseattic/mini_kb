@@ -1,0 +1,9 @@
++ MIN_MEM=1000
++ MAX_MEM=3000
++ export _JAVA_OPTIONS=-Djava.awt.headless=true -Xms1000m -Xmx3000m -XX:+UseG1GC
++ cd /kb/deployment/lib
++ java -server -cp WEB-INF/lib/* kbasesearchengine.tools.SearchTools -c /kb/deployment/conf/search_tools.cfg -s
+Picked up _JAVA_OPTIONS: -Djava.awt.headless=true -Xms1000m -Xmx3000m -XX:+UseG1GC
+
+Starting search coordinator process
+Software version 0.1.1 (commit d0bede0af8c3f3e102e50402317e0e4dfb5d3aa3)

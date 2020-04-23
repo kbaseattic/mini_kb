@@ -1,0 +1,23 @@
+Checking config file...
+...found!
+...and valid!
+Checking nginx config file...
+...found!
+OK. Execing nginx... Press Control-C to exit.
+2020/04/17 22:34:15 [notice] 12#12: using the "epoll" event method
+2020/04/17 22:34:15 [notice] 12#12: nginx/1.16.1
+2020/04/17 22:34:15 [notice] 12#12: OS: Linux 5.3.0-7648-generic
+2020/04/17 22:34:15 [notice] 12#12: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2020/04/17 22:34:15 [notice] 12#12: start worker processes
+2020/04/17 22:34:15 [notice] 12#12: start worker process 14
+2020/04/17 22:34:15 [notice] 12#12: start worker process 15
+2020/04/17 22:34:15 [notice] 12#12: start worker process 16
+2020/04/17 22:34:15 [notice] 12#12: start worker process 17
+2020/04/17 22:34:15 [notice] 12#12: start worker process 18
+2020/04/17 22:34:15 [notice] 12#12: start worker process 19
+2020/04/17 22:34:15 [notice] 12#12: start worker process 20
+2020/04/17 22:34:15 [notice] 12#12: start worker process 21
+2020/04/17 22:34:15 [notice] 12#12: start worker process 22
+2020/04/17 22:34:15 [notice] 12#12: start worker process 23
+2020/04/17 22:34:15 [notice] 12#12: start worker process 24
+2020/04/17 22:34:15 [notice] 12#12: start worker process 25
