@@ -124,7 +124,7 @@ Bring up mini-kbase
 -------------------
 Mini-kbase stack is a straightforward docker-compose stack and can be brought up using the standard "docker-compose pull" and "docker-compose up" commands. There are some things to be aware of:
 1. Docker-compose is able to start services in dependency order, however it is unable to wait until a service is actually fully initialized before starting the services downstream. To deal with this, containers all use the [dockerize](https://github.com/kbase/dockerize) program as an entrypoint. This is a small Golang based binary that can be passed  a *-wait* option to poll a dependency's listener port until it accepts tcp connections before starting the main executable. Because dependencies can run deep and startup latencies begin to stackup, the dockerize command is typically given a fairly long *-timeout* flag as well.
-1. By default, all of the services in mini-kbase operate in a private docker network called "minikb_default". The services that listen on this network cannot be accessed outside of this private network. The nginx proxy serves as a gateway between external networks and the private docker network, and access to the private work is intended to pass through the nginx proxy.
+1. By default, all of the services in mini-kbase operate in a private docker network called "minikb_default". The services that listen on this network cannot be accessed outside of this private network. The nginx proxy serves as a gateway between external networks and the private docker network, and access to the private network is intended to pass through the nginx proxy.
 1. Some of the services, such as workspace, require their databases to be initialized before start up. This is accomplished by the [db-init container](https://github.com/kbase/db_initialize). It waits for mongodb and mysql to come up and then bootstraps the data necessary for other services. After the data is fully loaded, it brings up a dummy listener on port 8080 that accepts connections but does nothing with them. This allows other services that depend on database initialization to wait until there is a listener on db-init:8080 before starting up. In the configuration for workspace, there is a "-wait tcp://db-init:8080" directive that tells the entrypoint program to delay starting the main workspace service until db-init has finished running.
 1. The full mini-kbase stack requires significant memory and not all machines may be capable of running all of mini-kbase. On a circa 2016 Macbook Pro with 16G of memory, it is not possible to run all services available in mini-kbase. The "nginx" service in mini-kbase specifies in its depends_on directive a core set of services that many other mini-kbase services require. It should be possible to bring up the nginx proxy and its core dependencies using "*docker-compose up nginx*" on a reasonably powerful host. Other services can be brought up as needed using "*docker-compose up {servicename}*". Running "docker-compose up" to bring up all services may result in memory limitations causing startup failures.
 
@@ -156,7 +156,7 @@ stanza that shows how dockerize is called.
     # -template option above that expends the nginx.conf.templ file, and uncomment the following 2 lines
     # and replace /tmp/nginx.conf with the path to the appropriate file.
     # volumes:
-    #  - /tmp/nginx.conf:/etc/nginx/nginx,conf
+    #  - /tmp/nginx.conf:/etc/nginx/nginx.conf
     ports:
       - "8000:80"
     depends_on: ["auth", "handle_service", "handle_manager", "workspace", "shock", "ujs"]
@@ -167,8 +167,8 @@ This stanza is used to configure nginx. The nginx image should have "dockerize" 
   *-template /kb/deployment/conf/.templates/nginx.conf.templ:/etc/nginx/nginx.conf* 
   This results in the file /kb/deployment/conf/.templates/nginx.conf.templ in the docker image being treated as a golang template that dockerize evaluates using the available environment variables and then writes the output to /etc/nginx/nginx.conf
 
-  The nginx container doesn't have KBase specific service, so we don't have a template directive that writes anything to
-  /kb/deployment/conf/deploy.cfg, but most of the other services will have a -template directive for this target.
+  The nginx container doesn't have a KBase specific service, so we don't have a template directive that writes anything to
+  /kb/deployment/conf/deploy.cfg. Most of the other services will have a -template directive for this target.
 * The next 2 lines are commented out, but would tell dockerize to read the url https://raw.githubusercontent.com/kbase/mini_kb/master/deployment/conf/nginx-minikb.ini as a file containing name/value pairs that are converted into environment variables for the running program, as well as used for template evaluate. This line is commmented out however it is functionally identical to the "env_file" specification lower in the file, however it doesn't require changes to the repo to be pushed to github before becoming available. This is helpful for local testing, where the changes don't need to be recorded in the repo
 * The 5th line simply tells dockerize to run nginx as the final task. Because we have generated an nginx.conf file in the default location, nginx should come up and serve the files we want. The dockerize command will continue to run until nginx exits. When nginx exits, dockerize will exit as well and the container will stop running.
 * The next 2 lines tell docker to use the file deployment/conf/nginx-minikb.ini in the current repo as a set of name=value pairs to set environment variables available in the running container. Using the env_file directive is very useful for testing and debugging configurations that are not ready or needed to be permanently committed to git (where the -env directive is passed to dockerize for use). Note that using env_file to docker-compose makes these environment variables available to any process running in the container, while the -env directive to dockerize only makes these environment variables available to the program that dockerize is configured to start. For example, if you exec a shell into the running container, the "env" command will show variables set via env_file, but will not show variables set by "-env" to dockerize
@@ -209,8 +209,8 @@ HOME=/root
 Modifying the Configuration Beyond Environment Variables
 --------------------------------------------------------
 Using the templates for modifying the running configuration works so long as the needed changes have been captured in the
-templated configuration. If there are changes that are not in the templates that are needed testing, the configuration
-file can left out of the parameters passed to dockerize, and a configuration file mounted into the running container
+templated configuration. If there are changes that are not in the templates that need testing, the configuration
+file can be left out of the parameters passed to dockerize, and a configuration file mounted into the running container
 using the "volumes" directive in docker-compose. The example configuration for nginx provides commented out examples of
 using a fully customizable nginx.conf via volume mounts. Note that if a volume mount is given *and* the same file is set
 as a destination for the dockerize -template directive, the template will overwrite the contents mounted via "volumes".
