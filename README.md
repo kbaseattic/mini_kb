@@ -10,7 +10,7 @@ TL;DR
 1. Clone the mini-kb repo
 1. cd into the repo
 1. run "start_minikb.sh"
-1. The mini-kb front proxy is now listening on port 8000. KBase services can be found under http://localhost:8000/services/{servicename}
+1. The mini-kb front proxy listens on port 80. KBase services can be found under http://localhost/services/{servicename}
 
 Relationships between Mini-KBase and Release Process
 =================================
@@ -93,7 +93,7 @@ for mini-kbase and need to be installed locally before trying to bring up mini-k
 
 The [docker-compose.yml](https://docs.docker.com/compose/compose-file/) file in this repo defines the mini-kbase
 environment which the docker-compose command brings up. It brings up an nginx proxy front end which is exposed
-to the external network via port 8000, shared mongo-db and mysql backends which are restricted to the private
+to the external network via port 80, shared mongo-db and mysql backends which are restricted to the private
 docker network, and a collection of KBase services (including kbase-ui) which can see each other based on their
 service names, but can only be accessed outside of the docker environment via the nginx proxy.
 
@@ -128,7 +128,7 @@ Mini-kbase stack is a straightforward docker-compose stack and can be brought up
 1. Some of the services, such as workspace, require their databases to be initialized before start up. This is accomplished by the [db-init container](https://github.com/kbase/db_initialize). It waits for mongodb and mysql to come up and then bootstraps the data necessary for other services. After the data is fully loaded, it brings up a dummy listener on port 8080 that accepts connections but does nothing with them. This allows other services that depend on database initialization to wait until there is a listener on db-init:8080 before starting up. In the configuration for workspace, there is a "-wait tcp://db-init:8080" directive that tells the entrypoint program to delay starting the main workspace service until db-init has finished running.
 1. The full mini-kbase stack requires significant memory and not all machines may be capable of running all of mini-kbase. On a circa 2016 Macbook Pro with 16G of memory, it is not possible to run all services available in mini-kbase. The "nginx" service in mini-kbase specifies in its depends_on directive a core set of services that many other mini-kbase services require. It should be possible to bring up the nginx proxy and its core dependencies using "*docker-compose up nginx*" on a reasonably powerful host. Other services can be brought up as needed using "*docker-compose up {servicename}*". Running "docker-compose up" to bring up all services may result in memory limitations causing startup failures.
 
-The start_minikb.sh shell script brings up the basic nginx proxy and core services. The nginx proxy is used to access all public services within mini-kbase and listens on port 8000. It is recommended to use start_minikb.sh to bring up a core set of services, and if there are additional services not brought up by default, they should be brought up explicitly using "docker-compose up {service_name}"
+The start_minikb.sh shell script brings up the basic nginx proxy and core services. The nginx proxy is used to access all public services within mini-kbase and listens on port 80. It is recommended to use start_minikb.sh to bring up a core set of services, and if there are additional services not brought up by default, they should be brought up explicitly using "docker-compose up {service_name}"
 
 Modifying the configuration of a service
 ----------------------------------------
@@ -158,7 +158,7 @@ stanza that shows how dockerize is called.
     # volumes:
     #  - /tmp/nginx.conf:/etc/nginx/nginx.conf
     ports:
-      - "8000:80"
+      - "80:80"
     depends_on: ["auth", "handle_service", "handle_manager", "workspace", "shock", "ujs"]
 ~~~
 
@@ -173,7 +173,7 @@ This stanza is used to configure nginx. The nginx image should have "dockerize" 
 * The 5th line simply tells dockerize to run nginx as the final task. Because we have generated an nginx.conf file in the default location, nginx should come up and serve the files we want. The dockerize command will continue to run until nginx exits. When nginx exits, dockerize will exit as well and the container will stop running.
 * The next 2 lines tell docker to use the file deployment/conf/nginx-minikb.ini in the current repo as a set of name=value pairs to set environment variables available in the running container. Using the env_file directive is very useful for testing and debugging configurations that are not ready or needed to be permanently committed to git (where the -env directive is passed to dockerize for use). Note that using env_file to docker-compose makes these environment variables available to any process running in the container, while the -env directive to dockerize only makes these environment variables available to the program that dockerize is configured to start. For example, if you exec a shell into the running container, the "env" command will show variables set via env_file, but will not show variables set by "-env" to dockerize
 * The next group of lines describe how to bypass the templating and use a static nginx.conf file that is mounted into the running container. This is useful when the scope of changes needed to a configuration are beyond what is captured by the templates.
-* The next 2 lines tells docker to map the port 80 in the nginx container to port 8000 on the host machine. This makes the nginx http listener available on port 8000 locally. If the listener needs to be on some other port than 8000, it can set here.
+* The next 2 lines tells docker to map the port 80 in the nginx container to port 80 on the host machine. This makes the nginx http listener available on port 80 locally. If the listener needs to be on some other port than 80, it can set here.
 
 If changes are made to the docker-compose.yml file or to the files tha referenced by *env_file* or *volumes* directives or a *-env* directive to dockerize, they can be put into service by performing a *docker-compose stop {service_name}* and then *docker-compose up {service_name}*
 
@@ -234,11 +234,11 @@ minikb_ci-mysql_1         docker-entrypoint.sh mysqld      Up      3306/tcp
 minikb_db-init_1          /kb/deployment/bin/dockeri ...   Up                              
 minikb_handle_manager_1   /kb/deployment/bin/dockeri ...   Up                              
 minikb_handle_service_1   /kb/deployment/bin/dockeri ...   Up      7109/tcp                
-minikb_nginx_1            /kb/deployment/bin/dockeri ...   Up      0.0.0.0:8000->80/tcp    
+minikb_nginx_1            /kb/deployment/bin/dockeri ...   Up      0.0.0.0:80->80/tcp    
 minikb_shock_1            /kb/deployment/bin/dockeri ...   Up                              
 minikb_ujs_1              /kb/deployment/bin/dockeri ...   Up      7058/tcp, 8080/tcp      
 minikb_workspace_1        /kb/deployment/bin/dockeri ...   Up      7058/tcp, 8080/tcp      
-120:mini_kb sychan$ curl http://localhost:8000/kbase-ui/build-info.js
+120:mini_kb sychan$ curl http://localhost/services/kbase-ui/build-info.js
 <html>
 <head><title>502 Bad Gateway</title></head>
 <body bgcolor="white">
@@ -266,7 +266,7 @@ minikb_ci-mysql_1         docker-entrypoint.sh mysqld      Up      3306/tcp
 minikb_db-init_1          /kb/deployment/bin/dockeri ...   Up                              
 minikb_handle_manager_1   /kb/deployment/bin/dockeri ...   Up                              
 minikb_handle_service_1   /kb/deployment/bin/dockeri ...   Up      7109/tcp                
-minikb_nginx_1            /kb/deployment/bin/dockeri ...   Up      0.0.0.0:8000->80/tcp    
+minikb_nginx_1            /kb/deployment/bin/dockeri ...   Up      0.0.0.0:80->80/tcp    
 minikb_shock_1            /kb/deployment/bin/dockeri ...   Up                              
 minikb_ujs_1              /kb/deployment/bin/dockeri ...   Up      7058/tcp, 8080/tcp      
 minikb_workspace_1        /kb/deployment/bin/dockeri ...   Up      7058/tcp, 8080/tcp      
@@ -278,7 +278,7 @@ is part of the network, the name will resolve and the nginx proxy will be able t
 through the wildcard rule for /services/*
 
 ~~~
-120:mini_kb sychan$ curl http://localhost:8000/kbase-ui/build-info.js
+120:mini_kb sychan$ curl http://localhost/services/kbase-ui/build-info.js
 (function (global) {
     global.__kbase__build__ = {
         // git rev-parse HEAD
@@ -297,7 +297,7 @@ original state.
 ~~~
 120:mini_kb sychan$ docker kill kbase-ui
 kbase-ui
-120:mini_kb sychan$ curl http://localhost:8000/kbase-ui/build-info.js
+120:mini_kb sychan$ curl http://localhost/services/kbase-ui/build-info.js
 <html>
 <head><title>504 Gateway Time-out</title></head>
 <body bgcolor="white">
