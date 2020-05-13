@@ -254,7 +254,7 @@ it a set of environment variables via the --env-file directive that sets the por
 appropriate settings:
 
 ~~~
-120:mini_kb sychan$ docker run -d --network=minikb_default --name=kbase-ui --env-file=deployment/conf/kbase-ui-minikb.ini kbase/kbase-ui:latest
+120:mini_kb sychan$ docker run -d --network=mini_kb_default --name=kbase-ui --env-file=deployment/conf/kbase-ui-minikb.ini kbase/kbase-ui:latest
 5a0512c2bffa87735d6fb1fef4280bdf217fd50a57df566b3c4899a6092bce81
 120:mini_kb sychan$ docker-compose ps
          Name                        Command               State            Ports          

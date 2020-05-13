@@ -1,0 +1,106 @@
+200417 22:34:08 [Note] Ignoring --secure-file-priv value as server is running with --bootstrap.
+200417 22:34:08 [Note] /usr/local/mysql/bin/mysqld (mysqld 5.5.62) starting as process 67 ...
+200417 22:34:08 [Note] Ignoring --secure-file-priv value as server is running with --bootstrap.
+200417 22:34:08 [Note] /usr/local/mysql/bin/mysqld (mysqld 5.5.62) starting as process 73 ...
+200417 22:34:09 [Note] --secure-file-priv is set to NULL. Operations related to importing and exporting data are disabled
+200417 22:34:09 [Note] mysqld (mysqld 5.5.62) starting as process 83 ...
+200417 22:34:09 [Note] Plugin 'FEDERATED' is disabled.
+200417 22:34:09 InnoDB: The InnoDB memory heap is disabled
+200417 22:34:09 InnoDB: Mutexes and rw_locks use GCC atomic builtins
+200417 22:34:09 InnoDB: Compressed tables use zlib 1.2.11
+200417 22:34:09 InnoDB: Using Linux native AIO
+200417 22:34:09 InnoDB: Initializing buffer pool, size = 256.0M
+200417 22:34:09 InnoDB: Completed initialization of buffer pool
+InnoDB: The first specified data file ./ibdata1 did not exist:
+InnoDB: a new database to be created!
+200417 22:34:09  InnoDB: Setting file ./ibdata1 size to 10 MB
+InnoDB: Database physically writes the file full: wait...
+200417 22:34:09  InnoDB: Log file ./ib_logfile0 did not exist: new to be created
+InnoDB: Setting log file ./ib_logfile0 size to 5 MB
+InnoDB: Database physically writes the file full: wait...
+200417 22:34:09  InnoDB: Log file ./ib_logfile1 did not exist: new to be created
+InnoDB: Setting log file ./ib_logfile1 size to 5 MB
+InnoDB: Database physically writes the file full: wait...
+InnoDB: Doublewrite buffer not found: creating new
+InnoDB: Doublewrite buffer created
+InnoDB: 127 rollback segment(s) active.
+InnoDB: Creating foreign key constraint system tables
+InnoDB: Foreign key constraint system tables created
+200417 22:34:09  InnoDB: Waiting for the background threads to start
+200417 22:34:10 InnoDB: 5.5.62 started; log sequence number 0
+200417 22:34:10 [Warning] 'user' entry 'root@1cb9ac792972' ignored in --skip-name-resolve mode.
+200417 22:34:10 [Warning] 'user' entry '@1cb9ac792972' ignored in --skip-name-resolve mode.
+200417 22:34:10 [Warning] 'proxies_priv' entry '@ root@1cb9ac792972' ignored in --skip-name-resolve mode.
+200417 22:34:10 [Note] Event Scheduler: Loaded 0 events
+200417 22:34:10 [Note] mysqld: ready for connections.
+Version: '5.5.62'  socket: '/tmp/mysql.sock'  port: 0  MySQL Community Server (GPL)
+Warning: Unable to load '/usr/share/zoneinfo/iso3166.tab' as time zone. Skipping it.
+Warning: Unable to load '/usr/share/zoneinfo/leap-seconds.list' as time zone. Skipping it.
+Warning: Unable to load '/usr/share/zoneinfo/zone.tab' as time zone. Skipping it.
+Warning: Unable to load '/usr/share/zoneinfo/zone1970.tab' as time zone. Skipping it.
+200417 22:34:13 [Warning] 'proxies_priv' entry '@ root@1cb9ac792972' ignored in --skip-name-resolve mode.
+200417 22:34:13 [Note] mysqld: Normal shutdown
+
+200417 22:34:13 [Note] Event Scheduler: Purging the queue. 0 events
+200417 22:34:13  InnoDB: Starting shutdown...
+200417 22:34:14  InnoDB: Shutdown completed; log sequence number 1595675
+200417 22:34:14 [Note] mysqld: Shutdown complete
+
+200417 22:34:14 [Note] --secure-file-priv is set to NULL. Operations related to importing and exporting data are disabled
+200417 22:34:14 [Note] mysqld (mysqld 5.5.62) starting as process 1 ...
+200417 22:34:14 [Note] Plugin 'FEDERATED' is disabled.
+200417 22:34:14 InnoDB: The InnoDB memory heap is disabled
+200417 22:34:14 InnoDB: Mutexes and rw_locks use GCC atomic builtins
+200417 22:34:14 InnoDB: Compressed tables use zlib 1.2.11
+200417 22:34:14 InnoDB: Using Linux native AIO
+200417 22:34:14 InnoDB: Initializing buffer pool, size = 256.0M
+200417 22:34:14 InnoDB: Completed initialization of buffer pool
+200417 22:34:14 InnoDB: highest supported file format is Barracuda.
+200417 22:34:14  InnoDB: Waiting for the background threads to start
+200417 22:34:15 InnoDB: 5.5.62 started; log sequence number 1595675
+200417 22:34:15 [Note] Server hostname (bind-address): '0.0.0.0'; port: 3306
+200417 22:34:15 [Note]   - '0.0.0.0' resolves to '0.0.0.0';
+200417 22:34:15 [Note] Server socket created on IP: '0.0.0.0'.
+200417 22:34:15 [Warning] 'proxies_priv' entry '@ root@1cb9ac792972' ignored in --skip-name-resolve mode.
+200417 22:34:15 [Note] Event Scheduler: Loaded 0 events
+200417 22:34:15 [Note] mysqld: ready for connections.
+Version: '5.5.62'  socket: '/tmp/mysql.sock'  port: 3306  MySQL Community Server (GPL)
+200417 22:34:22  InnoDB: ERROR: the age of the last checkpoint is 9446242,
+InnoDB: which exceeds the log group capacity 9433498.
+InnoDB: If you are using big BLOB or TEXT rows, you must set the
+InnoDB: combined size of log files at least 10 times bigger than the
+InnoDB: largest such row.
+200417 22:34:23 [Warning] 'proxies_priv' entry '@ root@60668a585532' ignored in --skip-name-resolve mode.
+200417 22:34:56  InnoDB: ERROR: the age of the last checkpoint is 9435817,
+InnoDB: which exceeds the log group capacity 9433498.
+InnoDB: If you are using big BLOB or TEXT rows, you must set the
+InnoDB: combined size of log files at least 10 times bigger than the
+InnoDB: largest such row.
+
+
+Initializing database
+
+PLEASE REMEMBER TO SET A PASSWORD FOR THE MySQL root USER !
+To do so, start the server, then issue the following commands:
+
+/usr/local/mysql/bin/mysqladmin -u root password 'new-password'
+/usr/local/mysql/bin/mysqladmin -u root -h  password 'new-password'
+
+Alternatively you can run:
+/usr/local/mysql/bin/mysql_secure_installation
+
+which will also give you the option of removing the test
+databases and anonymous user created by default.  This is
+strongly recommended for production servers.
+
+See the manual for more instructions.
+
+Please report any problems at http://bugs.mysql.com/
+
+Database initialized
+MySQL init process in progress...
+MySQL init process in progress...
+
+
+MySQL init process done. Ready for start up.
+

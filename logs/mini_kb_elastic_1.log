@@ -1,0 +1,30 @@
+[2020-04-17T22:34:09,523][INFO ][o.e.n.Node               ] [] initializing ...
+[2020-04-17T22:34:09,607][INFO ][o.e.e.NodeEnvironment    ] [YuM2ZAh] using [1] data paths, mounts [[/ (overlay)]], net usable_space [783gb], net total_space [907.5gb], spins? [possibly], types [overlay]
+[2020-04-17T22:34:09,607][INFO ][o.e.e.NodeEnvironment    ] [YuM2ZAh] heap size [494.9mb], compressed ordinary object pointers [true]
+[2020-04-17T22:34:09,608][INFO ][o.e.n.Node               ] node name [YuM2ZAh] derived from node ID [YuM2ZAhdTqqb7ZX1jPWW6A]; set [node.name] to override
+[2020-04-17T22:34:09,609][INFO ][o.e.n.Node               ] version[5.6.5], pid[1], build[6a37571/2017-12-04T07:50:10.466Z], OS[Linux/5.3.0-7648-generic/amd64], JVM[Oracle Corporation/OpenJDK 64-Bit Server VM/1.8.0_151/25.151-b12]
+[2020-04-17T22:34:09,609][INFO ][o.e.n.Node               ] JVM arguments [-Xms2g, -Xmx2g, -XX:+UseConcMarkSweepGC, -XX:CMSInitiatingOccupancyFraction=75, -XX:+UseCMSInitiatingOccupancyOnly, -XX:+AlwaysPreTouch, -Xss1m, -Djava.awt.headless=true, -Dfile.encoding=UTF-8, -Djna.nosys=true, -Djdk.io.permissionsUseCanonicalPath=true, -Dio.netty.noUnsafe=true, -Dio.netty.noKeySetOptimization=true, -Dio.netty.recycler.maxCapacityPerThread=0, -Dlog4j.shutdownHookEnabled=false, -Dlog4j2.disable.jmx=true, -Dlog4j.skipJansi=true, -XX:+HeapDumpOnOutOfMemoryError, -Des.cgroups.hierarchy.override=/, -Xms512m, -Xmx512m, -Des.path.home=/usr/share/elasticsearch]
+[2020-04-17T22:34:11,408][INFO ][o.e.p.PluginsService     ] [YuM2ZAh] loaded module [aggs-matrix-stats]
+[2020-04-17T22:34:11,408][INFO ][o.e.p.PluginsService     ] [YuM2ZAh] loaded module [ingest-common]
+[2020-04-17T22:34:11,408][INFO ][o.e.p.PluginsService     ] [YuM2ZAh] loaded module [lang-expression]
+[2020-04-17T22:34:11,408][INFO ][o.e.p.PluginsService     ] [YuM2ZAh] loaded module [lang-groovy]
+[2020-04-17T22:34:11,408][INFO ][o.e.p.PluginsService     ] [YuM2ZAh] loaded module [lang-mustache]
+[2020-04-17T22:34:11,408][INFO ][o.e.p.PluginsService     ] [YuM2ZAh] loaded module [lang-painless]
+[2020-04-17T22:34:11,408][INFO ][o.e.p.PluginsService     ] [YuM2ZAh] loaded module [parent-join]
+[2020-04-17T22:34:11,408][INFO ][o.e.p.PluginsService     ] [YuM2ZAh] loaded module [percolator]
+[2020-04-17T22:34:11,408][INFO ][o.e.p.PluginsService     ] [YuM2ZAh] loaded module [reindex]
+[2020-04-17T22:34:11,408][INFO ][o.e.p.PluginsService     ] [YuM2ZAh] loaded module [transport-netty3]
+[2020-04-17T22:34:11,409][INFO ][o.e.p.PluginsService     ] [YuM2ZAh] loaded module [transport-netty4]
+[2020-04-17T22:34:11,409][INFO ][o.e.p.PluginsService     ] [YuM2ZAh] loaded plugin [ingest-geoip]
+[2020-04-17T22:34:11,410][INFO ][o.e.p.PluginsService     ] [YuM2ZAh] loaded plugin [ingest-user-agent]
+[2020-04-17T22:34:11,410][INFO ][o.e.p.PluginsService     ] [YuM2ZAh] loaded plugin [x-pack]
+[2020-04-17T22:34:13,551][INFO ][o.e.d.DiscoveryModule    ] [YuM2ZAh] using discovery type [single-node]
+[2020-04-17T22:34:14,038][INFO ][o.e.n.Node               ] initialized
+[2020-04-17T22:34:14,038][INFO ][o.e.n.Node               ] [YuM2ZAh] starting ...
+[2020-04-17T22:34:14,237][INFO ][o.e.t.TransportService   ] [YuM2ZAh] publish_address {172.18.0.2:9300}, bound_addresses {0.0.0.0:9300}
+[2020-04-17T22:34:14,243][WARN ][o.e.b.BootstrapChecks    ] [YuM2ZAh] max virtual memory areas vm.max_map_count [65530] is too low, increase to at least [262144]
+[2020-04-17T22:34:14,253][INFO ][o.e.c.s.ClusterService   ] [YuM2ZAh] new_master {YuM2ZAh}{YuM2ZAhdTqqb7ZX1jPWW6A}{MLJNgkbITNK1l8xztT2z7g}{172.18.0.2}{172.18.0.2:9300}, reason: single-node-start-initial-join[{YuM2ZAh}{YuM2ZAhdTqqb7ZX1jPWW6A}{MLJNgkbITNK1l8xztT2z7g}{172.18.0.2}{172.18.0.2:9300}]
+[2020-04-17T22:34:14,264][INFO ][o.e.h.n.Netty4HttpServerTransport] [YuM2ZAh] publish_address {172.18.0.2:9200}, bound_addresses {0.0.0.0:9200}
+[2020-04-17T22:34:14,264][INFO ][o.e.n.Node               ] [YuM2ZAh] started
+[2020-04-17T22:34:14,301][INFO ][o.e.g.GatewayService     ] [YuM2ZAh] recovered [0] indices into cluster_state
+[2020-04-17T22:34:14,360][INFO ][o.e.l.LicenseService     ] [YuM2ZAh] license [c3922d39-11cd-4a03-af68-1c49ea935ef7] mode [trial] - valid

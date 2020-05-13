@@ -1,0 +1,35 @@
+04/17/20 22:34:08 ******************************************************
+04/17/20 22:34:08 ** condor_master (CONDOR_MASTER) STARTING UP
+04/17/20 22:34:08 ** /usr/sbin/condor_master
+04/17/20 22:34:08 ** SubsystemInfo: name=MASTER type=MASTER(2) class=DAEMON(1)
+04/17/20 22:34:08 ** Configuration: subsystem:MASTER local:<NONE> class:DAEMON
+04/17/20 22:34:08 ** $CondorVersion: 8.9.5 Dec 30 2019 BuildID: 493601 PackageID: 8.9.5-1 $
+04/17/20 22:34:08 ** $CondorPlatform: x86_64_RedHat7 $
+04/17/20 22:34:08 ** PID = 16
+04/17/20 22:34:08 ** Log last touched time unavailable (Success)
+04/17/20 22:34:08 ******************************************************
+04/17/20 22:34:08 Using config source: /etc/condor/condor_config
+04/17/20 22:34:08 Using local config sources: 
+04/17/20 22:34:08    /etc/condor/config.d/condor_config.docker_image
+04/17/20 22:34:08    /etc/condor/config.d/shared_port.config
+04/17/20 22:34:08    /etc/condor/condor_config.local
+04/17/20 22:34:08 config Macros = 102, Sorted = 102, StringBytes = 2986, TablesBytes = 3736
+04/17/20 22:34:08 CLASSAD_CACHING is OFF
+04/17/20 22:34:08 Daemon Log is logging: D_ALWAYS D_ERROR
+04/17/20 22:34:09 SharedPortEndpoint: waiting for connections to named socket master_16_8d9a
+04/17/20 22:34:09 SharedPortEndpoint: failed to open /usr/local/condor/lock/condor/shared_port_ad: No such file or directory
+04/17/20 22:34:09 SharedPortEndpoint: did not successfully find SharedPortServer address. Will retry in 60s.
+04/17/20 22:34:09 DaemonCore: private command socket at <172.18.0.4:0?alias=condor&sock=master_16_8d9a>
+04/17/20 22:34:19 WARNING: Saw slow DNS query, which may impact entire system: getaddrinfo(kbase) took 10.000119 seconds.
+04/17/20 22:34:19 Master restart (GRACEFUL) is watching /usr/sbin/condor_master (mtime:1577754002)
+04/17/20 22:34:19 Cannot remove wait-for-startup file /usr/local/condor/lock/condor/shared_port_ad
+04/17/20 22:34:20 Started DaemonCore process "/usr/libexec/condor/condor_shared_port", pid and pgroup = 64
+04/17/20 22:34:20 Waiting for /usr/local/condor/lock/condor/shared_port_ad to appear.
+04/17/20 22:34:21 Found /usr/local/condor/lock/condor/shared_port_ad.
+04/17/20 22:34:21 Cannot remove wait-for-startup file /usr/local/condor/log/condor/.collector_address
+04/17/20 22:34:22 Started DaemonCore process "/usr/sbin/condor_collector", pid and pgroup = 65
+04/17/20 22:34:22 Waiting for /usr/local/condor/log/condor/.collector_address to appear.
+04/17/20 22:34:23 Found /usr/local/condor/log/condor/.collector_address.
+04/17/20 22:34:23 Started DaemonCore process "/usr/sbin/condor_negotiator", pid and pgroup = 66
+04/17/20 22:34:23 Started DaemonCore process "/usr/sbin/condor_schedd", pid and pgroup = 67
+

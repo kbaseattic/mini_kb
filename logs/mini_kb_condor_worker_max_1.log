@@ -1,0 +1,149 @@
+2020/04/17 22:34:09 Warning: unable to stat /var/log/condor/StartLog: stat /var/log/condor/StartLog: no such file or directory
+2020/04/17 22:34:09 Warning: unable to stat /var/log/condor/ProcLog: stat /var/log/condor/ProcLog: no such file or directory
+chmod: cannot access '/kb/deployment/bin/check_abandoned_containers.py': No such file or directory
+
+04/17/20 22:34:09 ******************************************************
+04/17/20 22:34:09 ** condor_master (CONDOR_MASTER) STARTING UP
+04/17/20 22:34:09 ** /usr/sbin/condor_master
+04/17/20 22:34:09 ** SubsystemInfo: name=MASTER type=MASTER(2) class=DAEMON(1)
+04/17/20 22:34:09 ** Configuration: subsystem:MASTER local:<NONE> class:DAEMON
+04/17/20 22:34:09 ** $CondorVersion: 8.9.2 Jun 04 2019 BuildID: 471265 PackageID: 8.9.2-1 $
+04/17/20 22:34:09 ** $CondorPlatform: x86_64_RedHat7 $
+04/17/20 22:34:09 ** PID = 11
+04/17/20 22:34:09 ** Log last touched time unavailable (Success)
+04/17/20 22:34:09 ******************************************************
+04/17/20 22:34:09 Using config source: /etc/condor/condor_config
+04/17/20 22:34:09 Using local config sources: 
+04/17/20 22:34:09    /etc/condor/config.d/shared_port_config
+04/17/20 22:34:09    /etc/condor/condor_config.local
+04/17/20 22:34:09 config Macros = 81, Sorted = 81, StringBytes = 2121, TablesBytes = 2972
+04/17/20 22:34:09 CLASSAD_CACHING is OFF
+04/17/20 22:34:09 Daemon Log is logging: D_ALWAYS D_ERROR
+04/17/20 22:34:10 SharedPortEndpoint: waiting for connections to named socket master_11_1fa1
+04/17/20 22:34:10 SharedPortEndpoint: failed to open /var/lock/condor/shared_port_ad: No such file or directory
+04/17/20 22:34:10 SharedPortEndpoint: did not successfully find SharedPortServer address. Will retry in 60s.
+04/17/20 22:34:10 DaemonCore: private command socket at <172.18.0.11:0?alias=condor_worker_max&sock=master_11_1fa1>
+04/17/20 22:34:10 Adding SHARED_PORT to DAEMON_LIST, because USE_SHARED_PORT=true (to disable this, set AUTO_INCLUDE_SHARED_PORT_IN_DAEMON_LIST=False)
+04/17/20 22:34:10 Master restart (GRACEFUL) is watching /usr/sbin/condor_master (mtime:1559666657)
+04/17/20 22:34:10 Collector port not defined, will use default: 9618
+04/17/20 22:34:11 : ***********************************
+04/17/20 22:34:11 : * condor_procd STARTING UP
+04/17/20 22:34:11 : * PID = 52
+04/17/20 22:34:11 : * UID = 0
+04/17/20 22:34:11 : * GID = 0
+04/17/20 22:34:11 : ***********************************
+04/17/20 22:34:11 : Procd has a watcher pid and will die if pid 11 dies.
+04/17/20 22:34:11 : Initializing cgroup library.
+04/17/20 22:34:11 : taking a snapshot...
+04/17/20 22:34:11 : method PID: found family 11 for process 11
+04/17/20 22:34:11 : method PARENT: found family 11 for process 52
+04/17/20 22:34:11 : method PARENT: found family 11 for process 52 (already determined)
+04/17/20 22:34:11 : no methods have determined process 1 to be in a monitored family
+04/17/20 22:34:11 : ...snapshot complete
+04/17/20 22:34:11 : PROC_FAMILY_REGISTER_SUBFAMILY
+04/17/20 22:34:11 : taking a snapshot...
+04/17/20 22:34:11 : method PARENT: found family 11 for process 53
+04/17/20 22:34:11 : method PARENT: found family 11 for process 53 (already determined)
+04/17/20 22:34:11 : ...snapshot complete
+04/17/20 22:34:11 : moving process 53 into new subfamily 53
+04/17/20 22:34:11 : new subfamily registered: root = 53, watcher = 11
+04/17/20 22:34:11 : PROC_FAMILY_TRACK_FAMILY_VIA_ENVIRONMENT
+04/17/20 22:34:11 Started DaemonCore process "/usr/libexec/condor/condor_shared_port", pid and pgroup = 53
+04/17/20 22:34:11 Waiting for /var/lock/condor/shared_port_ad to appear.
+04/17/20 22:34:12 Found /var/lock/condor/shared_port_ad.
+04/17/20 22:34:12 : PROC_FAMILY_REGISTER_SUBFAMILY
+04/17/20 22:34:12 : taking a snapshot...
+04/17/20 22:34:12 : method PARENT: found family 11 for process 54
+04/17/20 22:34:12 : method PARENT: found family 11 for process 54 (already determined)
+04/17/20 22:34:12 : ...snapshot complete
+04/17/20 22:34:12 : moving process 54 into new subfamily 54
+04/17/20 22:34:12 : new subfamily registered: root = 54, watcher = 11
+04/17/20 22:34:12 : PROC_FAMILY_TRACK_FAMILY_VIA_ENVIRONMENT
+04/17/20 22:34:13 Started DaemonCore process "/usr/sbin/condor_startd", pid and pgroup = 54
+04/17/20 22:34:13 ******************************************************
+04/17/20 22:34:13 ** condor_startd (CONDOR_STARTD) STARTING UP
+04/17/20 22:34:13 ** /usr/sbin/condor_startd
+04/17/20 22:34:13 ** SubsystemInfo: name=STARTD type=STARTD(7) class=DAEMON(1)
+04/17/20 22:34:13 ** Configuration: subsystem:STARTD local:<NONE> class:DAEMON
+04/17/20 22:34:13 ** $CondorVersion: 8.9.2 Jun 04 2019 BuildID: 471265 PackageID: 8.9.2-1 $
+04/17/20 22:34:13 ** $CondorPlatform: x86_64_RedHat7 $
+04/17/20 22:34:13 ** PID = 54
+04/17/20 22:34:13 ** Log last touched time unavailable (No such file or directory)
+04/17/20 22:34:13 ******************************************************
+04/17/20 22:34:13 Using config source: /etc/condor/condor_config
+04/17/20 22:34:13 Using local config sources: 
+04/17/20 22:34:13    /etc/condor/config.d/shared_port_config
+04/17/20 22:34:13    /etc/condor/condor_config.local
+04/17/20 22:34:13 config Macros = 82, Sorted = 82, StringBytes = 2158, TablesBytes = 3008
+04/17/20 22:34:13 CLASSAD_CACHING is ENABLED
+04/17/20 22:34:13 Daemon Log is logging: D_ALWAYS D_ERROR
+04/17/20 22:34:13 SharedPortEndpoint: waiting for connections to named socket startd_11_1fa1_3
+04/17/20 22:34:13 DaemonCore: command socket at <172.18.0.11:9618?addrs=172.18.0.11-9618&alias=condor_worker_max&noUDP&sock=startd_11_1fa1_3>
+04/17/20 22:34:13 DaemonCore: private command socket at <172.18.0.11:9618?addrs=172.18.0.11-9618&alias=condor_worker_max&noUDP&sock=startd_11_1fa1_3>
+04/17/20 22:34:14 sscanf didn't parse correctly
+04/17/20 22:34:16 attempt to connect to <172.18.0.4:9618> failed: Connection refused (connect errno = 111).
+04/17/20 22:34:16 ERROR: SECMAN:2003:TCP connection to collector condor:9618?sock=collector failed.
+04/17/20 22:34:16 Failed to start non-blocking update to <172.18.0.4:9618>.
+04/17/20 22:34:30 VM universe will be tested to check if it is available
+04/17/20 22:34:30 History file rotation is enabled.
+04/17/20 22:34:30   Maximum history file size is: 20971520 bytes
+04/17/20 22:34:30   Number of rotated history files is: 2
+04/17/20 22:34:30 Allocating auto shares for slot type 0: Cpus: auto, Memory: auto, Swap: auto, Disk: auto
+slot type 0: Cpus: 12.000000, Memory: 15721, Swap: 100.00%, Disk: 100.00%
+04/17/20 22:34:30 slot1: New machine resource allocated
+04/17/20 22:34:30 Setting up slot pairings
+04/17/20 22:34:30 Running: /usr/bin/docker container prune -f --filter=label=org.htcondorproject=True
+04/17/20 22:34:32 sscanf didn't parse correctly
+04/17/20 22:34:32 CronJobList: Adding job 'kflops'
+04/17/20 22:34:32 CronJobList: Adding job 'mips'
+04/17/20 22:34:32 CronJob: Initializing job 'kflops' (/usr/libexec/condor/condor_kflops)
+04/17/20 22:34:32 CronJob: Initializing job 'mips' (/usr/libexec/condor/condor_mips)
+04/17/20 22:34:32 slot1: State change: IS_OWNER is false
+04/17/20 22:34:32 slot1: Changing state: Owner -> Unclaimed
+04/17/20 22:34:32 State change: RunBenchmarks is TRUE
+04/17/20 22:34:32 slot1: Changing activity: Idle -> Benchmarking
+04/17/20 22:34:32 BenchMgr:StartBenchmarks()
+04/17/20 22:34:35 Setting ready state 'Ready' for STARTD
+04/17/20 22:34:35 Initial update sent to collector(s)
+04/17/20 22:34:35 Sending DC_SET_READY message to master <172.18.0.11:9618?addrs=172.18.0.11-9618&alias=condor_worker_max&noUDP&sock=master_11_1fa1>
+04/17/20 22:35:06 State change: benchmarks completed
+04/17/20 22:35:06 slot1: Changing activity: Benchmarking -> Idle
+04/17/20 22:35:11 : taking a snapshot...
+04/17/20 22:35:11 : ProcAPI: new boottime = 1587152267; old_boottime = 1587152268; /proc/stat boottime = 1587152268; /proc/uptime boottime = 1587152267
+04/17/20 22:35:11 : ...snapshot complete
+04/17/20 22:36:11 : taking a snapshot...
+04/17/20 22:36:11 : ProcAPI: new boottime = 1587152267; old_boottime = 1587152267; /proc/stat boottime = 1587152268; /proc/uptime boottime = 1587152267
+04/17/20 22:36:11 : ...snapshot complete
+04/17/20 22:37:11 : taking a snapshot...
+04/17/20 22:37:11 : ProcAPI: new boottime = 1587152267; old_boottime = 1587152267; /proc/stat boottime = 1587152268; /proc/uptime boottime = 1587152267
+04/17/20 22:37:11 : ...snapshot complete
+04/17/20 22:38:11 : taking a snapshot...
+04/17/20 22:38:11 : ProcAPI: new boottime = 1587152267; old_boottime = 1587152267; /proc/stat boottime = 1587152268; /proc/uptime boottime = 1587152267
+04/17/20 22:38:11 : ...snapshot complete
+04/17/20 22:39:11 : taking a snapshot...
+04/17/20 22:39:11 : ProcAPI: new boottime = 1587152267; old_boottime = 1587152267; /proc/stat boottime = 1587152268; /proc/uptime boottime = 1587152267
+04/17/20 22:39:11 : ...snapshot complete
+04/17/20 22:40:11 : taking a snapshot...
+04/17/20 22:40:11 : ProcAPI: new boottime = 1587152267; old_boottime = 1587152267; /proc/stat boottime = 1587152268; /proc/uptime boottime = 1587152267
+04/17/20 22:40:11 : ...snapshot complete
+04/17/20 22:41:11 : taking a snapshot...
+04/17/20 22:41:11 : ProcAPI: new boottime = 1587152267; old_boottime = 1587152267; /proc/stat boottime = 1587152268; /proc/uptime boottime = 1587152267
+04/17/20 22:41:11 : ...snapshot complete
+04/17/20 22:42:11 : taking a snapshot...
+04/17/20 22:42:11 : ProcAPI: new boottime = 1587152267; old_boottime = 1587152267; /proc/stat boottime = 1587152268; /proc/uptime boottime = 1587152267
+04/17/20 22:42:11 : ...snapshot complete
+04/17/20 22:43:12 : taking a snapshot...
+04/17/20 22:43:12 : ProcAPI: new boottime = 1587152268; old_boottime = 1587152267; /proc/stat boottime = 1587152268; /proc/uptime boottime = 1587152268
+04/17/20 22:43:12 : ...snapshot complete
+04/17/20 22:44:12 : taking a snapshot...
+04/17/20 22:44:12 : ProcAPI: new boottime = 1587152268; old_boottime = 1587152268; /proc/stat boottime = 1587152268; /proc/uptime boottime = 1587152268
+04/17/20 22:44:12 : ...snapshot complete
+04/17/20 22:45:12 : taking a snapshot...
+04/17/20 22:45:12 : ProcAPI: new boottime = 1587152268; old_boottime = 1587152268; /proc/stat boottime = 1587152268; /proc/uptime boottime = 1587152268
+04/17/20 22:45:12 : ...snapshot complete
+04/17/20 22:46:12 : taking a snapshot...
+04/17/20 22:46:12 : ProcAPI: new boottime = 1587152268; old_boottime = 1587152268; /proc/stat boottime = 1587152268; /proc/uptime boottime = 1587152268
+04/17/20 22:46:12 : ...snapshot complete
+04/17/20 22:47:12 : taking a snapshot...
+04/17/20 22:47:12 : ProcAPI: new boottime = 1587152268; old_boottime = 1587152268; /proc/stat boottime = 1587152268; /proc/uptime boottime = 1587152268
+04/17/20 22:47:12 : ...snapshot complete
